@@ -1,0 +1,64 @@
+<% breadcrumb :show_meeting, @meeting %>
+
+<div class="box">
+  <div class="box-header">
+    <p>
+  <strong>Data:</strong>
+  <%= @meeting.date.strftime('%d/%m/%Y') %>
+</p>
+  
+  </div>
+
+<div class="box-body">
+<p>
+  <strong>Início da sessão:</strong>
+  <%= @meeting.start_session.strftime('%H:%M') %>
+</p>
+
+<p>
+  <strong>Término da sessão:</strong>
+  <%= @meeting.end_session.strftime('%H:%M') %>
+</p>
+<p>
+  <strong>Projetos: </strong>
+  <%= link_to @meeting.projects.size, meeting_projects_path(@meeting) %>
+</p>
+
+<p>
+  <strong>Anotações:</strong>
+  <%= @meeting.note %>
+</p>
+
+<div class="box box-success">
+            <div class="box-header with-border">
+              <h3 class="box-title text-right">Vereadores presentes</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table class="table table-bordered">
+                <tbody>
+                <tr>                  
+                  <th>Vereador</th>
+                  <th style="width: 50px">Presença</th>
+                </tr>
+                <% @session_councilmen.each do |sc| %>
+                
+                <tr>
+                  <td><%= sc.councilman.name %></td>
+                  <% unless sc.present? %>
+                  <td><span class="badge bg-red">NÂO</span></td>
+                  <% else %>
+                  <td><span class="badge bg-green">SIM</span></td>
+                  <%end%>
+                </tr>
+                <%end%>
+                
+              </tbody></table>
+            </div>
+            <!-- /.box-body -->
+            
+</div>
+<%= link_to 'Editar', edit_meeting_path(@meeting), class: "btn btn-info" %> |
+<%= link_to 'Voltar', meetings_path, class: "btn btn-warning" %>
+</div>
+</div>

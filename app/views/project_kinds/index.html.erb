@@ -1,0 +1,59 @@
+<% breadcrumb :project_kinds %>
+
+<div class="box">
+  <div class="box-header">
+    <h1>Tipos de Projetos</h1>
+
+    <div class="row">
+      <div class="col-sm-4">
+          <%= link_to 'Novo Tipo de Projeto', new_project_kind_path, class: "btn btn-info" %>
+      </div>
+      <div class="col-sm-4">
+      
+         <%= form_tag( project_kinds_path, method: :get) do %>
+            <div class="input-group">
+             <%= text_field_tag 'search', nil, class:"form-control", placeholder:"Digite o tipo do projeto" %>
+
+              <div class="input-group-btn">
+                <%= button_tag(type: "submit", class: "btn btn-warning btn-flat") do %>
+               <i class="fa fa-search"></i>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+      </div>
+    </div>
+
+
+
+</div>
+<div class="box-body table-responsive">
+<table class="table table-striped">
+<thead>
+    <tr>
+      <th>Kind</th>
+      <th>Description</th>
+      <th colspan="3">Ações</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @project_kinds.each do |project_kind| %>
+      <tr>
+        <td><%= project_kind.kind %></td>
+        <td><%= project_kind.description %></td>
+        <td><%= link_to '', project_kind, class: "btn btn-info fa fa-search", title:"Visualizar Tipo de Projeto" %></td>
+        <td><%= link_to '', edit_project_kind_path(project_kind), class: "btn btn-warning fa fa-edit", title:"Editar Tipo de Projeto" %></td>
+        <td><%= link_to '', project_kind, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger fa fa-remove", title:"Excluir Tipo de Projeto" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class="pagination pagination-sm no-margin pull-right">
+  <%= will_paginate @project_kinds, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+</div>
+</div>
+</div>
+<%= will_paginate @project_kinds, class: "pagination pagination-sm no-margin pull-right" %>
+
+

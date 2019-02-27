@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  session: one
+  name: MyString
+  description: MyText
+  project_kind: one
+  start_project: 2018-05-26 22:30:03
+  end_project: 2018-05-26 22:30:03
+  result: 1
+
+two:
+  session: two
+  name: MyString
+  description: MyText
+  project_kind: two
+  start_project: 2018-05-26 22:30:03
+  end_project: 2018-05-26 22:30:03
+  result: 1

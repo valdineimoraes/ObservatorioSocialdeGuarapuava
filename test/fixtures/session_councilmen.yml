@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  session: one
+  councilman: one
+  arrival: 2018-05-26 22:41:13
+  leaving: 2018-05-26 22:41:13
+  note: MyText
+
+two:
+  session: two
+  councilman: two
+  arrival: 2018-05-26 22:41:13
+  leaving: 2018-05-26 22:41:13
+  note: MyText

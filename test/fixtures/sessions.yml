@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2018-05-26 22:20:50
+  start_session: 2018-05-26 22:20:50
+  end_session: 2018-05-26 22:20:50
+  note: MyText
+
+two:
+  date: 2018-05-26 22:20:50
+  start_session: 2018-05-26 22:20:50
+  end_session: 2018-05-26 22:20:50
+  note: MyText

@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Votos</h1>
+
+<table class="table table-bordered">
+  
+  <h3>Projeto: <strong>@project.name</strong></h3>
+  <thead>
+    <tr>
+      <th>Projeto</th>
+      <th>Vereador</th>
+      <th>Votos</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @votes.each do |vote| %>
+      <tr>
+        <td><%= vote.project %></td>
+        <td><%= vote.councilman %></td>
+        <td><%= vote.vote %></td>
+        <td><%= link_to 'Show', vote %></td>
+        <td><%= link_to 'Edit', edit_vote_path(vote) %></td>
+        <td><%= link_to 'Destroy', vote, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%# <%= link_to 'New Vote', new_vote_path %> %>

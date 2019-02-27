@@ -1,0 +1,47 @@
+<!-- Main Header -->
+    <header class="main-header">
+      <!-- Logo -->
+      <a href="/" class="logo">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini">
+          <b>O</b>S</span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg">
+          <b>Observatorio</b> Social</span>
+      </a>
+      
+
+
+      <!-- Header Navbar -->
+      <nav class="navbar navbar-static-top" role="navigation">
+        <!-- Sidebar toggle button-->
+        <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+          <span class="sr-only">Trocar navegação</span>
+        </a>
+        <!-- Navbar Right Menu -->
+        <div class="navbar-custom-menu">
+
+          <ul class="nav navbar-nav">
+          <% if user_signed_in? %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Olá <%= current_user.name %> 
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <%= link_to 'Meu perfil', edit_user_registration_path,
+                                      class: 'dropdown-item' %>
+              <%= link_to 'Sair', destroy_user_session_path, method: :delete,
+                                class: 'dropdown-item' %>
+            </div>
+          </li>
+       <% else %>
+         <li class="nav-item">
+            <%= link_to 'Entrar', new_user_session_path,
+                                  class: 'btn btn-primary btn-sm' %>
+         </li>
+       <% end %>
+            
+          </ul>
+        </div>
+      </nav>
+    </header>
