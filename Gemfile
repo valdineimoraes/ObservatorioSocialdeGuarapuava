@@ -18,7 +18,6 @@ gem 'pg', '0.18.4'
 gem 'simple_form'
 gem 'devise'
 gem 'font-awesome-rails'
-gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 gem 'font-ionicons-rails'
 gem 'rails-i18n', '~> 5.1', '>= 5.1.1'
 #gem 'will_paginate', '~> 3.1.0'
@@ -27,11 +26,22 @@ gem 'i18n_rails_helpers'
 gem 'carrierwave', '~> 1.0'
 gem 'mini_magick', '~> 4.3'
 
+
+gem 'carrierwave-i18n'
+gem 'active_link_to'
+gem 'breadcrumbs_on_rails'
+gem 'kaminari'
+
 #breadcrumbs
 gem 'gretel', '~> 3.0', '>= 3.0.9'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+
+  gem 'rspec-rails', '~> 3.7'
+  gem 'fuubar'
+  gem 'factory_bot_rails'
+  gem 'faker'
 end
 
 group :development do
@@ -39,14 +49,25 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+
+  gem 'guard-rspec', require: false
   gem 'better_errors'
-  gem 'binding_of_caller' 
+  gem 'binding_of_caller'
+  gem 'rubocop', require: false
+  gem 'rubocop-rspec'
+  gem 'brakeman'
+  gem 'rubycritic', require: false 
 end
 
 group :test do
-  gem 'capybara', '>= 2.15', '< 4.0'
+  gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
+
+  gem 'shoulda-matchers', '~> 3.1'
+  gem 'database_cleaner'
+  gem 'simplecov', require: false
+  gem 'simplecov-console', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
