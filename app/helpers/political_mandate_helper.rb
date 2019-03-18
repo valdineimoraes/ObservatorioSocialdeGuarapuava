@@ -1,0 +1,2 @@
+module PoliticalMandateHelper
+end

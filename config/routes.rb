@@ -32,5 +32,7 @@ Rails.application.routes.draw do
       get 'new', to: "meetings#new_project"
       
     end
+
+    resources :political_mandates
   end
 end

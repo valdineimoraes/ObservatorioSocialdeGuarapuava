@@ -1,0 +1,2 @@
+class PoliticalMandate < ApplicationRecord
+end

@@ -1,0 +1,59 @@
+<% breadcrumb :councilmen %>
+
+<div class="box box-info">
+  <div class="box-header">
+    <h1>Mandato Politico</h1>
+    
+    <div class="row">
+      <div class="col-sm-4">
+          <%= link_to 'Adicionar Mandato', new_political_mandate_path, class: "btn btn-info" %>
+      </div>
+      <div class="col-sm-4"> 
+      
+        <%= form_tag( political_mandates_path, method: :get) do %>
+            <div class="input-group">
+             <%= text_field_tag 'search', nil, class:"form-control", placeholder:"Digite o nome do vereador" %>
+
+              <div class="input-group-btn">
+                <%= button_tag(type: "submit", class: "btn btn-warning btn-flat") do %>
+               <i class="fa fa-search"></i>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="box-body table-responsive">
+    <table class="table table-bordered table-striped table-hover">
+    <thead >
+    <tr>
+      <th>ID</th>
+      <th>Periodo Inicial</th>
+      <th>Periodo Final</th>
+      <th>Descrição</th>
+      <th colspan="3">Ações</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @political_mandates.each do |political_mandate| %>
+      <tr>
+        <td><%= political_mandate.id %></td>       
+        <td><%= political_mandate.first_period %></td>
+        <td><%= political_mandate.final_period %></td>
+        <td><%= political_mandate.description %></td>
+        <td><%= link_to '', political_mandate, class: "fa fa-search btn btn-info" , title: "Visualizar Mandato"%></td>
+        <td><%= link_to '', edit_political_mandate_path(political_mandate), class: "fa fa-edit btn btn-warning", title: "Editar Mandato" %></td>
+        <td><%= link_to '', political_mandate, method: :delete, data: { confirm: 'Tem certeza?' }, class: "fa fa-remove btn btn-danger", title: "Excluir Mandato" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+</div>
+
+</div>
+
