@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationRecord < ActiveRecord::Base
   self.abstract_class = true
 
@@ -6,9 +8,9 @@ class ApplicationRecord < ActiveRecord::Base
   end
 
   def self.translate_enum_collection(enum_name)
-    enum_values = self.send(enum_name.to_s.pluralize).keys
+    enum_values = send(enum_name.to_s.pluralize).keys
     enum_values.map do |enum_value|
-      self.translate_enum_name enum_name, enum_value
+      translate_enum_name enum_name, enum_value
     end
   end
-end 
+end

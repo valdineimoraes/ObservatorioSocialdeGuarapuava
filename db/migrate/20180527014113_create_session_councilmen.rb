@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateSessionCouncilmen < ActiveRecord::Migration[5.2]
   def change
     create_table :session_councilmen do |t|

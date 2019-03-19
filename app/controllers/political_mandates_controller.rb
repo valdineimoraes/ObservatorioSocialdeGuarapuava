@@ -1,22 +1,22 @@
+# frozen_string_literal: true
+
 class PoliticalMandatesController < ApplicationController
-  before_action :set_political_mandate, only: [:show, :edit, :update, :destroy]
+  before_action :set_political_mandate, only: %i[show edit update destroy]
 
   def index
     @political_mandates = PoliticalMandate.all
   end
 
-  def def new
+  def def(_new)
     @political_mandate = PoliticalMandate.new
   end
-  
-  def edit
-  end
 
-  def show
-  end
+  def edit; end
+
+  def show; end
 
   def new
-  @political_mandate = PoliticalMandate.new
+    @political_mandate = PoliticalMandate.new
   end
 
   def create
@@ -40,7 +40,7 @@ class PoliticalMandatesController < ApplicationController
       render :edit
     end
   end
-  
+
   def destroy
     @political_mandate.destroy
     success_destroy_message
@@ -56,5 +56,4 @@ class PoliticalMandatesController < ApplicationController
   def political_mandate_params
     params.require(:political_mandate).permit(:first_period, :final_period, :description)
   end
-
 end

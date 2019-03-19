@@ -1,7 +1,7 @@
-class ProjectKind < ApplicationRecord
-    
-    scope :search, -> (query) { where("kind like ?", "%#{query}%")}
+# frozen_string_literal: true
 
-    validates :kind, presence: true, uniqueness: true
-    
+class ProjectKind < ApplicationRecord
+  scope :search, ->(query) { where('kind like ?', "%#{query}%") }
+
+  validates :kind, presence: true, uniqueness: true
 end

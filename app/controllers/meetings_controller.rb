@@ -1,23 +1,20 @@
+# frozen_string_literal: true
+
 class MeetingsController < ApplicationController
-  before_action :set_meeting, :set_session_councilmen, only: [:show, :edit, :update, :destroy]
+  before_action :set_meeting, :set_session_councilmen, only: %i[show edit update destroy]
 
-  
   def index
-    @meetings = Meeting.all.paginate(:page => params[:page], :per_page => 5)
-                           .order(date: :desc)
+    @meetings = Meeting.all.paginate(page: params[:page], per_page: 5)
+                       .order(date: :desc)
   end
 
- 
-  def show
-  end
+  def show; end
 
- 
   def new
     @meeting = Meeting.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @meeting = Meeting.new(meeting_params)
@@ -33,7 +30,6 @@ class MeetingsController < ApplicationController
     end
   end
 
-  
   def update
     respond_to do |format|
       if @meeting.update(meeting_params)
@@ -46,7 +42,6 @@ class MeetingsController < ApplicationController
     end
   end
 
-  
   def destroy
     @meeting.destroy
     respond_to do |format|
@@ -55,24 +50,24 @@ class MeetingsController < ApplicationController
     end
   end
 
-  def projects    
+  def projects
     @meeting = Meeting.find(params[:meeting_id])
   end
 
   def presents
-      @meeting = Meeting.find(params[:meeting_id])
+    @meeting = Meeting.find(params[:meeting_id])
 
-      ## Cuidado com esse código, como lhe falei você precisa pensar nos mandatos 
-      Councilman.all.each do |c|
-        @meeting.session_councilmen.find_or_create_by!(councilman_id: c.id)
-      end
+    ## Cuidado com esse código, como lhe falei você precisa pensar nos mandatos
+    Councilman.all.each do |c|
+      @meeting.session_councilmen.find_or_create_by!(councilman_id: c.id)
+    end
   end
 
   def update_presents
     @meeting = Meeting.find(params[:meeting_id])
     sc_params = params.require(:meeting)
-                      .permit(session_councilmen_attributes: 
-                              [:id, :note, :present, :arrival, :leaving])
+                      .permit(session_councilmen_attributes:
+                              %i[id note present arrival leaving])
 
     if @meeting.update(sc_params)
       flash[:success] = 'Dados atualizados com sucesso'
@@ -90,14 +85,16 @@ class MeetingsController < ApplicationController
   end
 
   private
-    def set_meeting
-      @meeting = Meeting.find(params[:id])
-    end
-    def set_session_councilmen
-      @session_councilmen = SessionCouncilman.find(@meeting.session_councilman_ids)
-    end
 
-    def meeting_params
-      params.require(:meeting).permit(:date, :start_session, :end_session, :note)
-    end
+  def set_meeting
+    @meeting = Meeting.find(params[:id])
+  end
+
+  def set_session_councilmen
+    @session_councilmen = SessionCouncilman.find(@meeting.session_councilman_ids)
+  end
+
+  def meeting_params
+    params.require(:meeting).permit(:date, :start_session, :end_session, :note)
+  end
 end

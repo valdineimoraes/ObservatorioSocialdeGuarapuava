@@ -1,23 +1,23 @@
+# frozen_string_literal: true
+
 class ProjectKindsController < ApplicationController
-  before_action :set_project_kind, only: [:show, :edit, :update, :destroy]
+  before_action :set_project_kind, only: %i[show edit update destroy]
 
   def index
     if params[:search]
-      @project_kinds = ProjectKind.search(params[:search]).paginate(:page => params[:page], :per_page => 5).order(kind: :asc)
-    else  
-      @project_kinds = ProjectKind.all.paginate(:page => params[:page], :per_page => 5).order(kind: :asc)
+      @project_kinds = ProjectKind.search(params[:search]).paginate(page: params[:page], per_page: 5).order(kind: :asc)
+    else
+      @project_kinds = ProjectKind.all.paginate(page: params[:page], per_page: 5).order(kind: :asc)
     end
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @project_kind = ProjectKind.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @project_kind = ProjectKind.new(project_kind_params)
@@ -54,12 +54,12 @@ class ProjectKindsController < ApplicationController
   end
 
   private
-    
-    def set_project_kind
-      @project_kind = ProjectKind.find(params[:id])
-    end
 
-    def project_kind_params
-      params.require(:project_kind).permit(:kind, :description)
-    end
+  def set_project_kind
+    @project_kind = ProjectKind.find(params[:id])
+  end
+
+  def project_kind_params
+    params.require(:project_kind).permit(:kind, :description)
+  end
 end
