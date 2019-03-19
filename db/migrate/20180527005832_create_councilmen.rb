@@ -7,6 +7,7 @@ class CreateCouncilmen < ActiveRecord::Migration[5.2]
       t.string :nickname
       t.string :political_party
       t.integer :political_position
+      t.references :political_mandate, foreign_key: true
 
       t.timestamps
     end

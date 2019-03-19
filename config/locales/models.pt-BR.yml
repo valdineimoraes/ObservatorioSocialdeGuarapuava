@@ -14,13 +14,16 @@ pt-BR:
           political_position: "Posição Partidária"
           political_positions:
             situation: "Situação"
-            opposition: "Oposição"
-          
+            opposition: "Oposição"          
         meeting:
           date: "Data"
           start_session: "Inicio da Sessão"
           end_session: "Final da Sessão"
           note: "Anotações"
+        political_mandate:
+          first_period: "Periodo Inicial"
+          final_period: "Periodo Final"
+          description: "Descrição"
         project:
           meeting: "Sessão"
           councilman: "Proposta do Vereador"

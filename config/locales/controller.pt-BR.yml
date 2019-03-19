@@ -1,4 +1,9 @@
 pt-BR:
+  errors:
+    messages:
+      permalink: 'permite apenas letras, números e traços.'
+      date:
+        less_thee: 'A data inicial deve menor que a data final'
   activerecord:
     enums:
       councilman:

@@ -21,40 +21,29 @@ class CouncilmenController < ApplicationController
 
   def create
     @councilman = Councilman.new(councilman_params)
-
-    respond_to do |format|
       if @councilman.save
         flash[:success] = 'Novo vereador adicionado!'
-        format.html { redirect_to @councilman }
-        format.json { render :show, status: :created, location: @councilman }
+        redirect_to @councilman
       else
         flash[:error] = 'Houve algum problema, reveja os dados inseridos!'
-        format.html { render :new }
-        format.json { render json: @councilman.errors, status: :unprocessable_entity }
+        render :new  
       end
-    end
   end
 
   def update
-    respond_to do |format|
       if @councilman.update(councilman_params)
-        format.html { redirect_to @councilman, notice: 'Vereador atualizado com sucesso.' }
-        format.json { render :show, status: :ok, location: @councilman }
+        flash[:success] = 'Vereador atualizado com sucesso!'
+        redirect_to councilmen_path
       else
         flash[:error] = 'Houve algum problema, reveja os dados inseridos !'
-
-        format.html { render :edit }
-        format.json { render json: @councilman.errors, status: :unprocessable_entity }
+        render :edit
       end
-    end
   end
 
   def destroy
     @councilman.destroy
-    respond_to do |format|
-      format.html { redirect_to councilmen_url, notice: 'Vereador removido com sucesso.' }
-      format.json { head :no_content }
-    end
+    flash[:success] = 'Vereador destruido com sucesso!'
+    redirect_to councilmen_path
   end
 
   def projects

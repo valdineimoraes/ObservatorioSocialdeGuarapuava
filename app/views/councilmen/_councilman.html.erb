@@ -9,7 +9,7 @@
         
         <td><%= link_to councilman.name, councilman %></td>
         <td><%= councilman.nickname %></td>
-        <td><%= councilman.political_party %></td>
+        <td><%= councilman.political_mandate %></td>
         <td><%= I18n.t(councilman.political_position, scope: [:activerecord, :attributes, :councilman, :political_positions])%> </td>
         <td><%= link_to councilman.projects.size, councilman_projects_path(councilman)%></td>
         <td><%= link_to '', councilman, class: "fa fa-search btn btn-info" , title: "Visualizar Vereador"%></td>

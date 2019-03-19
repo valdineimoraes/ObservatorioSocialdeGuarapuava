@@ -22,10 +22,10 @@ class PoliticalMandatesController < ApplicationController
   def create
     @political_mandate = PoliticalMandate.new(political_mandate_params)
     if @political_mandate.save
-      success_create_message
-      redirect_to root_path
+      flash[:success] = 'Novo mandato politico criado com sucesso!'
+      redirect_to political_mandates_path
     else
-      error_message
+      flash[:error] = 'Houve algum problema, reveja os dados inseridos!'
       render :new
     end
   end
@@ -33,18 +33,18 @@ class PoliticalMandatesController < ApplicationController
   def update
     @political_mandate = PoliticalMandate.find(params[:id])
     if @political_mandate.update(political_mandate_params)
-      success_update_message
-      redirect_to root_path
+      flash[:success] = 'Mandato politico atualizado com sucesso!'
+      redirect_to political_mandates_path
     else
-      error_message
+      flash[:error] = 'Não foi possível atualizar, reveja os dados inseridos!'
       render :edit
     end
   end
 
   def destroy
     @political_mandate.destroy
-    success_destroy_message
-    redirect_to root_path
+    flash[:success] = 'Mandato politico destruido com sucesso!'
+    redirect_to political_mandates_path
   end
 
   private
