@@ -20,23 +20,23 @@ class CouncilmenController < ApplicationController
 
   def create
     @councilman = Councilman.new(councilman_params)
-      if @councilman.save
-        flash[:success] = 'Novo vereador adicionado!'
-        redirect_to @councilman
-      else
-        flash[:error] = 'Houve algum problema, reveja os dados inseridos!'
-        render :new  
-      end
+    if @councilman.save
+      flash[:success] = 'Novo vereador adicionado!'
+      redirect_to @councilman
+    else
+      flash[:error] = 'Houve algum problema, reveja os dados inseridos!'
+      render :new
+    end
   end
 
   def update
-      if @councilman.update(councilman_params)
-        flash[:success] = 'Vereador atualizado com sucesso!'
-        redirect_to councilmen_path
-      else
-        flash[:error] = 'Houve algum problema, reveja os dados inseridos !'
-        render :edit
-      end
+    if @councilman.update(councilman_params)
+      flash[:success] = 'Vereador atualizado com sucesso!'
+      redirect_to councilmen_path
+    else
+      flash[:error] = 'Houve algum problema, reveja os dados inseridos !'
+      render :edit
+    end
   end
 
   def destroy

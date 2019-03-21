@@ -48,7 +48,6 @@ class PoliticalMandatesController < ApplicationController
 
   private
 
-
   def set_councilmen
     @councilmen = Councilman.find(@political_mandate.councilmen_id)
   end
