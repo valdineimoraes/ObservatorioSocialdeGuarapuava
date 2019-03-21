@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 
 class Councilman < ApplicationRecord
   scope :search, ->(query) { where('name like ?', "%#{query}%") } 

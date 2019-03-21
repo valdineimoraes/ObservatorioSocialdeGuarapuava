@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 
 class SessionCouncilmenController < ApplicationController
   before_action :set_session_councilman, only: %i[show edit update destroy]
@@ -26,27 +25,24 @@ class SessionCouncilmenController < ApplicationController
         sc.update_attributes(note: options[:note], being: options[:being])
       end
     end
-
     redirect_back(fallback_location: root_path)
   end
 
   def update
-    respond_to do |format|
-      if @session_councilman.update(session_councilman_params)
-        format.html { redirect_to @session_councilman, notice: 'Session councilman was successfully updated.' }
-        format.json { render :show, status: :ok, location: @session_councilman }
-      else
-        format.html { render :edit }
-        format.json { render json: @session_councilman.errors, status: :unprocessable_entity }
+    if @session_councilman.update(session_councilman_params)
+      redirect_to @session_councilman, notice: 'Session councilman was successfully updated.'
+      render :show, status: :ok, location: @session_councilman
+    else
+      render :edit
+      render json: @session_councilman.errors, status: :unprocessable_entity
       end
     end
   end
 
   def destroy
     @session_councilman.destroy
-    respond_to do |format|
-      format.html { redirect_to session_councilmen_url, notice: 'Session councilman was successfully destroyed.' }
-      format.json { head :no_content }
+      redirect_to session_councilmen_url, notice: 'Session councilman was successfully destroyed.'
+      head :no_content
     end
   end
 

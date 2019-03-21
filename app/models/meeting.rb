@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 
 class Meeting < ApplicationRecord
   has_many :projects, dependent: :destroy

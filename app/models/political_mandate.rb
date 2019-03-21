@@ -1,10 +1,9 @@
-# frozen_string_literal: true
 
 class PoliticalMandate < ApplicationRecord
     validates :first_period, presence: true
     validates :final_period, presence: true
 
-    has_many :councilman    
+    has_many :councilman, dependent: :destroy   
     
     validate :date_period
 

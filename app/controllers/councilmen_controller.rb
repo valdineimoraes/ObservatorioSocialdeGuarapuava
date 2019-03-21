@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 
 class CouncilmenController < ApplicationController
   before_action :set_councilman, only: %i[show edit update destroy]

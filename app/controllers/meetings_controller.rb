@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 
 class MeetingsController < ApplicationController
   before_action :set_meeting, :set_session_councilmen, only: %i[show edit update destroy]
@@ -18,36 +17,27 @@ class MeetingsController < ApplicationController
 
   def create
     @meeting = Meeting.new(meeting_params)
-
-    respond_to do |format|
       if @meeting.save
-        format.html { redirect_to @meeting, notice: 'Sessão criada com sucesso.' }
-        format.json { render :show, status: :created, location: @meeting }
+        redirect_to @meeting, notice: 'Sessão criada com sucesso.'
+        render :show
       else
-        format.html { render :new }
-        format.json { render json: @meeting.errors, status: :unprocessable_entity }
+        render :new
       end
-    end
   end
 
   def update
-    respond_to do |format|
       if @meeting.update(meeting_params)
-        format.html { redirect_to @meeting, notice: 'Sessão atualizada com sucesso.' }
-        format.json { render :show, status: :ok, location: @meeting }
+        redirect_to @meeting, notice: 'Sessão atualizada com sucesso.'
+        render :show
       else
-        format.html { render :edit }
-        format.json { render json: @meeting.errors, status: :unprocessable_entity }
+        render :edit
       end
-    end
   end
 
   def destroy
     @meeting.destroy
-    respond_to do |format|
-      format.html { redirect_to meetings_url, notice: 'Sessão removida com sucesso.' }
-      format.json { head :no_content }
-    end
+    redirect_to meetings_url, notice: 'Sessão removida com sucesso.'
+    head :no_content
   end
 
   def projects
@@ -74,7 +64,6 @@ class MeetingsController < ApplicationController
     else
       flash[:error] = 'Não foi possível atualizar os dados'
     end
-
     redirect_back(fallback_location: root_path)
   end
 

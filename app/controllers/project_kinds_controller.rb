@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+
 
 class ProjectKindsController < ApplicationController
   before_action :set_project_kind, only: %i[show edit update destroy]
@@ -21,36 +21,30 @@ class ProjectKindsController < ApplicationController
 
   def create
     @project_kind = ProjectKind.new(project_kind_params)
-
-    respond_to do |format|
       if @project_kind.save
-        format.html { redirect_to @project_kind, notice: 'Tipo de projeto criado com sucesso.' }
-        format.json { render :show, status: :created, location: @project_kind }
+        redirect_to @project_kind, notice: 'Tipo de projeto criado com sucesso.' 
+        render :show, status: :created, location: @project_kind
       else
-        format.html { render :new }
-        format.json { render json: @project_kind.errors, status: :unprocessable_entity }
+        render :new
+        render json: @project_kind.errors, status: :unprocessable_entity
       end
     end
   end
 
   def update
-    respond_to do |format|
       if @project_kind.update(project_kind_params)
-        format.html { redirect_to @project_kind, notice: 'Tipo de projeto atualizado com sucesso.' }
-        format.json { render :show, status: :ok, location: @project_kind }
+        redirect_to @project_kind, notice: 'Tipo de projeto atualizado com sucesso.'
+        render :show, status: :ok, location: @project_kind
       else
-        format.html { render :edit }
-        format.json { render json: @project_kind.errors, status: :unprocessable_entity }
+        render :edit
+        render json: @project_kind.errors, status: :unprocessable_entity
       end
     end
   end
 
   def destroy
     @project_kind.destroy
-    respond_to do |format|
-      format.html { redirect_to project_kinds_url, notice: 'Tipo de projeto deletado.' }
-      format.json { head :no_content }
-    end
+      redirect_to project_kinds_url, notice: 'Tipo de projeto deletado.'
   end
 
   private
