@@ -35,24 +35,23 @@ class SessionCouncilmenController < ApplicationController
     else
       render :edit
       render json: @session_councilman.errors, status: :unprocessable_entity
-      end
     end
   end
+
 
   def destroy
     @session_councilman.destroy
-      redirect_to session_councilmen_url, notice: 'Session councilman was successfully destroyed.'
-      head :no_content
-    end
+    redirect_to session_councilmen_url, notice: 'Session councilman was successfully destroyed.'
+    head :no_content
   end
+end
 
-  private
+private
 
-  def set_session_councilman
-    @session_councilman = SessionCouncilman.find(params[:id])
-  end
+def set_session_councilman
+  @session_councilman = SessionCouncilman.find(params[:id])
+end
 
-  def session_councilman_params
-    params.require(:session_councilman).permit(:being, :note)
-  end
+def session_councilman_params
+  params.require(:session_councilman).permit(:being, :note)
 end

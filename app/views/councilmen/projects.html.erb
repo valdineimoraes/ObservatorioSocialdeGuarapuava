@@ -1,42 +1,40 @@
-
 <div class="box">
-<div class="box-header">
-<h1>Projetos</h1>
-<%= link_to 'Novo Projeto', new_project_path, class: "btn btn-info" %>
-</div>
-<div class="box-body table-responsive">
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th>Sessão</th>
-      <th>Nome</th>
-      <th>Descrição</th>
-      <th>Proposto pelo Vereador</th>
-      <th>Tipo</th>      
-      <th>Resultado</th>
-      <th colspan="3">Ações</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @councilman.projects.each do |project| %>
+  <div class="box-header">
+    <h1>Projetos</h1>
+    <%= link_to 'Novo Projeto', new_project_path, class: "btn btn-info" %>
+  </div>
+  <div class="box-body table-responsive">
+    <table class="table table-bordered">
+      <thead>
       <tr>
-        <td><%= project.meeting.date.to_time.strftime('%d/%m/%Y')%></td>
-        <td><%= project.name %></td>
-        <td><%= truncate(project.description, length: 50) %></td>
-        <td><%= project.councilman.name %></td>
-        <td><%= project.project_kind.kind %></td>
-        
-        <td><%= project.result %></td>
-        <td><%= link_to '', project_votes_path(project), class: "btn btn-success fa fa-plus" %>
-        <td><%= link_to '', project, class: "btn btn-info fa fa-search" %></td>
-        <td><%= link_to '', edit_project_path(project), class: "btn btn-warning fa fa-edit"  %></td>
-        <td><%= link_to '', project, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger fa fa-remove"  %></td>
+        <th>Sessão</th>
+        <th>Nome</th>
+        <th>Descrição</th>
+        <th>Proposto pelo Vereador</th>
+        <th>Tipo</th>
+        <th>Resultado</th>
+        <th colspan="3">Ações</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-<br>
-</div>
+      </thead>
+
+      <tbody>
+      <% @councilman.projects.each do |project| %>
+        <tr>
+          <td><%= project.meeting.date.to_time.strftime('%d/%m/%Y')%></td>
+          <td><%= project.name %></td>
+          <td><%= truncate(project.description, length: 50) %></td>
+          <td><%= project.councilman.name %></td>
+          <td><%= project.project_kind.kind %></td>
+          <td><%= project.result %></td>
+          <td><%= link_to '', project_votes_path(project), class: "btn btn-success fa fa-plus" %>
+          <td><%= link_to '', project, class: "btn btn-info fa fa-search" %></td>
+          <td><%= link_to '', edit_project_path(project), class: "btn btn-warning fa fa-edit"  %></td>
+          <td><%= link_to '', project, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger fa fa-remove"  %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <br>
+  </div>
 </div>
 

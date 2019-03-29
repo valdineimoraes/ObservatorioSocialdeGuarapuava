@@ -10,4 +10,10 @@ class PoliticalMandate < ApplicationRecord
     errors.add(:first_period, I18n.t('errors.messages.date.less_thee')) if
       !final_period.nil? && first_period >= final_period
   end
+
+  def self.political_mandate_to_select
+    mandates = PoliticalMandate.includes(:councilman).order('mandates.description ASC')
+    mandates.map { |p| ["#{p.description}", p.id] }
+  end
+
 end

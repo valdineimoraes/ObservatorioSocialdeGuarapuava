@@ -1,7 +1,7 @@
 <tr>
-        <td><%= project_kind.kind %></td>
-        <td><%= project_kind.description %></td>
-        <td><%= link_to '', project_kind, class: "btn btn-info fa fa-search", title:"Visualizar Tipo de Projeto" %></td>
-        <td><%= link_to '', edit_project_kind_path(project_kind), class: "btn btn-warning fa fa-edit", title:"Editar Tipo de Projeto" %></td>
-        <td><%= link_to '', project_kind, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger fa fa-remove", title:"Excluir Tipo de Projeto" %></td>
-      </tr>
+  <td><%= project_kind.kind %></td>
+  <td><%= project_kind.description %></td>
+  <td><%= link_to '', project_kind, class: "btn btn-info fa fa-search", title:"Visualizar Tipo de Projeto" %></td>
+  <td><%= link_to '', edit_project_kind_path(project_kind), class: "btn btn-warning fa fa-edit", title:"Editar Tipo de Projeto" %></td>
+  <td><%= link_to '', project_kind, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger fa fa-remove", title:"Excluir Tipo de Projeto" %></td>
+</tr>

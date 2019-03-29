@@ -25,31 +25,31 @@ class VotesController < ApplicationController
   end
 
   def update
-   
-      if @vote.update(vote_params)
-        redirect_to @vote, notice: 'Vote was successfully updated.'
-        render :show, status: :ok, location: @vote
-      else
-        render :edit
-        render json: @vote.errors, status: :unprocessable_entity
-      end
+
+    if @vote.update(vote_params)
+      redirect_to @vote, notice: 'Vote was successfully updated.'
+      render :show, status: :ok, location: @vote
+    else
+      render :edit
+      render json: @vote.errors, status: :unprocessable_entity
     end
   end
+
 
   def destroy
     @vote.destroy
-      redirect_to votes_url, notice: 'Vote was successfully destroyed.'
-      head :no_content
-    end
-  end
-
-  private
-
-  def set_vote
-    @vote = Vote.find(params[:id])
-  end
-
-  def vote_params
-    params.require(:vote).permit(:project_id, :councilman_id, :vote)
+    redirect_to votes_url, notice: 'Vote was successfully destroyed.'
+    head :no_content
   end
 end
+
+private
+
+def set_vote
+  @vote = Vote.find(params[:id])
+end
+
+def vote_params
+  params.require(:vote).permit(:project_id, :councilman_id, :vote)
+end
+

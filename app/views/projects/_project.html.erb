@@ -1,14 +1,12 @@
 <tr>
-        
-        <td><%= link_to project.name, project %></td>
-        <td><%= truncate(project.description, length: 50) %></td>
-        <td><%= link_to project.councilman.name, project.councilman %></td>
-        <td><%= project.project_kind.kind %></td>
-        <td><%= project.meeting.date.to_time.strftime('%d/%m/%Y')%></td>
-        <td><%= "Sem votos" if project.result.nil? %></td>
-
-        <td><%= link_to '', project_votes_path(project), class: "btn btn-success fa fa-plus" %>
-        <td><%= link_to '', project, class: "btn btn-info fa fa-search" %></td>
-        <td><%= link_to '', edit_project_path(project), class: "btn btn-warning fa fa-edit"  %></td>
-        <td><%= link_to '', project, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger fa fa-remove"  %></td>
-      </tr>
+  <td><%= link_to project.name, project %></td>
+  <td><%= truncate(project.description, length: 50) %></td>
+  <td><%= link_to project.councilman.name, project.councilman %></td>
+  <td><%= project.project_kind.kind %></td>
+  <td><%= project.meeting.date.to_time.strftime('%d/%m/%Y')%></td>
+  <td><%= "Sem votos" if project.result.nil? %></td>
+  <td><%= link_to '', project_votes_path(project), class: "btn btn-success fa fa-plus" %>
+  <td><%= link_to '', project, class: "btn btn-info fa fa-search" %></td>
+  <td><%= link_to '', edit_project_path(project), class: "btn btn-warning fa fa-edit"  %></td>
+  <td><%= link_to '', project, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger fa fa-remove"  %></td>
+</tr>

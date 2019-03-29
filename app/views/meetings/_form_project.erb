@@ -1,24 +1,19 @@
-
 <%= simple_form_for(@project) do |f| %>
-
-
   <div class="form-inputs">
     <%= f.input :meeting_id, as: :hidden, input_html: {value: @meeting.id}%>
-        <h3><strong>Sessão:</strong> <%= @meeting.formatted_date%></h3>    
-    
+    <h3><strong>Sessão:</strong> <%= @meeting.formatted_date%></h3>
+
     <%= f.association :councilman, label_method: :name, value_method: :id,
-                                prompt: "Escolha o vereador" %>
+                      prompt: "Escolha o vereador" %>
     <%= f.input :name %>
-    
     <div class= "form-group">
       <%= f.association :project_kind, label_method: :kind, value_method: :id,
-                                prompt: "Escolha o tipo de projeto" %>
+                        prompt: "Escolha o tipo de projeto" %>
     </div>
     <%= f.input :description %>
     <div class="form-actions">
-    <%= f.button :submit %>
-    <%= link_to 'Voltar', meeting_projects_path, class:"btn btn-warning" %>
-  
-  
+      <%= f.button :submit %>
+      <%= link_to 'Voltar', meeting_projects_path, class:"btn btn-warning" %>
+    </div>
   </div>
 <% end %>

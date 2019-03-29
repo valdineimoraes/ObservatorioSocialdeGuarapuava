@@ -1,19 +1,18 @@
+<tr>
+  <td><% if (councilman.avatar?)%>
+      <%= image_tag(councilman.avatar.thumb.url) %>
+    <%else%>
+      <%= gravatar_for(councilman, 50, "gravatar")%>
+    <%end%>
+  </td>
 
-      <tr>
-        <td><% if (councilman.avatar?)%>
-          <%= image_tag(councilman.avatar.thumb.url) %>
-        <%else%>
-        <%= gravatar_for(councilman, 50, "gravatar")%>
-        <%end%>
-        </td>
-        
-        <td><%= link_to councilman.name, councilman %></td>
-        <td><%= councilman.nickname %></td>
-        <td><%= councilman.political_mandate %></td>
-        <td><%= I18n.t(councilman.political_position, scope: [:activerecord, :attributes, :councilman, :political_positions])%> </td>
-        <td><%= link_to councilman.projects.size, councilman_projects_path(councilman)%></td>
-        <td><%= link_to '', councilman, class: "fa fa-search btn btn-info" , title: "Visualizar Vereador"%></td>
-        <td><%= link_to '', edit_councilman_path(councilman), class: "fa fa-edit btn btn-warning", title: "Editar Vereador" %></td>
-        <td><%= link_to '', councilman, method: :delete, data: { confirm: 'Tem certeza?' }, class: "fa fa-remove btn btn-danger", title: "Excluir Vereador" %></td>
-      </tr>
+  <td><%= link_to councilman.name, councilman %></td>
+  <td><%= councilman.nickname %></td>
+  <td><%= councilman.political_mandate %></td>
+  <td><%= I18n.t(councilman.political_position, scope: [:activerecord, :attributes, :councilman, :political_positions])%> </td>
+  <td><%= link_to councilman.projects.size, councilman_projects_path(councilman)%></td>
+  <td><%= link_to '', councilman, class: "fa fa-search btn btn-info" , title: "Visualizar Vereador"%></td>
+  <td><%= link_to '', edit_councilman_path(councilman), class: "fa fa-edit btn btn-warning", title: "Editar Vereador" %></td>
+  <td><%= link_to '', councilman, method: :delete, data: { confirm: 'Tem certeza?' }, class: "fa fa-remove btn btn-danger", title: "Excluir Vereador" %></td>
+</tr>
    

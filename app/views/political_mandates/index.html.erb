@@ -1,49 +1,40 @@
 <% breadcrumb :councilmen %>
-
 <div class="box box-info">
   <div class="box-header">
     <h1>Mandato Politico</h1>
-    
     <div class="row">
       <div class="col-sm-4">
-          <%= link_to 'Adicionar Mandato', new_political_mandate_path, class: "btn btn-info" %>
+        <%= link_to 'Adicionar Mandato', new_political_mandate_path, class: "btn btn-info" %>
       </div>
-      <div class="col-sm-4"> 
-      
+      <div class="col-sm-4">
         <%= form_tag( political_mandates_path, method: :get) do %>
-            <div class="input-group">
-             <%= text_field_tag 'search', nil, class:"form-control", placeholder:"Pesquisar no mandato politico" %>
-
-              <div class="input-group-btn">
-                <%= button_tag(type: "submit", class: "btn btn-warning btn-flat") do %>
-               <i class="fa fa-search"></i>
-                <% end %>
-              </div>
+          <div class="input-group">
+            <%= text_field_tag 'search', nil, class:"form-control", placeholder:"Pesquisar no mandato politico" %>
+            <div class="input-group-btn">
+              <%= button_tag(type: "submit", class: "btn btn-warning btn-flat") do %>
+                <i class="fa fa-search"></i>
+              <% end %>
             </div>
-          <% end %>
-
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
-
   <div class="box-body table-responsive">
     <table class="table table-bordered table-striped table-hover">
-    <thead >
-    <tr>
-      <th>ID</th>
-      <th>Periodo Inicial</th>
-      <th>Periodo Final</th>
-      <th>Descrição</th>
-      <th colspan="3">Ações</th>
-    </tr>
-  </thead>
-
-  <tbody>
-   <%= render @political_mandates %>
-  </tbody>
-</table>
-
-</div>
-
+      <thead >
+      <tr>
+        <th>ID</th>
+        <th>Periodo Inicial</th>
+        <th>Periodo Final</th>
+        <th>Descrição</th>
+        <th colspan="3">Ações</th>
+      </tr>
+      </thead>
+      <tbody>
+      <%= render @political_mandates %>
+      </tbody>
+    </table>
+  </div>
 </div>
 

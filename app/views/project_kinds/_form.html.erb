@@ -1,14 +1,10 @@
-
 <%= simple_form_for(@project_kind) do |f| %>
-
   <div class="form-inputs">
     <%= f.input :kind %>
     <%= f.input :description %>
   </div>
-
   <div class="form-actions">
     <%= f.button :submit %>
     <%= link_to 'Voltar', project_kinds_path, class: "btn btn-warning" %>
-
   </div>
 <% end %>

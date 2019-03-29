@@ -7,7 +7,7 @@ class ProjectsController < ApplicationController
       @projects = Project.search(params[:search]).paginate(page: params[:page], per_page: 5).order(name: :asc)
     else
       @projects = Project.all.paginate(page: params[:page], per_page: 5)
-                         .order(name: :asc)
+                      .order(name: :asc)
     end
   end
 

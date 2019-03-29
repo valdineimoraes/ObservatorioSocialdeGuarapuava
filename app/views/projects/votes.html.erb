@@ -1,44 +1,38 @@
 <% breadcrumb :project_votes, @project %>
 
 <div class="box box-info">
-<div class="container">
-  <div class="box-header">
-    <h1>Atualização de Votos</h1>
-    <h3>Projeto: <%= @project.name%></h3>
+  <div class="container">
+    <div class="box-header">
+      <h1>Atualização de Votos</h1>
+      <h3>Projeto: <%= @project.name%></h3>
+    </div>
+    <div class="box-body  table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead class="">
+        <tr>
+          <th>Vereador</th>
+          <th>Voto</th>
+        </tr>
+        </thead>
+        <%= simple_form_for @project, url: project_votes_path do |p| %>
+          <tbody>
+          <%= p.simple_fields_for :votes do |v| %>
+            <tr>
+              <td><%= v.object.councilman.name %></td>
+              <%# unless v.object.present?%>
+              <td><%= v.input_field :vote, collection: Vote.votes.keys.to_a, prompt: "Informe o Voto"%></td>
+              <%#else%>
+              <td>Ausente</td>
+              <%#end%>
+            </tr>
+          <% end %>
+          </tbody>
+          </table>
+          <br>
+          <%= p.button :submit %>
+        <% end %>
+        <%= link_to 'Voltar', projects_path, class: "btn btn-warning" %>
+        </div>
   </div>
-
-  <div class="box-body  table-responsive">
-  <table class="table table-bordered table-striped">
-    <thead class="">
-      <tr>
-        <th>Vereador</th>
-        <th>Voto</th>                
-      </tr>
-    </thead>
-
-
-
-<%= simple_form_for @project, url: project_votes_path do |p| %>
-<tbody>
-  <%= p.simple_fields_for :votes do |v| %>
-    
-    <tr>
-      <td><%= v.object.councilman.name %></td>
-      
-      <%# unless v.object.present?%>
-      <td><%= v.input_field :vote, collection: Vote.votes.keys.to_a, prompt: "Informe o Voto"%></td>
-      <%#else%>
-           <td>Ausente</td>
-      <%#end%>
-    </tr>
-  <% end %>
-</tbody>
-</table>
-<br>
-<%= p.button :submit %>
-<% end %>
-<%= link_to 'Voltar', projects_path, class: "btn btn-warning" %>
-  </div>
-</div>
 </div>
 

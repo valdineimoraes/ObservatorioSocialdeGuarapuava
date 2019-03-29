@@ -1,33 +1,31 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title><%= full_title(yield(:head_title)) %></title>
-        <%= csrf_meta_tags %>
-        <%= stylesheet_link_tag    'session', media: 'all',
-        'data-turbolinks-track': 'reload' %>
-        <%= javascript_include_tag 'application',
-        'data-turbolinks-track': 'reload' %>
-    </head>
-    <body>
-        
-        <div class="container">
-            <div class="row row-session">
-                <div class="col-md-4 logo-sessions" >	
-                    <%= link_to image_tag("os-logo.png", alt: "Observatorio Social logo", class: 'logos os-logo'), root_path %>
-                    <%= link_to image_tag("utfpr-logo.jpg", alt: "Observatorio Social logo", class: 'logos utfpr-logo'), 'http://portal.utfpr.edu.br/' %>
-                </div>
-
-                <div class="col-md-6 form-session">
-                    <div class="vertical-centering">
-                        <%= render 'shared/flash_messages'%>
-                        <div>
-                            <h3 class="text-center gray-text2"><%= yield :title %></h3>
-                            <p class="gray-text2"><%= yield :sub_title %></p>
-                        </div>
-                        <%= yield %>
-                    </div> <!-- .vertical-centering -->
-                </div>
-            </div>
-        </div> <!-- sessions -->
-    </body>
+<head>
+  <title><%= full_title(yield(:head_title)) %></title>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag    'session', media: 'all',
+                             'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application',
+                             'data-turbolinks-track': 'reload' %>
+</head>
+<body>
+<div class="container">
+  <div class="row row-session">
+    <div class="col-md-4 logo-sessions" >
+      <%= link_to image_tag("os-logo.png", alt: "Observatorio Social logo", class: 'logos os-logo'), root_path %>
+      <%= link_to image_tag("utfpr-logo.jpg", alt: "Observatorio Social logo", class: 'logos utfpr-logo'), 'http://portal.utfpr.edu.br/' %>
+    </div>
+    <div class="col-md-6 form-session">
+      <div class="vertical-centering">
+        <%= render 'shared/flash_messages'%>
+        <div>
+          <h3 class="text-center gray-text2"><%= yield :title %></h3>
+          <p class="gray-text2"><%= yield :sub_title %></p>
+        </div>
+        <%= yield %>
+      </div> <!-- .vertical-centering -->
+    </div>
+  </div>
+</div> <!-- sessions -->
+</body>
 </html>

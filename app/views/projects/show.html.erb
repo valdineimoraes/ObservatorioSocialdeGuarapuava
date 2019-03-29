@@ -1,78 +1,67 @@
 <% breadcrumb :show_project, @project %>
-
 <div class="box box-info">
   <div class="container">
     <div class="box-header">
-
-
- </div>
-<p>
-  <strong>Sessão:</strong>
-  <%= @project.meeting.date.strftime('%d/%m/%Y') %>
-</p>
-
-<p>
-  <strong>Projeto:</strong>
-  <%= @project.name %>
-</p>
-
-<p>
-  <strong>Descrição:</strong>
-  <%= @project.description %>
-</p>
-
-<p>
-  <strong>Tipo do Projeto:</strong>
-  <%= @project.project_kind.kind %>
-</p>
-
-
-<p>
-  <strong>Resultado:</strong>
-  <%= "Sem votos" if @project.result.nil? %>
-</p>
-
-<div class="box box-success">
-            <div class="box-header with-border">
-              <h3 class="box-title text-right">Vereadores presentes</h3>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <table class="table table-bordered">
-                <tbody>
-                <tr>                  
-                  <th>Vereador</th>
-                  <th style="width: 50px">Presença</th>
-                </tr>
-                <% @session_councilmen.each do |sc| %>
-                
-                <tr>
-                  <td><%= sc.councilman.name %></td>
-                  <% unless sc.present? %>
-                  <td><span class="badge bg-red">NÂO</span></td>
-                  <% else %>
-                  <td><span class="badge bg-green">SIM</span></td>
-                  <%end%>
-                </tr>
-                <%end%>
-                
-              </tbody></table>
-            </div>
-            <!-- /.box-body -->
-            
-          </div>
+    </div>
+    <p>
+      <strong>Sessão:</strong>
+      <%= @project.meeting.date.strftime('%d/%m/%Y') %>
+    </p>
+    <p>
+      <strong>Projeto:</strong>
+      <%= @project.name %>
+    </p>
+    <p>
+      <strong>Descrição:</strong>
+      <%= @project.description %>
+    </p>
+    <p>
+      <strong>Tipo do Projeto:</strong>
+      <%= @project.project_kind.kind %>
+    </p>
+    <p>
+      <strong>Resultado:</strong>
+      <%= "Sem votos" if @project.result.nil? %>
+    </p>
+    <div class="box box-success">
+      <div class="box-header with-border">
+        <h3 class="box-title text-right">Vereadores presentes</h3>
+      </div>
+      <!-- /.box-header -->
+      <div class="box-body">
+        <table class="table table-bordered">
+          <tbody>
+          <tr>
+            <th>Vereador</th>
+            <th style="width: 50px">Presença</th>
+          </tr>
+          <% @session_councilmen.each do |sc| %>
+            <tr>
+              <td><%= sc.councilman.name %></td>
+              <% unless sc.present? %>
+                <td><span class="badge bg-red">NÂO</span></td>
+              <% else %>
+                <td><span class="badge bg-green">SIM</span></td>
+              <%end%>
+            </tr>
+          <%end%>
+          </tbody>
+        </table>
+      </div>
+      <!-- /.box-body -->
+    </div>
 
 
 
-  
-  
-   
-    
-<br>
 
-<%= link_to 'Editar', edit_project_path(@project), class: "btn btn-warning" %> |
-<%= link_to 'Voltar', projects_path, class: "btn btn-info" %>
-<br><br>
-</div>
+
+
+
+    <br>
+
+    <%= link_to 'Editar', edit_project_path(@project), class: "btn btn-warning" %> |
+    <%= link_to 'Voltar', projects_path, class: "btn btn-info" %>
+    <br><br>
+  </div>
 </div>
 

@@ -1,5 +1,3 @@
-
-
 class ProjectKindsController < ApplicationController
   before_action :set_project_kind, only: %i[show edit update destroy]
 
@@ -21,39 +19,40 @@ class ProjectKindsController < ApplicationController
 
   def create
     @project_kind = ProjectKind.new(project_kind_params)
-      if @project_kind.save
-        redirect_to @project_kind, notice: 'Tipo de projeto criado com sucesso.' 
-        render :show, status: :created, location: @project_kind
-      else
-        render :new
-        render json: @project_kind.errors, status: :unprocessable_entity
-      end
+    if @project_kind.save
+      redirect_to @project_kind, notice: 'Tipo de projeto criado com sucesso.'
+      render :show, status: :created, location: @project_kind
+    else
+      render :new
+      render json: @project_kind.errors, status: :unprocessable_entity
     end
   end
 
+
   def update
-      if @project_kind.update(project_kind_params)
-        redirect_to @project_kind, notice: 'Tipo de projeto atualizado com sucesso.'
-        render :show, status: :ok, location: @project_kind
-      else
-        render :edit
-        render json: @project_kind.errors, status: :unprocessable_entity
-      end
+    if @project_kind.update(project_kind_params)
+      redirect_to @project_kind, notice: 'Tipo de projeto atualizado com sucesso.'
+      render :show, status: :ok, location: @project_kind
+    else
+      render :edit
+      render json: @project_kind.errors, status: :unprocessable_entity
     end
   end
+
 
   def destroy
     @project_kind.destroy
-      redirect_to project_kinds_url, notice: 'Tipo de projeto deletado.'
-  end
-
-  private
-
-  def set_project_kind
-    @project_kind = ProjectKind.find(params[:id])
-  end
-
-  def project_kind_params
-    params.require(:project_kind).permit(:kind, :description)
+    redirect_to project_kinds_url, notice: 'Tipo de projeto deletado.'
   end
 end
+
+private
+
+def set_project_kind
+  @project_kind = ProjectKind.find(params[:id])
+end
+
+def project_kind_params
+  params.require(:project_kind).permit(:kind, :description)
+end
+
