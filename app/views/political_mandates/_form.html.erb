@@ -3,9 +3,9 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
   <div class="row form-inputs">
     <div class="col-sm-6 col-md-8">
+      <%= f.input :description %>
       <%= f.input :first_period, as: :date, include_blank: true %>
       <%= f.input :final_period, as: :date, include_blank: true %>
-      <%= f.input :description %>
     </div>
   </div>
   <br>

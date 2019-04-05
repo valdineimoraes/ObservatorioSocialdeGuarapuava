@@ -2,7 +2,7 @@ class PoliticalMandate < ApplicationRecord
   validates :first_period, presence: true
   validates :final_period, presence: true
 
-  has_many :councilman, dependent: :destroy
+  has_many :councilmen, dependent: :destroy
 
   validate :date_period
 
