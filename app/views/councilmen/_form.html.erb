@@ -4,8 +4,7 @@
     <%= f.input :nickname %>
     <%= f.input :political_party %>
     <%= f.input :political_position, collection: Councilman.political_positions.keys.to_a %>
-    <%= f.association :political_mandate, label_method: :description, value_method: :id,
-                      prompt: "Escolha um mandato politico" %>
+    <%= f.collection_select(:political_mandate, PoliticalMandate.all, :id, :description, prompt: 'Escolha um mandato politico' )%>
     <%= f.file_field :avatar %>
   </div>
   <br>
