@@ -1,6 +1,6 @@
 
 class CouncilmenController < ApplicationController
-  before_action :set_political_mandate, :set_councilman, only: %i[show edit update destroy]
+  before_action :set_councilman, only: %i[show edit update destroy]
 
   def index
     if params[:search]
@@ -45,6 +45,10 @@ class CouncilmenController < ApplicationController
     redirect_to councilmen_path
   end
 
+  def political_mandates
+    @political_mandate = PoliticalMandate.find(params[:political_mandates_id])
+  end
+
   def projects
     @councilman = Councilman.find(params[:councilman_id])
   end
@@ -54,12 +58,8 @@ class CouncilmenController < ApplicationController
   def set_councilman
     @councilman = Councilman.find(params[:id])
   end
-
-  def set_political_mandate
-    @political_mandate = PoliticalMandate.find(@councilman.political_mandate_id)
-  end
-
+ 
   def councilman_params
-    params.require(:councilman).permit(:name, :nickname, :political_party, :political_position, :avatar)
+    params.require(:councilman).permit(:name, :nickname, :political_party, :political_mandates_id, :political_position, :avatar)
   end
 end

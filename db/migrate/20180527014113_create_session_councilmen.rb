@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+
 
 class CreateSessionCouncilmen < ActiveRecord::Migration[5.2]
   def change
