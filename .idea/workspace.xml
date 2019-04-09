@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d4925af9-f9fb-4a2b-82b3-d60d97934e30" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/spec/features/political_mandates_spec.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/political_mandate.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/political_mandate.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/councilmen/_form.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/councilmen/_form.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/councilmen/show.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/councilmen/show.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/political_mandates/_form.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/political_mandates/_form.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/political_mandates/_political_mandate.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/political_mandates/_political_mandate.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/political_mandates/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/political_mandates/index.html.erb" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -27,12 +20,13 @@
     <session id="225466314">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="3" />
+          <entry key="project.closed" value="4" />
           <entry key="project.open.time.12" value="1" />
           <entry key="project.open.time.25" value="1" />
           <entry key="project.open.time.36" value="1" />
+          <entry key="project.open.time.52" value="1" />
           <entry key="project.open.time.53" value="1" />
-          <entry key="project.opened" value="4" />
+          <entry key="project.opened" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -68,8 +62,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/councilmen/_form.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="6" column="128" selection-start-line="6" selection-start-column="128" selection-end-line="6" selection-end-column="128" />
+            <state relative-caret-position="147">
+              <caret line="7" column="66" selection-start-line="7" selection-start-column="66" selection-end-line="7" selection-end-column="66" />
             </state>
           </provider>
         </entry>
@@ -86,7 +80,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/councilmen/index.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
+            <state relative-caret-position="861">
               <caret line="41" column="13" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
             </state>
           </provider>
@@ -384,18 +378,18 @@
       <workItem from="1553867857461" duration="2737000" />
       <workItem from="1554219781994" duration="2913000" />
       <workItem from="1554318468939" duration="2255000" />
+      <workItem from="1554753573852" duration="83000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24826000" />
+    <option name="totallyTimeSpent" value="24909000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1600" y="-2" width="1366" height="770" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.3098485" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.3151515" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="1" />
@@ -716,17 +710,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/councilmen/_form.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="6" column="128" selection-start-line="6" selection-start-column="128" selection-end-line="6" selection-end-column="128" />
+        <state relative-caret-position="147">
+          <caret line="7" column="66" selection-start-line="7" selection-start-column="66" selection-end-line="7" selection-end-column="66" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20180527005832_create_councilmen.rb">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/councilmen/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
+        <state relative-caret-position="861">
           <caret line="41" column="13" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
         </state>
       </provider>
@@ -744,6 +735,9 @@
           <caret line="10" column="38" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20180527005832_create_councilmen.rb">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/councilmen/show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
