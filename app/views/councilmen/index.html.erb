@@ -20,6 +20,10 @@
           </div>
         <% end %>
       </div>
+      <div class="col-sm-4">
+        <%= link_to '  Relatório/Vereadores', new_councilman_path, class: 'btn btn-info fa fa-file-pdf-o',
+                    title: 'Gerar Relatórios de todos os Vereadores Cadastrados no Sistemas' %>
+      </div>
     </div>
   </div>
 
@@ -29,11 +33,12 @@
       <tr>
         <th>Foto</th>
         <th>Nome</th>
-        <th>Apelido</th>
+
         <th>Mandato Politico</th>
         <th>Posição Politica</th>
+        <th>Cargo do Vereador</th>
         <th>Projetos</th>
-        <th colspan="3">Ações</th>
+        <th colspan="4">Ações</th>
       </tr>
       </thead>
 

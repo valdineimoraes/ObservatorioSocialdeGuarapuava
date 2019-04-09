@@ -1,21 +1,4 @@
-# frozen_string_literal: true
 
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
-# 5.times do
-#  Councilman.create([{
-#    name: Faker::Name.name,
-#    nickname: Faker::GameOfThrones.character,
-#    political_party: Faker::Name.initials,
-#    political_position: 1,
-#  }])
-# end
 User.create([{
               name: 'Teste',
               email: 'teste@teste.com',
@@ -51,13 +34,6 @@ Councilman.create([{
                    note: Faker::Lorem.paragraph(2)
                  }])
 end
-
-# 5.times do
-#  ProjectKind.create([{
-#    kind: Faker::Name.name,
-#    description: Faker::Lorem.paragraph(1),
-#  }])
-# end
 
 ProjectKind.create([{
                      kind: 'Educacional',

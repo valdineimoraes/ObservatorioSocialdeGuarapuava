@@ -18,11 +18,14 @@ ActiveRecord::Schema.define(version: 2018_07_04_002551) do
   create_table "councilmen", force: :cascade do |t|
     t.string "name"
     t.string "nickname"
+    t.string "office"
     t.string "political_party"
     t.integer "political_position"
+    t.bigint "political_mandate_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "avatar"
+    t.index ["political_mandate_id"], name: "index_councilmen_on_political_mandate_id"
   end
 
   create_table "meetings", force: :cascade do |t|
@@ -106,6 +109,7 @@ ActiveRecord::Schema.define(version: 2018_07_04_002551) do
     t.index ["project_id"], name: "index_votes_on_project_id"
   end
 
+  add_foreign_key "councilmen", "political_mandates"
   add_foreign_key "projects", "councilmen"
   add_foreign_key "projects", "meetings"
   add_foreign_key "projects", "project_kinds"

@@ -11,4 +11,8 @@ class PoliticalMandate < ApplicationRecord
       !final_period.nil? && first_period >= final_period
   end
 
+  def formatted_date
+    date.to_time.strftime('%d/%m/%Y')
+  end
+
 end

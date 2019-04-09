@@ -9,7 +9,8 @@
       <div class="col-sm-4">
         <%= form_tag( project_kinds_path, method: :get) do %>
           <div class="input-group">
-            <%= text_field_tag 'search', nil, class:"form-control", placeholder:"Digite o tipo do projeto" %>
+            <%= text_field_tag 'search', nil, class:"form-control",
+                               placeholder:"Digite o tipo do projeto" %>
             <div class="input-group-btn">
               <%= button_tag(type: "submit", class: "btn btn-warning btn-flat") do %>
                 <i class="fa fa-search"></i>

@@ -35,12 +35,10 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
     if @project.save
       flash[:success] = 'Pauta criada com sucesso!'
-      redirect_to @project
-      render :show, status: :created, location: @project
+      render :show
     else
       flash[:error] = 'Existem dados incorretos! Por favor verifique.'
       render :new
-      render json: @project.errors, status: :unprocessable_entity
     end
   end
 
@@ -48,11 +46,10 @@ class ProjectsController < ApplicationController
     if @project.update(project_params)
       flash[:success] = 'Pauta atualizada com sucesso!'
       redirect_to @project
-      render :show, status: :ok, location: @project
+      render :show
     else
       flash[:error] = 'Existem dados incorretos! Por favor verifique.'
       render :edit
-      render json: @project.errors, status: :unprocessable_entity
     end
   end
 
@@ -71,7 +68,6 @@ class ProjectsController < ApplicationController
   def destroy
     @project.destroy
     redirect_to projects_url, notice: 'Project was successfully destroyed.'
-    head :no_content
   end
 
   private

@@ -1,13 +1,31 @@
 <%= simple_form_for(@councilman) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :nickname %>
-    <%= f.input :political_party %>
-    <%= f.input :political_position, collection: Councilman.political_positions.keys.to_a %>
-    <%= f.collection_select(:political_mandate, PoliticalMandate.all, :id, :description, prompt: 'Escolha um mandato politico' )%>
-    <%= f.file_field :avatar %>
+  <div class="form-row">
+    <div class="col-sm-6">
+      <%= f.input :name, autofocus: true %>
+    </div>
+      <div class="col-sm-6">
+      <%= f.input :nickname %>
+    </div>
+    <div class="col-sm-5">
+      <%= f.input :office %>
+    </div>
+    <div class="col-sm-3">
+      <%= f.input :political_party %>
+    </div>
+    <div class="col-sm-4">
+      <%= f.input :political_position, collection: Councilman.political_positions.keys.to_a %>
+    </div>
+    <div class="col-sm-6">
+      <%= f.collection_select(:political_mandate,
+                              PoliticalMandate.all, :id, :description, prompt: 'Escolha um mandato politico' )%>
+    </div>
+    <div class="col-sm-6">
+      <%= f.file_field :avatar %>
+    </div>
   </div>
+
   <br>
+
   <div class="form-actions">
     <%= f.button :submit %>
     <%= link_to 'Voltar', councilmen_path, class:"btn btn-warning" %>

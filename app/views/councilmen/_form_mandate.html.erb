@@ -1,0 +1,13 @@
+<%= simple_form_for(@political_mandates) do |f| %>
+  <div class="form-inputs">
+
+    <%= f.collection_select(:political_mandate,
+                            PoliticalMandate.all, :id, :description, prompt: 'Escolha um mandato politico' )%>
+
+  </div>
+  <br>
+  <div class="form-actions">
+    <%= f.button :submit %>
+    <%= link_to 'Voltar', councilmen_path, class:"btn btn-warning" %>
+  </div>
+<% end %>

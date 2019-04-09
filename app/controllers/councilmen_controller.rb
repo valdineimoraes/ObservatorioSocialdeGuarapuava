@@ -60,6 +60,6 @@ class CouncilmenController < ApplicationController
   end
  
   def councilman_params
-    params.require(:councilman).permit(:name, :nickname, :political_party, :political_mandates_id, :political_position, :avatar)
+    params.require(:councilman).permit(:name, :nickname, :office, :political_party, :political_mandates_id, :political_position, :avatar)
   end
 end

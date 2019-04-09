@@ -12,6 +12,7 @@
         <tr>
           <th>Vereador</th>
           <th>Voto</th>
+          <th>Presença</th>
         </tr>
         </thead>
         <%= simple_form_for @project, url: project_votes_path do |p| %>
@@ -19,11 +20,8 @@
           <%= p.simple_fields_for :votes do |v| %>
             <tr>
               <td><%= v.object.councilman.name %></td>
-              <%# unless v.object.present?%>
               <td><%= v.input_field :vote, collection: Vote.votes.keys.to_a, prompt: "Informe o Voto"%></td>
-              <%#else%>
               <td>Ausente</td>
-              <%#end%>
             </tr>
           <% end %>
           </tbody>
