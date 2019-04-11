@@ -45,6 +45,10 @@ class PoliticalMandatesController < ApplicationController
     redirect_to political_mandates_path
   end
 
+  def councilman
+    @councilman = Councilman.find(params[:councilman_id])
+  end
+
   private
 
   def set_political_mandate

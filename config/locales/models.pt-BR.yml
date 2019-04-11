@@ -13,6 +13,7 @@ pt-BR:
           office: "Cargo Politico"
           political_party: "Partido Politico"
           political_position: "Posição Partidária"
+          political_mandate: "Mandato Político"
           political_positions:
             situation: "Situação"
             opposition: "Oposição"          
