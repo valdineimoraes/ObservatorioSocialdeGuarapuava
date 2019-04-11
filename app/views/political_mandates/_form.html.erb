@@ -4,8 +4,8 @@
   <div class="row form-inputs">
     <div class="col-sm-6 col-md-8">
       <%= f.input :description %>
-      <%= f.input :first_period, as: :date, include_blank: true %>
-      <%= f.input :final_period, as: :date, include_blank: true %>
+      <%= f.input :first_period, as: :date, include_blank: true, start_year: 2000, end_year: Date.current.year + 20 %>
+      <%= f.input :final_period, as: :date, include_blank: true , start_year: 2000, end_year: Date.current.year + 20 %>
     </div>
   </div>
   <br>

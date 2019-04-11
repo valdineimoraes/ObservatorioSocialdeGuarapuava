@@ -1,6 +1,5 @@
-
 class PoliticalMandatesController < ApplicationController
-  before_action :set_councilmen, :set_political_mandate, only: %i[show edit update destroy]
+  before_action :set_political_mandate, only: %i[show edit update destroy]
 
   def index
     @political_mandates = PoliticalMandate.all
@@ -47,10 +46,6 @@ class PoliticalMandatesController < ApplicationController
   end
 
   private
-
-  def set_councilmen
-    @councilmen = Councilman.find(@political_mandate.councilmen_id)
-  end
 
   def set_political_mandate
     @political_mandate = PoliticalMandate.find(params[:id])

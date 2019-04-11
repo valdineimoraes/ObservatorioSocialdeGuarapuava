@@ -8,6 +8,13 @@ class Meeting < ApplicationRecord
 
   validates :date, presence: true, uniqueness: true
 
+  validate :hour_period
+
+  def hour_period
+    errors.add(:start_session, I18n.t('errors.messages.date.less_hour')) if
+        !end_session.nil? && start_session >= end_session
+  end
+
   def formatted_date
     date.to_time.strftime('%d/%m/%Y')
   end

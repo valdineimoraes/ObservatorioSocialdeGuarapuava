@@ -25,9 +25,12 @@
           <td><%= meeting.note %></td>
           <td><%= link_to meeting.projects.size, meeting_projects_path(meeting) %></td>
           <td><%= link_to '', meeting, class: "btn btn-warning fa fa-search", title: "Visualizar Sessão" %></td>
-          <td><%= link_to '', meeting_presents_path(meeting), class: "btn btn-success fa fa-plus", title: "Presentes na Sessão" %>
-          <td><%= link_to '', edit_meeting_path(meeting.id), class:"btn btn-info fa fa-edit", title: "Editar Sessão"%></td>
-          <td><%= link_to '', meeting, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger fa fa-remove" , title: "Remover Sessão"%></td>
+          <td><%= link_to '', meeting_presents_path(meeting),
+                          class: "btn btn-success fa fa-plus", title: "Presentes na Sessão" %>
+          <td><%= link_to '', edit_meeting_path(meeting.id),
+                          class:"btn btn-info fa fa-edit", title: "Editar Sessão"%></td>
+          <td><%= link_to '', meeting, method: :delete, data: { confirm: 'Are you sure?' },
+                          class:"btn btn-danger fa fa-remove" , title: "Remover Sessão"%></td>
         </tr>
       <% end %>
       </tbody>

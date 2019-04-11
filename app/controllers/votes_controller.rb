@@ -1,4 +1,3 @@
-
 class VotesController < ApplicationController
   before_action :set_vote, only: %i[show edit update destroy]
 
@@ -25,7 +24,6 @@ class VotesController < ApplicationController
   end
 
   def update
-
     if @vote.update(vote_params)
       redirect_to @vote, notice: 'Vote was successfully updated.'
       render :show, status: :ok, location: @vote
@@ -34,7 +32,6 @@ class VotesController < ApplicationController
       render json: @vote.errors, status: :unprocessable_entity
     end
   end
-
 
   def destroy
     @vote.destroy
@@ -52,4 +49,3 @@ end
 def vote_params
   params.require(:vote).permit(:project_id, :councilman_id, :vote)
 end
-

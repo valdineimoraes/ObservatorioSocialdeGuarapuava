@@ -1,4 +1,3 @@
-
 class CouncilmenController < ApplicationController
   before_action :set_councilman, only: %i[show edit update destroy]
 
@@ -45,6 +44,10 @@ class CouncilmenController < ApplicationController
     redirect_to councilmen_path
   end
 
+  def political_mandates
+    @political_mandate = PoliticalMandate.find(params[:political_mandates_id])
+  end
+
   def projects
     @councilman = Councilman.find(params[:councilman_id])
   end
@@ -56,6 +59,6 @@ class CouncilmenController < ApplicationController
   end
 
   def councilman_params
-    params.require(:councilman).permit(:name, :nickname, :political_party, :political_position, :avatar)
+    params.require(:councilman).permit(:name, :nickname, :office, :political_party, :political_mandates_id, :political_position, :avatar)
   end
 end

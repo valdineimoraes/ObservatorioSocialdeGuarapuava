@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'Political_Mandates', type: :feature do
-
   describe '#create' do
     before(:each) do
       visit new_political_mandate_path
@@ -31,5 +30,4 @@ RSpec.describe 'Political_Mandates', type: :feature do
       end
     end
   end
-
 end

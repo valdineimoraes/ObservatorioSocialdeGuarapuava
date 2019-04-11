@@ -1,4 +1,3 @@
-
 class SessionCouncilmenController < ApplicationController
   before_action :set_session_councilman, only: %i[show edit update destroy]
 
@@ -37,7 +36,6 @@ class SessionCouncilmenController < ApplicationController
       render json: @session_councilman.errors, status: :unprocessable_entity
     end
   end
-
 
   def destroy
     @session_councilman.destroy

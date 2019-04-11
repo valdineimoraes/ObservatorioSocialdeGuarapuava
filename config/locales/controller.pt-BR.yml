@@ -4,6 +4,11 @@ pt-BR:
       permalink: 'permite apenas letras, números e traços.'
       date:
         less_thee: 'A data inicial deve menor que a data final'
+        less_hour: 'A hora inicial deve ser menor que a hora final'
+      record_invalid: 'A validação falhou: %{errors}'
+      restrict_dependent_destroy:
+        has_one: Não é possível excluir o registro pois existe um %{record} dependente
+        has_many: Não é possível excluir o registro pois existem %{record} dependentes
   activerecord:
     enums:
       councilman:
@@ -75,15 +80,6 @@ pt-BR:
         arrival: "Horário de Chegada"
         leaving: "Horário de Saída"
         note: "Anotações"
-
-
-
-    errors:
-      messages:
-        record_invalid: 'A validação falhou: %{errors}'
-        restrict_dependent_destroy:
-          has_one: Não é possível excluir o registro pois existe um %{record} dependente
-          has_many: Não é possível excluir o registro pois existem %{record} dependentes
     date:
       abbr_day_names:
       - Dom

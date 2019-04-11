@@ -28,7 +28,6 @@ class ProjectKindsController < ApplicationController
     end
   end
 
-
   def update
     if @project_kind.update(project_kind_params)
       redirect_to @project_kind, notice: 'Tipo de projeto atualizado com sucesso.'
@@ -38,7 +37,6 @@ class ProjectKindsController < ApplicationController
       render json: @project_kind.errors, status: :unprocessable_entity
     end
   end
-
 
   def destroy
     @project_kind.destroy
@@ -55,4 +53,3 @@ end
 def project_kind_params
   params.require(:project_kind).permit(:kind, :description)
 end
-

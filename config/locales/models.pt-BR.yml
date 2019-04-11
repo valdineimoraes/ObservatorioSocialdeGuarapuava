@@ -1,15 +1,16 @@
 pt-BR:
   activerecord:
       models:
-        councilman: Vereador
-        meeting: Sessão
-        project: Projeto
-        project kind: Tipo do Projeto
-        user: Usuario
+        councilman: 'Vereador'
+        meeting: 'Sessão'
+        political_mandate: 'Mandato Politico'
+        project: 'Projeto'
+        user: 'Usuario'
       attributes:
         councilman:
           name: "Nome"
           nickname: "Apelido"
+          office: "Cargo Politico"
           political_party: "Partido Politico"
           political_position: "Posição Partidária"
           political_positions:
