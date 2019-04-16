@@ -12,9 +12,6 @@
     <div class="col-sm-3">
       <%= f.input :political_party %>
     </div>
-    <div class="col-sm-4">
-      <%= f.input :political_position, collection: Councilman.political_positions.keys.to_a %>
-    </div>
     <div class="col-sm-6">
       <%= f.association :political_mandate, label_method: :description, value_method: :id,
                         prompt: "Escolha um mandato politico" %>

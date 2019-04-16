@@ -19,7 +19,6 @@ class VotesController < ApplicationController
         v.update_attributes(vote: options[:vote])
       end
     end
-
     redirect_back(fallback_location: root_path)
   end
 

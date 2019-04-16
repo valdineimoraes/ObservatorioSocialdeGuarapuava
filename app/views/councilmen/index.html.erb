@@ -33,19 +33,15 @@
       <tr>
         <th>Foto</th>
         <th>Nome</th>
-
         <th>Mandato Politico</th>
-        <th>Posição Politica</th>
         <th>Cargo do Vereador</th>
         <th>Projetos</th>
         <th colspan="4">Ações</th>
       </tr>
       </thead>
-
       <tbody>
       <%= render @councilmen %>
       </tbody>
-
     </table>
     <div class="pagination pagination-sm no-margin pull-right">
       <%= will_paginate @councilmen, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>

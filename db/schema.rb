@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(version: 2018_07_04_002551) do
     t.string "nickname"
     t.string "office"
     t.string "political_party"
-    t.integer "political_position"
     t.bigint "political_mandate_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

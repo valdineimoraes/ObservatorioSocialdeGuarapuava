@@ -6,9 +6,6 @@ FactoryBot.define do
     sequence(:nickname) { |n| "Apelido#{n}"}
     sequence(:office) { |n| "Cargo#{n}"}
     sequence(:political_party) { |n| "Partido#{n}"}
-
-    first_period { '2019-03-18' }
-    final_period { '2019-09-18' }
-    sequence(:description) { |n| "Nome#{n}"}
+    political_mandate
   end
 end

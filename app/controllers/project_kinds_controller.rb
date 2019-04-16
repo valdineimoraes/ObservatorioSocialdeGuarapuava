@@ -20,27 +20,28 @@ class ProjectKindsController < ApplicationController
   def create
     @project_kind = ProjectKind.new(project_kind_params)
     if @project_kind.save
-      redirect_to @project_kind, notice: 'Tipo de projeto criado com sucesso.'
-      render :show, status: :created, location: @project_kind
+      flash[:success] = 'Tipo de projeto criado com sucesso!'
+      redirect_to @project_kind
     else
+      flash[:error] = 'Houve algum problema, reveja os dados inseridos !'
       render :new
-      render json: @project_kind.errors, status: :unprocessable_entity
     end
   end
 
   def update
     if @project_kind.update(project_kind_params)
-      redirect_to @project_kind, notice: 'Tipo de projeto atualizado com sucesso.'
-      render :show, status: :ok, location: @project_kind
+      flash[:success] = 'Tipo de projeto atualizado com sucesso!'
+      redirect_to @project_kind
     else
+      flash[:error] = 'Houve algum problema, reveja os dados inseridos !'
       render :edit
-      render json: @project_kind.errors, status: :unprocessable_entity
     end
   end
 
   def destroy
     @project_kind.destroy
-    redirect_to project_kinds_url, notice: 'Tipo de projeto deletado.'
+    flash[:success] = 'Tipo de projeto removido com sucesso!'
+    redirect_to project_kinds_url
   end
 end
 

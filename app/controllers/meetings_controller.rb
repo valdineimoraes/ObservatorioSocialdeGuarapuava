@@ -17,26 +17,28 @@ class MeetingsController < ApplicationController
   def create
     @meeting = Meeting.new(meeting_params)
     if @meeting.save
-      redirect_to @meeting, notice: 'Sessão criada com sucesso.'
-      render :show
+      flash[:success] = 'Sessão criada com sucesso!'
+      redirect_to @meeting
     else
+      flash[:error] = 'Houve algum problema, reveja os dados inseridos !'
       render :new
     end
   end
 
   def update
     if @meeting.update(meeting_params)
-      redirect_to @meeting, notice: 'Sessão atualizada com sucesso.'
-      render :show
+      flash[:success] = 'Sessão atualizada com sucesso!'
+      redirect_to @meeting
     else
+      flash[:error] = 'Houve algum problema, reveja os dados inseridos !'
       render :edit
     end
   end
 
   def destroy
     @meeting.destroy
-    redirect_to meetings_url, notice: 'Sessão removida com sucesso.'
-    head :no_content
+    flash[:success] = 'Sessão removida com sucesso!'
+    redirect_to meetings_url
   end
 
   def projects
