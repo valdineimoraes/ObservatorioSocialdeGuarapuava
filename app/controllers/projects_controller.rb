@@ -91,15 +91,13 @@ class ProjectsController < ApplicationController
   def set_result
     if quorum < 66
       @project.postponed!
-    elsif countvote['contrary'] >= countvote['favorable']
-      @project.rejected!
-    else countvote['favorable'] > countvote['contrary']
-         favoravel = countvote['favorable'] * 100 / countvote.values.sum
-         if favoravel > 50
-           @project.approved!
-         else
-           @project.rejected!
-         end
+    else
+      favoravel = countvote['favorable'] * 100 / countvote.values.sum
+      if favoravel > 50
+        @project.approved!
+      else
+        @project.rejected!
+      end
     end
   end
 

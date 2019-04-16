@@ -65,7 +65,7 @@ class CouncilmenController < ApplicationController
                                        :nickname,
                                        :office,
                                        :political_party,
-                                       :political_mandates_id,
+                                       :political_mandate_id,
                                        :avatar)
   end
 end
