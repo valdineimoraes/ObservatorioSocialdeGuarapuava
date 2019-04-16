@@ -24,18 +24,18 @@ class VotesController < ApplicationController
 
   def update
     if @vote.update(vote_params)
-      redirect_to @vote, notice: 'Vote was successfully updated.'
-      render :show, status: :ok, location: @vote
+      flash[:success] = 'Vote was successfully updated.'
+      redirect_to @vote
     else
+      flash[:error] = 'Existem dados incorretos! Por favor verifique.'
       render :edit
-      render json: @vote.errors, status: :unprocessable_entity
     end
   end
 
   def destroy
     @vote.destroy
-    redirect_to votes_url, notice: 'Vote was successfully destroyed.'
-    head :no_content
+    flash[:success] = 'Vote was successfully destroyed.'
+    redirect_to votes_url
   end
 end
 

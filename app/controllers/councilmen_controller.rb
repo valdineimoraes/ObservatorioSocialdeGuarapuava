@@ -3,9 +3,11 @@ class CouncilmenController < ApplicationController
 
   def index
     if params[:search]
-      @councilmen = Councilman.search(params[:search]).paginate(page: params[:page], per_page: 10).order(name: :asc)
+      @councilmen = Councilman.search(params[:search]).paginate(page: params[:page],
+                                                                per_page: 10).order(name: :asc)
     else
-      @councilmen = Councilman.all.paginate(page: params[:page], per_page: 10).order(name: :asc)
+      @councilmen = Councilman.all.paginate(page: params[:page],
+                                            per_page: 10).order(name: :asc)
     end
   end
 
@@ -59,7 +61,11 @@ class CouncilmenController < ApplicationController
   end
 
   def councilman_params
-    params.require(:councilman).permit(:name, :nickname, :office, 
-                    :political_party, :political_mandates_id, :avatar)
+    params.require(:councilman).permit(:name,
+                                       :nickname,
+                                       :office,
+                                       :political_party,
+                                       :political_mandates_id,
+                                       :avatar)
   end
 end

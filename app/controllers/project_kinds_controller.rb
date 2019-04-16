@@ -3,9 +3,11 @@ class ProjectKindsController < ApplicationController
 
   def index
     if params[:search]
-      @project_kinds = ProjectKind.search(params[:search]).paginate(page: params[:page], per_page: 5).order(kind: :asc)
+      @project_kinds = ProjectKind.search(params[:search]).paginate(page: params[:page],
+                                                                    per_page: 10).order(kind: :asc)
     else
-      @project_kinds = ProjectKind.all.paginate(page: params[:page], per_page: 5).order(kind: :asc)
+      @project_kinds = ProjectKind.all.paginate(page: params[:page],
+                                                per_page: 10).order(kind: :asc)
     end
   end
 
@@ -52,5 +54,6 @@ def set_project_kind
 end
 
 def project_kind_params
-  params.require(:project_kind).permit(:kind, :description)
+  params.require(:project_kind).permit(:kind,
+                                       :description)
 end

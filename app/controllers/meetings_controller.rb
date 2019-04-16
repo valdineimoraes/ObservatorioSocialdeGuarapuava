@@ -2,7 +2,7 @@ class MeetingsController < ApplicationController
   before_action :set_meeting, :set_session_councilmen, only: %i[show edit update destroy]
 
   def index
-    @meetings = Meeting.all.paginate(page: params[:page], per_page: 5)
+    @meetings = Meeting.all.paginate(page: params[:page], per_page: 10)
                        .order(date: :desc)
   end
 
@@ -48,7 +48,6 @@ class MeetingsController < ApplicationController
   def presents
     @meeting = Meeting.find(params[:meeting_id])
 
-    ## Cuidado com esse código, como lhe falei você precisa pensar nos mandatos
     Councilman.all.each do |c|
       @meeting.session_councilmen.find_or_create_by!(councilman_id: c.id)
     end
@@ -68,7 +67,6 @@ class MeetingsController < ApplicationController
     redirect_back(fallback_location: root_path)
   end
 
-  ### projetos na sessão
   def new_project
     @meeting = Meeting.find(params[:meeting_id])
     @project = Project.new
@@ -85,6 +83,9 @@ class MeetingsController < ApplicationController
   end
 
   def meeting_params
-    params.require(:meeting).permit(:date, :start_session, :end_session, :note)
+    params.require(:meeting).permit(:date,
+                                    :start_session,
+                                    :end_session,
+                                    :note)
   end
 end
