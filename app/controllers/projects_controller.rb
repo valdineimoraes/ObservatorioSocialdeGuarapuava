@@ -37,7 +37,7 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
     if @project.save
       flash[:success] = 'Pauta criada com sucesso!'
-      render :show
+      redirect_to @project
     else
       flash[:error] = 'Existem dados incorretos! Por favor verifique.'
       render :new
@@ -48,7 +48,6 @@ class ProjectsController < ApplicationController
     if @project.update(project_params)
       flash[:success] = 'Pauta atualizada com sucesso!'
       redirect_to @project
-      render :show
     else
       flash[:error] = 'Existem dados incorretos! Por favor verifique.'
       render :edit

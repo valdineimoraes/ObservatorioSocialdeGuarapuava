@@ -4,16 +4,21 @@
   <td><%= link_to project.councilman.name, project.councilman %></td>
   <td><%= link_to project.project_kind.kind, project.project_kind %></td>
   <td><%= link_to project.meeting.date.to_time.strftime('%d/%m/%Y'), project.meeting%></td>
+
   <% if project.result.nil? %>
         <td>Sem resultado</td>
         <% else %>
         <td><%= I18n.t(project.result, scope: [:activerecord, :attributes, :project, :results]) %></td>
         <% end%>
+
   <td><%= link_to '', project_votes_path(project),
-                  class: "btn btn-success fa fa-plus", title: 'Informar Votos dos Vereadores no Projeto' %>
+                  class: "btn btn-success fa fa-vote-yea", title: 'Informar Votos dos Vereadores no Projeto' %>
+
   <td><%= link_to '', project, class: "btn btn-info fa fa-search", title: 'Visualizar Projeto' %></td>
+
   <td><%= link_to '', edit_project_path(project),
                   class: "btn btn-warning fa fa-edit", title: 'Editar Projeto'  %></td>
+
   <td><%= link_to '', project, method: :delete, data: { confirm: 'Are you sure?' },
                   class: "btn btn-danger fa fa-remove", title: 'Excluir Projeto'  %></td>
 </tr>

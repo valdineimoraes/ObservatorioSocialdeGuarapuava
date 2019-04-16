@@ -18,7 +18,7 @@ class MeetingsController < ApplicationController
     @meeting = Meeting.new(meeting_params)
     if @meeting.save
       flash[:success] = 'Sessão criada com sucesso!'
-      redirect_to @meeting
+      redirect_to meetings_url
     else
       flash[:error] = 'Houve algum problema, reveja os dados inseridos !'
       render :new

@@ -2,7 +2,7 @@ class Councilman < ApplicationRecord
   scope :search, ->(query) { where('name like ?', "%#{query}%") }
 
   validates :name, :nickname, presence: true, uniqueness: true
-  validates :political_party, presence: true
+  validates :political_mandate, presence: true
 
   belongs_to :political_mandate
 

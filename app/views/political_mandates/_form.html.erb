@@ -1,6 +1,4 @@
 <%= simple_form_for(@political_mandate) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
   <div class="row form-inputs">
     <div class="col-sm-6 col-md-8">
       <%= f.input :description %>
