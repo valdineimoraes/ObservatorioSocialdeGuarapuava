@@ -1,30 +1,12 @@
-# README
+Sistema para o Observatório Social de Guarapuava
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Sistema utilizado para o TCC 2 da UTFPR Guarapuava
 
-Things you may want to cover:
+Sistema em RUBY ON RAILS
 
-* Ruby version
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
 
 System Installation
-
 
 Clone the design for your files.
 
@@ -35,7 +17,8 @@ Change the user and password of your Postgres BD in the Project config/database.
 - rails db: create (create the database in BD Postgres)
 
 Then run the migrations to make the tables in the database:
-- rails db: migrate
+- rails db: migrate db:seed db:populate
 
-After that run the seeders to make the popular tables in the database:
-- rails db: seed
+Para acessar o sistema
+email: teste@teste.com
+senha: 123456
