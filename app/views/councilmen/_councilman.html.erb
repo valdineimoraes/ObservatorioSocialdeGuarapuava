@@ -8,12 +8,10 @@
 
   <td><%= link_to councilman.name, councilman %></td>
   <td><%= councilman.political_mandate.description %></td>
-  <td><%= I18n.t(councilman.political_position,
-                 scope: [:activerecord, :attributes, :councilman, :political_positions])%> </td>
   <td><%= councilman.office %></td>
   <td><%= link_to councilman.projects.size, councilman_projects_path(councilman)%></td>
   <td><%= link_to '', councilman,
-                  class: "fa fa-file-pdf-o btn btn-info" , title: "Gerar Relatório em PDF do Vereador"%></td>
+                  class: "fa fa-file-pdf btn btn-success" , title: "Gerar Relatório em PDF do Vereador"%></td>
   <td><%= link_to '', councilman,
                   class: "fa fa-search btn btn-info" , title: "Visualizar Vereador"%></td>
   <td><%= link_to '', edit_councilman_path(councilman),

@@ -1,12 +1,14 @@
 class ProjectsController < ApplicationController
   before_action :set_project, :set_meeting, :set_session_councilmen,
                 only: %i[show edit update destroy]
+  after_action :set_result, only: [:update_votes]
 
   def index
     if params[:search]
-      @projects = Project.search(params[:search]).paginate(page: params[:page], per_page: 5).order(name: :asc)
+      @projects = Project.search(params[:search]).paginate(page: params[:page],
+                                                           per_page: 10).order(name: :asc)
     else
-      @projects = Project.all.paginate(page: params[:page], per_page: 5)
+      @projects = Project.all.paginate(page: params[:page], per_page: 10)
                          .order(name: :asc)
     end
   end
@@ -35,7 +37,7 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
     if @project.save
       flash[:success] = 'Pauta criada com sucesso!'
-      render :show
+      redirect_to @project
     else
       flash[:error] = 'Existem dados incorretos! Por favor verifique.'
       render :new
@@ -46,7 +48,6 @@ class ProjectsController < ApplicationController
     if @project.update(project_params)
       flash[:success] = 'Pauta atualizada com sucesso!'
       redirect_to @project
-      render :show
     else
       flash[:error] = 'Existem dados incorretos! Por favor verifique.'
       render :edit
@@ -70,9 +71,36 @@ class ProjectsController < ApplicationController
     redirect_to projects_url, notice: 'Project was successfully destroyed.'
   end
 
+  def quorum
+    presentes = Councilman.joins(:session_councilmen)
+                          .where(session_councilmen: {
+                                   meeting_id: @project.meeting_id,
+                                   present: true
+                                 }).count
+
+    quorum = presentes * 100 / Councilman.all.size
+    quorum
+  end
+
   private
 
-  # Use callbacks to share common setup or constraints between actions.
+  def countvote
+    votes = @project.votes.group(:vote).count
+  end
+
+  def set_result
+    if quorum < 66
+      @project.postponed!
+    else
+      favoravel = countvote['favorable'] * 100 / countvote.values.sum
+      if favoravel > 50
+        @project.approved!
+      else
+        @project.rejected!
+      end
+    end
+  end
+
   def set_project
     @project = Project.find(params[:id])
   end
@@ -85,9 +113,14 @@ class ProjectsController < ApplicationController
     @session_councilmen = SessionCouncilman.find(@meeting.session_councilman_ids)
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
   def project_params
-    params.require(:project).permit(:meeting_id, :councilman_id, :name, :description,
-                                    :project_kind_id, :start_project, :end_project, :result)
+    params.require(:project).permit(:meeting_id,
+                                    :councilman_id,
+                                    :name,
+                                    :description,
+                                    :project_kind_id,
+                                    :start_project,
+                                    :end_project,
+                                    :result)
   end
 end

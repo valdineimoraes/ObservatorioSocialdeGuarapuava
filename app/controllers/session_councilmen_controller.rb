@@ -29,18 +29,18 @@ class SessionCouncilmenController < ApplicationController
 
   def update
     if @session_councilman.update(session_councilman_params)
-      redirect_to @session_councilman, notice: 'Session councilman was successfully updated.'
-      render :show, status: :ok, location: @session_councilman
+      flash[:success] = 'Session councilman was successfully updated.'
+      redirect_to @session_councilman
     else
+      flash[:error] = 'Existem dados incorretos! Por favor verifique.'
       render :edit
-      render json: @session_councilman.errors, status: :unprocessable_entity
     end
   end
 
   def destroy
     @session_councilman.destroy
-    redirect_to session_councilmen_url, notice: 'Session councilman was successfully destroyed.'
-    head :no_content
+    flash[:success] = 'Session councilman was successfully destroyed.'
+    redirect_to session_councilmen_url
   end
 end
 

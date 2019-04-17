@@ -21,7 +21,7 @@
         <% end %>
       </div>
       <div class="col-sm-4">
-        <%= link_to '  Relatório/Vereadores', new_councilman_path, class: 'btn btn-info fa fa-file-pdf-o',
+        <%= link_to '  Relatório dos Vereadores', new_councilman_path, class: 'btn btn-success fa fa-file-pdf',
                     title: 'Gerar Relatórios de todos os Vereadores Cadastrados no Sistemas' %>
       </div>
     </div>
@@ -33,19 +33,15 @@
       <tr>
         <th>Foto</th>
         <th>Nome</th>
-
         <th>Mandato Politico</th>
-        <th>Posição Politica</th>
         <th>Cargo do Vereador</th>
         <th>Projetos</th>
         <th colspan="4">Ações</th>
       </tr>
       </thead>
-
       <tbody>
       <%= render @councilmen %>
       </tbody>
-
     </table>
     <div class="pagination pagination-sm no-margin pull-right">
       <%= will_paginate @councilmen, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>

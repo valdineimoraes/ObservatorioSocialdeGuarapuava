@@ -4,5 +4,6 @@ class DashboardController < ApplicationController
     @councilmen = Councilman.all
     @projects = Project.all
     @project_kinds = ProjectKind.all
+    @political_mandates = PoliticalMandate.all
   end
 end

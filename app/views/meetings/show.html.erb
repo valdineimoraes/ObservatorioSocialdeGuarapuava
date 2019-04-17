@@ -2,7 +2,7 @@
 <div class="box">
   <div class="box-header">
     <p>
-      <strong>Data:</strong>
+      <strong>Data da Sessão:</strong>
       <%= @meeting.date.strftime('%d/%m/%Y') %>
     </p>
   </div>
@@ -23,11 +23,12 @@
       <strong>Anotações:</strong>
       <%= @meeting.note %>
     </p>
+
+    <!-- Vereadores presentes na sessão -->  
     <div class="box box-success">
       <div class="box-header with-border">
         <h3 class="box-title text-right">Vereadores presentes</h3>
       </div>
-      <!-- /.box-header -->
       <div class="box-body">
         <table class="table table-bordered">
           <tbody>
@@ -50,6 +51,7 @@
       </div>
       <!-- /.box-body -->
     </div>
+    
     <%= link_to 'Editar', edit_meeting_path(@meeting), class: "btn btn-info" %> |
     <%= link_to 'Voltar', meetings_path, class: "btn btn-warning" %>
   </div>

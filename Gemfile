@@ -5,9 +5,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.0'
 gem 'bootsnap', '>= 1.1.0', require: false
-gem 'bootstrap', '~> 4.1', '>= 4.1.1'
+gem "bootstrap", ">= 4.3.1"
 gem 'coffee-rails', '~> 4.2'
-gem 'devise'
+gem "devise", ">= 4.6.0"
 gem 'font-awesome-rails'
 gem 'font-ionicons-rails'
 gem 'jbuilder', '~> 2.5'
@@ -31,6 +31,7 @@ gem 'active_link_to'
 gem 'breadcrumbs_on_rails'
 gem 'carrierwave-i18n'
 gem 'kaminari'
+gem 'rubocop-performance'
 
 # breadcrumbs
 gem 'gretel', '~> 3.0', '>= 3.0.9'

@@ -56,6 +56,8 @@ class PoliticalMandatesController < ApplicationController
   end
 
   def political_mandate_params
-    params.require(:political_mandate).permit(:first_period, :final_period, :description)
+    params.require(:political_mandate).permit(:first_period,
+                                              :final_period,
+                                              :description)
   end
 end

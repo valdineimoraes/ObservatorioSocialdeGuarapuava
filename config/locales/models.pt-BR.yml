@@ -12,11 +12,7 @@ pt-BR:
           nickname: "Apelido"
           office: "Cargo Politico"
           political_party: "Partido Politico"
-          political_position: "Posição Partidária"
-          political_mandate: "Mandato Político"
-          political_positions:
-            situation: "Situação"
-            opposition: "Oposição"          
+          political_mandate: "Mandato Político"         
         meeting:
           date: "Data"
           start_session: "Inicio da Sessão"
@@ -35,6 +31,10 @@ pt-BR:
           start_project: "Inicio do Projeto"
           end_project: "Final do Projeto"
           result: "Resultado"
+          results:
+            approved: "Aprovado"
+            rejected: "Rejeitado"
+            postponed: "Sem Quórum - Adiado"
         project_kind:
           kind: "Tipo de Projeto"
           description: "Descrição do Projeto"
