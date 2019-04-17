@@ -1,14 +1,31 @@
 <%= simple_form_for(@councilman) do |f| %>
   <div class="form-row">
-    <div class="col-sm-6">
+    <div class="col-sm-9">
+
       <%= f.input :name, autofocus: true %>
-    </div>
-      <div class="col-sm-6">
+
       <%= f.input :nickname %>
-    </div>
-    <div class="col-sm-5">
+
       <%= f.input :office %>
     </div>
+    <!--
+    <div class="col-sm-3">
+      <div id="box-image-preview" data-toggle="tooltip" data-placement="left" title="Clique na imagem para alterá-la">
+        <div class="input-field image_preview">
+          <div class="box-image center">
+            < %= image_tag @councilman.image.url, class: 'file_preview active' %>
+            < %= f.input :avatar, label: false, input_html: { accept: 'image/*' }  %>
+          </div>
+        </div>
+        <div class="text-box text-center">
+          <p class="text-input">Clique na imagem para alterá-la</p>
+        </div>
+      </div>
+    </div>-->
+
+  </div>
+
+  <div class="form-row">
     <div class="col-sm-3">
       <%= f.input :political_party %>
     </div>

@@ -5,10 +5,6 @@ class PoliticalMandatesController < ApplicationController
     @political_mandates = PoliticalMandate.all
   end
 
-  def def(_new)
-    @political_mandate = PoliticalMandate.new
-  end
-
   def edit; end
 
   def show; end

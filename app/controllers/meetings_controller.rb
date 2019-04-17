@@ -3,7 +3,7 @@ class MeetingsController < ApplicationController
 
   def index
     @meetings = Meeting.all.paginate(page: params[:page], per_page: 10)
-                       .order(date: :desc)
+                    .order(date: :desc)
   end
 
   def show; end
@@ -56,7 +56,7 @@ class MeetingsController < ApplicationController
   def update_presents
     @meeting = Meeting.find(params[:meeting_id])
     sc_params = params.require(:meeting)
-                      .permit(session_councilmen_attributes:
+                    .permit(session_councilmen_attributes:
                                 %i[id note present arrival leaving])
 
     if @meeting.update(sc_params)
