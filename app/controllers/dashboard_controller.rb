@@ -1,4 +1,6 @@
 class DashboardController < ApplicationController
+  add_breadcrumb 'Dashboard', :root_path
+
   def index
     @meetings = Meeting.all
     @councilmen = Councilman.all

@@ -21,7 +21,13 @@
             <tr>
               <td><%= v.object.councilman.name %></td>
               <td><%= v.input_field :vote, collection: Vote.votes.keys.to_a, prompt: "Informe o Voto"%></td>
-              <td>Ausente</td>
+
+              <% unless v.object.councilman.present? %>
+                <td><span class="badge bg-red text-center">AUSENTE</span></td>
+              <% else %>
+                <td><span class="badge bg-green text-center" >PRESENTE</span></td>
+              <%end%>
+
             </tr>
           <% end %>
           </tbody>

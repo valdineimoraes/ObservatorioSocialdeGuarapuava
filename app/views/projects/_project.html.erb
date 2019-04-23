@@ -6,10 +6,10 @@
   <td><%= link_to project.meeting.date.to_time.strftime('%d/%m/%Y'), project.meeting%></td>
 
   <% if project.result.nil? %>
-        <td>Sem resultado</td>
-        <% else %>
-        <td><%= I18n.t(project.result, scope: [:activerecord, :attributes, :project, :results]) %></td>
-        <% end%>
+    <td>Sem resultado</td>
+  <% else %>
+    <td><%= I18n.t(project.result, scope: [:activerecord, :attributes, :project, :results]) %></td>
+  <% end%>
 
   <td><%= link_to '', project_votes_path(project),
                   class: "btn btn-success fa fa-vote-yea", title: 'Informar Votos dos Vereadores no Projeto' %>

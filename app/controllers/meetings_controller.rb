@@ -1,18 +1,28 @@
 class MeetingsController < ApplicationController
   before_action :set_meeting, :set_session_councilmen, only: %i[show edit update destroy]
 
+  add_breadcrumb I18n.t('breadcrumbs.meeting.name'), :meetings_path
+  add_breadcrumb I18n.t('breadcrumbs.meeting.new'),
+                 :new_meeting_path, only: %i[new create]
+
   def index
     @meetings = Meeting.all.paginate(page: params[:page], per_page: 10)
-                    .order(date: :desc)
+                       .order(date: :desc)
   end
 
-  def show; end
+  def show
+    add_breadcrumb I18n.t('breadcrumbs.meeting.show',
+                          name: "##{@meeting.id}"), :meeting_path
+  end
 
   def new
     @meeting = Meeting.new
   end
 
-  def edit; end
+  def edit
+    add_breadcrumb I18n.t('breadcrumbs.meeting.edit', name: "##{@meeting.id}"),
+                   :edit_meeting_path
+  end
 
   def create
     @meeting = Meeting.new(meeting_params)
@@ -30,6 +40,8 @@ class MeetingsController < ApplicationController
       flash[:success] = 'Sessão atualizada com sucesso!'
       redirect_to @meeting
     else
+      add_breadcrumb I18n.t('breadcrumbs.meeting.edit', name: "##{@meeting.id}"),
+                     :edit_meeting_path
       flash[:error] = 'Houve algum problema, reveja os dados inseridos !'
       render :edit
     end
@@ -56,7 +68,7 @@ class MeetingsController < ApplicationController
   def update_presents
     @meeting = Meeting.find(params[:meeting_id])
     sc_params = params.require(:meeting)
-                    .permit(session_councilmen_attributes:
+                      .permit(session_councilmen_attributes:
                                 %i[id note present arrival leaving])
 
     if @meeting.update(sc_params)

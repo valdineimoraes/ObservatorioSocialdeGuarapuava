@@ -6,7 +6,7 @@ module ApplicationHelper
       base_title
     else
       page_title + ' | ' + base_title
-  end
+    end
   end
 
   def bootstrap_class_for(flash_type)

@@ -12,6 +12,9 @@ module ProjObsSocial
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
 
+    config.autoload_paths += Dir["#{config.root}/lib/builders/"]
+    config.eager_load_paths += Dir["#{config.root}/lib/builders/"]
+
     config.time_zone = 'Brasilia'
 
     config.i18n.enforce_available_locales = false

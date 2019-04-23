@@ -3,6 +3,10 @@ class ProjectsController < ApplicationController
                 only: %i[show edit update destroy]
   after_action :set_result, only: [:update_votes]
 
+  add_breadcrumb I18n.t('breadcrumbs.project.name'), :projects_path
+  add_breadcrumb I18n.t('breadcrumbs.project.new'),
+                 :new_project_path, only: %i[new create]
+
   def index
     if params[:search]
       @projects = Project.search(params[:search]).paginate(page: params[:page],
@@ -13,13 +17,19 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    add_breadcrumb I18n.t('breadcrumbs.project.show',
+                          name: "##{@project.id}"), :project_path
+  end
 
   def new
     @project = Project.new
   end
 
-  def edit; end
+  def edit
+    add_breadcrumb I18n.t('breadcrumbs.project.edit', name: "##{@project.id}"),
+                   :edit_project_path
+  end
 
   def votes
     @project = Project.find(params[:project_id])
@@ -49,6 +59,8 @@ class ProjectsController < ApplicationController
       flash[:success] = 'Pauta atualizada com sucesso!'
       redirect_to @project
     else
+      add_breadcrumb I18n.t('breadcrumbs.project.edit', name: "##{@project.id}"),
+                     :edit_project_path
       flash[:error] = 'Existem dados incorretos! Por favor verifique.'
       render :edit
     end

@@ -1,6 +1,10 @@
 class ProjectKindsController < ApplicationController
   before_action :set_project_kind, only: %i[show edit update destroy]
 
+  add_breadcrumb I18n.t('breadcrumbs.project_kind.name'), :project_kinds_path
+  add_breadcrumb I18n.t('breadcrumbs.project_kind.new'),
+                 :new_project_kind_path, only: %i[new create]
+
   def index
     if params[:search]
       @project_kinds = ProjectKind.search(params[:search]).paginate(page: params[:page],
@@ -17,7 +21,10 @@ class ProjectKindsController < ApplicationController
     @project_kind = ProjectKind.new
   end
 
-  def edit; end
+  def edit
+    add_breadcrumb I18n.t('breadcrumbs.project_kind.edit', name: "##{@project_kind.id}"),
+                   :edit_project_kind_path
+  end
 
   def create
     @project_kind = ProjectKind.new(project_kind_params)
@@ -35,6 +42,8 @@ class ProjectKindsController < ApplicationController
       flash[:success] = 'Tipo de projeto atualizado com sucesso!'
       redirect_to @project_kind
     else
+      add_breadcrumb I18n.t('breadcrumbs.project_kind.edit', name: "##{@project_kind.id}"),
+                     :edit_project_kind_path
       flash[:error] = 'Houve algum problema, reveja os dados inseridos !'
       render :edit
     end
