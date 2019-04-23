@@ -7,20 +7,17 @@ User.create([{
 Councilman.create([{
                     name: 'Celso Lara da Costa',
                     nickname: 'Celso Costa',
-                    political_party: 'PPS',
-                    political_position: :situation
+                    political_party: 'PPS'
                   }])
 
 Councilman.create([{
                     name: 'Danilo Dominico',
                     nickname: 'Danilo',
-                    political_party: 'PSD',
-                    political_position: :opposition
+                    political_party: 'PSD'
                   }])
 
 Councilman.create([{
                     name: 'Aldonei Luiz Bonfim',
                     nickname: 'Dognei',
-                    political_party: 'PDT',
-                    political_position: :situation
+                    political_party: 'PDT'
                   }])

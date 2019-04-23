@@ -14,7 +14,7 @@ namespace :db do
     User.create_with(name: 'Teste', password: '123456')
         .find_or_create_by!(email: 'teste@teste.com')
 
-    5.times do
+    15.times do
       PoliticalMandate.find_or_create_by!(
         description: Faker::Restaurant.unique.name,
         first_period: Faker::Date.between(2.year.ago, 9.months.ago),
@@ -24,31 +24,31 @@ namespace :db do
 
     5.times do
       Meeting.find_or_create_by!(
-        date: Faker::Date.between(50.days.ago, Date.today),
+        date: Faker::Date.between_except(1.year.ago, 1.year.from_now, Date.today),
         start_session: Faker::Time.between(2.days.ago, Date.today, :morning),
         end_session: Faker::Time.between(2.days.ago, Date.today, :afternoon),
         note: Faker::Lorem.paragraph(2)
       )
     end
 
-    5.times do
+    15.times do
       ProjectKind.find_or_create_by!(
         kind: Faker::Commerce.unique.material,
         description: Faker::Lorem.paragraph(1)
       )
     end
 
-    5.times do
+    15.times do
       Councilman.find_or_create_by!(
         name: Faker::Name.unique.name,
-        nickname: Faker::Name.last_name,
+        nickname: Faker::Name.unique.last_name,
         office: Faker::Job.field,
         political_party: Faker::Name.initials,
         political_mandate: PoliticalMandate.all.sample
       )
     end
 
-    5.times do
+    15.times do
       Project.find_or_create_by!(
         meeting: Meeting.all.sample,
         councilman: Councilman.all.sample,
