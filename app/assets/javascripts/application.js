@@ -6,3 +6,5 @@
   
  //= require popper
  //= require bootstrap-sprockets
+
+ //= require config/simplemde

@@ -1,4 +1,6 @@
 class PoliticalMandate < ApplicationRecord
+  scope :search, ->(query) { where('description like ?', "%#{query}%") }
+
   validates :first_period, presence: true
   validates :final_period, presence: true
 

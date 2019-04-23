@@ -11,7 +11,8 @@
           <div class="input-group">
             <%= text_field_tag 'search', nil, class:"form-control", placeholder:"Pesquisar no mandato politico" %>
             <div class="input-group-btn">
-              <%= button_tag(type: "submit", class: "btn btn-warning btn-flat") do %>
+              <%= button_tag(type: "submit", class: "btn btn-warning btn-flat",
+                             title: "Pesquisar no mandato politico pela descrição") do %>
                 <i class="fa fa-search"></i>
               <% end %>
             </div>
@@ -35,6 +36,9 @@
       <%= render @political_mandates %>
       </tbody>
     </table>
+    <div class="pagination pagination-sm no-margin pull-right">
+      <%= will_paginate @political_mandates, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+    </div>
   </div>
 </div>
 

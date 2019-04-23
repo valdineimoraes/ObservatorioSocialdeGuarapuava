@@ -13,7 +13,8 @@
           <div class="input-group">
             <%= text_field_tag 'search', nil, class:"form-control", placeholder:"Digite o nome do vereador" %>
             <div class="input-group-btn">
-              <%= button_tag(type: "submit", class: "btn btn-warning btn-flat") do %>
+              <%= button_tag(type: "submit", class: "btn btn-warning btn-flat",
+                             title: "Pesquisar pelo nome dos vereadores") do %>
                 <i class="fa fa-search"></i>
               <% end %>
             </div>
@@ -47,6 +48,5 @@
       <%= will_paginate @councilmen, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
     </div>
   </div>
-
 </div>
 

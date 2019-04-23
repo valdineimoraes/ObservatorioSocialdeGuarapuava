@@ -6,7 +6,13 @@ class PoliticalMandatesController < ApplicationController
                  :new_political_mandate_path, only: %i[new create]
 
   def index
-    @political_mandates = PoliticalMandate.all
+    if params[:search]
+      @political_mandates = PoliticalMandate.search(params[:search]).paginate(page: params[:page],
+                                                                per_page: 10).order(first_period: :asc)
+    else
+      @political_mandates = PoliticalMandate.all.paginate(page: params[:page],
+                                            per_page: 10).order(first_period: :asc)
+    end
   end
 
   def edit
