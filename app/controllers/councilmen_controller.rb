@@ -17,7 +17,7 @@ class CouncilmenController < ApplicationController
 
   def show
     add_breadcrumb I18n.t('breadcrumbs.councilman.show',
-                          name: "##{@councilman.id}"), :councilman_path
+                          name: "##{@councilman.name}"), :councilman_path
   end
 
   def new
@@ -25,7 +25,7 @@ class CouncilmenController < ApplicationController
   end
 
   def edit
-    add_breadcrumb I18n.t('breadcrumbs.councilman.edit', name: "##{@councilman.id}"),
+    add_breadcrumb I18n.t('breadcrumbs.councilman.edit', name: "##{@councilman.name}"),
                    :edit_councilman_path
   end
 
@@ -45,7 +45,7 @@ class CouncilmenController < ApplicationController
       flash[:success] = 'Vereador atualizado com sucesso!'
       redirect_to councilmen_path
     else
-      add_breadcrumb I18n.t('breadcrumbs.councilman.edit', name: "##{@councilman.id}"),
+      add_breadcrumb I18n.t('breadcrumbs.councilman.edit', name: "##{@councilman.name}"),
                      :edit_councilman_path
       flash[:error] = 'Houve algum problema, reveja os dados inseridos !'
       render :edit

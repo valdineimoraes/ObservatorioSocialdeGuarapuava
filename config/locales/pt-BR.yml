@@ -21,9 +21,9 @@ pt-BR:
     homepage: 'Página Inicial'
     councilman:
       name: 'Vereadores'
-      new: 'Novo Vereador'
-      edit: 'Editar Vereador %{name}'
-      show: 'Visualizar Vereador %{name}'
+      new: 'Novo(a) Vereador(a)'
+      edit: 'Editar Vereador(a) %{name}'
+      show: 'Visualizar Vereador(a) %{name}'
     meeting:
       name: 'Sessões'
       new: 'Nova Sessão'
@@ -74,13 +74,13 @@ pt-BR:
         one: 'Usuário'
         other: 'Usuários'
       councilman:
-        one: 'Vereador'
+        one: 'Vereador(a)'
         other: 'Vereadores'
       meeting:
         one: 'Sessão'
         other: 'Sessões'
       vote:
-        one: 'Vote'
+        one: 'Voto'
         other: 'Votos'
       political_mandate: 'Mandato Politico'
       project:
@@ -131,14 +131,14 @@ pt-BR:
         end_project: 'Término da votação'
         result: 'Resultado'
         meeting: 'Sessão'
-        councilman: 'Vereador'
+        councilman: 'Vereador(a)'
       project_kind:
         <<: *commons
         kind: 'Tipo'
       session_councilman:
         <<: *commons
         session: 'Sessão'
-        councilman: 'Vereador'
+        councilman: 'Vereador(a)'
         being: 'Presença'
         beings:
           present: 'Presente'
