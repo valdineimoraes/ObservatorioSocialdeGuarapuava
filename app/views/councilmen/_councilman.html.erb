@@ -10,7 +10,9 @@
   <td><%= councilman.political_mandate.description %></td>
   <td><%= councilman.office %></td>
   <td><%= link_to councilman.projects.size, councilman_projects_path(councilman)%></td>
-  <td><%= link_to '', councilman,
+
+  <!--Ações dos Botões -->
+  <td><%= link_to '', councilman_url(councilman, format: "pdf"),
                   class: "fa fa-file-pdf btn btn-success" , title: "Gerar Relatório em PDF do Vereador"%></td>
   <td><%= link_to '', councilman,
                   class: "fa fa-search btn btn-info" , title: "Visualizar Vereador"%></td>
@@ -18,5 +20,6 @@
                   class: "fa fa-edit btn btn-warning", title: "Editar Vereador" %></td>
   <td><%= link_to '', councilman, method: :delete, data: { confirm: 'Tem certeza?' },
                   class: "fa fa-remove btn btn-danger", title: "Excluir Vereador" %></td>
+
 </tr>
    

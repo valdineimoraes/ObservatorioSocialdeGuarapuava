@@ -31,6 +31,11 @@ gem 'turbolinks', '~> 5.1.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'will_paginate-bootstrap4'
 
+#relatorios pdf
+gem 'prawn'
+gem 'responders'
+gem 'prawn-table'
+
 # breadcrumbs
 gem 'gretel', '~> 3.0', '>= 3.0.9'
 

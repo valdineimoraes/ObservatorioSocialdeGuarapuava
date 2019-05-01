@@ -12,6 +12,15 @@ class CouncilmenController < ApplicationController
     else
       @councilmen = Councilman.all.paginate(page: params[:page],
                                             per_page: 10).order(name: :asc)
+
+      respond_to do |f|
+        f.html
+        f.pdf do
+          pdf = CouncilmanPdf.new(@councilmen)
+          send_data pdf.render, filename: "councilmen.pdf",
+                    type: "application/pdf", disposition: "inline"
+        end
+      end
     end
   end
 

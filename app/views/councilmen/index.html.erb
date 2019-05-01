@@ -20,7 +20,7 @@
         <% end %>
       </div>
       <div class="col-sm-4">
-        <%= link_to '  Relatório dos Vereadores', new_councilman_path, class: 'btn btn-success fa fa-file-pdf',
+        <%= link_to '  Relatório dos Vereadores', councilmen_path(@councilman, format: "pdf"), class: 'btn btn-success fa fa-file-pdf',
                     title: 'Gerar Relatórios de todos os Vereadores Cadastrados no Sistemas' %>
       </div>
     </div>

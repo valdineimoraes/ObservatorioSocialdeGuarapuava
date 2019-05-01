@@ -11,8 +11,17 @@ class MeetingsController < ApplicationController
   end
 
   def show
-    add_breadcrumb I18n.t('breadcrumbs.meeting.show',
-                          name: "##{@meeting.id}"), :meeting_path
+    @meeting = Meeting.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = MeetingPdf.new(@meeting)
+        send_data pdf.render,
+                  filename: "Sessão ##{@meeting.id}.pdf",
+                  type: "application/pdf",
+                  disposition: "inline"
+      end
+    end
   end
 
   def new
