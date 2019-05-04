@@ -24,6 +24,7 @@ class CouncilmanPdf < Prawn::Document
         end
   end
 
-
+  # ver como fazer para pegar quantos projetos o mesmo apresentou
+  #
 
 end

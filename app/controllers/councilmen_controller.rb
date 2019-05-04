@@ -13,6 +13,7 @@ class CouncilmenController < ApplicationController
       @councilmen = Councilman.all.paginate(page: params[:page],
                                             per_page: 10).order(name: :asc)
 
+      # prawn pdf para relatório de todos os vereadores
       respond_to do |f|
         f.html
         f.pdf do
@@ -25,6 +26,7 @@ class CouncilmenController < ApplicationController
   end
 
   def show
+    
     add_breadcrumb I18n.t('breadcrumbs.councilman.show',
                           name: "##{@councilman.name}"), :councilman_path
   end

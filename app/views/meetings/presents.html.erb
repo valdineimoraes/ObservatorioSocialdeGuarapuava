@@ -5,17 +5,17 @@
       <h3> Sessão do Dia:  <%= @meeting.date.strftime('%d/%m/%Y')%></h3>
     </div>
     <div class="box-body  table-responsive">
-      <table class="table table-bordered table-striped">
-        <thead class="">
-        <tr>
-          <th>Vereador</th>
-          <th>Presença</th>
-          <th>Chegada</th>
-          <th>Saída</th>
-          <th>Anotações</th>
-        </tr>
-        </thead>
-        <%= simple_form_for @meeting, url: meeting_presents_path do |s| %>
+      <%= simple_form_for @meeting, url: meeting_presents_path do |s| %>
+        <table class="table table-bordered table-striped">
+          <thead class="">
+          <tr>
+            <th>Vereador</th>
+            <th>Presença</th>
+            <th>Chegada</th>
+            <th>Saída</th>
+            <th>Anotações</th>
+          </tr>
+          </thead>
           <tbody>
           <%= s.simple_fields_for :session_councilmen do |sc| %>
             <tr>
@@ -27,12 +27,12 @@
             </tr>
           <% end %>
           </tbody>
-          </table>
-          <br>
-          <%= s.button :submit %>
-          <%= link_to 'Voltar', meetings_path, class: "btn btn-warning" %>
-        <% end %>
-        </div>
+        </table>
+        <br>
+        <%= s.button :submit %>
+        <%= link_to 'Voltar', meetings_path, class: "btn btn-warning" %>
+      <% end %>
+    </div>
   </div>
 </div>
 

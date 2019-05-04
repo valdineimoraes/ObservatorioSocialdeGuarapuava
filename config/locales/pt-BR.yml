@@ -130,6 +130,12 @@ pt-BR:
         start_project: 'Início da votação'
         end_project: 'Término da votação'
         result: 'Resultado'
+        results:
+          postponed: 'Adiado'
+          approved: 'Aprovado'
+          retired: 'Retirado de Pauta'
+          rejected: 'Rejeitado'
+          filed: 'Arquivado'
         meeting: 'Sessão'
         councilman: 'Vereador(a)'
       project_kind:
