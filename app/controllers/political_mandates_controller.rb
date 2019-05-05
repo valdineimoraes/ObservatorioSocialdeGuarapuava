@@ -8,10 +8,10 @@ class PoliticalMandatesController < ApplicationController
   def index
     if params[:search]
       @political_mandates = PoliticalMandate.search(params[:search]).paginate(page: params[:page],
-                                                                per_page: 10).order(first_period: :asc)
+                                                                              per_page: 10).order(first_period: :asc)
     else
       @political_mandates = PoliticalMandate.all.paginate(page: params[:page],
-                                            per_page: 10).order(first_period: :asc)
+                                                          per_page: 10).order(first_period: :asc)
     end
   end
 

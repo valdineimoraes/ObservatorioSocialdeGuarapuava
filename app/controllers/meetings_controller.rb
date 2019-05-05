@@ -18,8 +18,8 @@ class MeetingsController < ApplicationController
         pdf = MeetingPdf.new(@meeting)
         send_data pdf.render,
                   filename: "Sessão ##{@meeting.id}.pdf",
-                  type: "application/pdf",
-                  disposition: "inline"
+                  type: 'application/pdf',
+                  disposition: 'inline'
       end
     end
   end
@@ -62,10 +62,6 @@ class MeetingsController < ApplicationController
     redirect_to meetings_url
   end
 
-  def projects
-    @meeting = Meeting.find(params[:meeting_id])
-  end
-
   def presents
     @meeting = Meeting.find(params[:meeting_id])
 
@@ -86,7 +82,6 @@ class MeetingsController < ApplicationController
     else
       flash[:error] = 'Não foi possível atualizar os dados!'
     end
-
   end
 
   def new_project

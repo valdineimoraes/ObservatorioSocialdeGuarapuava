@@ -3,7 +3,7 @@
   <td><%= political_mandate.description %></td>
   <td><%= political_mandate.first_period %></td>
   <td><%= political_mandate.final_period %></td>
-  <td> total </td>
+  <td><%= political_mandate.councilmen.size %></td>
   <td><%= link_to '', political_mandate,
                   class: "fa fa-search btn btn-info" , title: "Visualizar Mandato"%></td>
   <td><%= link_to '', edit_political_mandate_path(political_mandate),

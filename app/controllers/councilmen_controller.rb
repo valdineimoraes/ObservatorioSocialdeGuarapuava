@@ -18,15 +18,14 @@ class CouncilmenController < ApplicationController
         f.html
         f.pdf do
           pdf = CouncilmanPdf.new(@councilmen)
-          send_data pdf.render, filename: "councilmen.pdf",
-                    type: "application/pdf", disposition: "inline"
+          send_data pdf.render, filename: 'councilmen.pdf',
+                                type: 'application/pdf', disposition: 'inline'
         end
       end
     end
   end
 
   def show
-
     add_breadcrumb I18n.t('breadcrumbs.councilman.show',
                           name: "##{@councilman.name}"), :councilman_path
   end
