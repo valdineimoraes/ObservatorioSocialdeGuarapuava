@@ -7,7 +7,7 @@
   </td>
 
   <td><%= link_to councilman.name, councilman %></td>
-  <td><%= councilman.political_mandate.description %></td>
+  <td><%= link_to councilman.political_mandate.description, councilman.political_mandate %></td>
   <td><%= councilman.office %></td>
   <td><%= link_to councilman.projects.size, councilman_projects_path(councilman)%></td>
 

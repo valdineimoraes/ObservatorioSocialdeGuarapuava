@@ -26,7 +26,7 @@ class CouncilmenController < ApplicationController
   end
 
   def show
-    
+
     add_breadcrumb I18n.t('breadcrumbs.councilman.show',
                           name: "##{@councilman.name}"), :councilman_path
   end

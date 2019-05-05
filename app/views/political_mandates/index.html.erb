@@ -1,9 +1,9 @@
 <div class="box box-info">
   <div class="box-header">
-    <h1>Mandato Politico</h1>
+    <h3>Mandato Politico</h3>
     <div class="row">
       <div class="col-sm-4">
-        <%= link_to 'Adicionar Mandato', new_political_mandate_path, class: "btn btn-info" %>
+        <%= link_to 'Novo Mandato', new_political_mandate_path, class: "btn btn-info" %>
       </div>
       <div class="col-sm-4">
         <%= form_tag( political_mandates_path, method: :get) do %>
@@ -28,6 +28,7 @@
         <th>Descrição</th>
         <th>Periodo Inicial</th>
         <th>Periodo Final</th>
+        <th>Vereadores</th>
         <th colspan="3">Ações</th>
       </tr>
       </thead>

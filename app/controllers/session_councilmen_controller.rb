@@ -30,7 +30,7 @@ class SessionCouncilmenController < ApplicationController
   def update
     if @session_councilman.update(session_councilman_params)
       flash[:success] = 'Session councilman was successfully updated.'
-      redirect_to @session_councilman
+      redirect_to @meeting
     else
       flash[:error] = 'Existem dados incorretos! Por favor verifique.'
       render :edit

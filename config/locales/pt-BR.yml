@@ -86,10 +86,10 @@ pt-BR:
       project:
         one: 'Pauta'
         other: 'Pautas'
-      projectKind:
+      project_kind:
         one: 'Tipo de projeto'
         other: 'Tipos de projeto'
-      sessionCouncilman:
+      session_councilman:
         one: 'Vereador na Sessão'
         other: 'Vereadores nas Sessões'
     attributes:

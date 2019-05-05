@@ -35,10 +35,10 @@
   <%= render 'layouts/navbar' %>
   <%= render 'layouts/sidebar'%>
   <div class="content-wrapper">
+
     <section class="content">
-      <ol class="breadcrumb">
-        <li><%= render_breadcrumbs builder: ::BootstrapBreadcrumbsBuilder %></li>
-      </ol>
+      <%= render 'layouts/breadcrumb' %>
+      <br><br>
       <%= render 'shared/flash_messages'%>
       <h4><%=yield(:head_title)%></h4>
       <%= yield%>

@@ -81,11 +81,12 @@ class MeetingsController < ApplicationController
                                 %i[id note present arrival leaving])
 
     if @meeting.update(sc_params)
-      flash[:success] = 'Dados atualizados com sucesso'
+      flash[:success] = 'Dados atualizados com sucesso!'
+      redirect_to @meeting
     else
-      flash[:error] = 'Não foi possível atualizar os dados'
+      flash[:error] = 'Não foi possível atualizar os dados!'
     end
-    redirect_back(fallback_location: root_path)
+
   end
 
   def new_project

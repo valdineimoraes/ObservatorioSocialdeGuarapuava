@@ -23,7 +23,7 @@
       <%= @meeting.note %>
     </p>
 
-    <!-- Vereadores presentes na sessão -->  
+    <!-- Vereadores presentes na sessão -->
     <div class="box box-success">
       <div class="box-header with-border">
         <h3 class="box-title text-right">Vereadores presentes</h3>
@@ -50,8 +50,9 @@
       </div>
       <!-- /.box-body -->
     </div>
-    
-    <%= link_to 'Editar', edit_meeting_path(@meeting), class: "btn btn-info" %> |
+
+    <%= link_to 'Editar Sessão', edit_meeting_path(@meeting), class: "btn btn-info" %> |
+    <%= link_to 'Editar Presença dos Vereadores', meeting_presents_path(@meeting), class: "btn btn-info" %> |
     <%= link_to 'Voltar', meetings_path, class: "btn btn-warning" %>
   </div>
 </div>

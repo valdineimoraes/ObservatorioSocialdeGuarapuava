@@ -4,7 +4,7 @@
 
     <div class="row">
       <div class="col-sm-4">
-        <%= link_to 'Adicionar Vereador', new_councilman_path, class: "btn btn-info" %>
+        <%= link_to 'Novo Vereador', new_councilman_path, class: "btn btn-info", title: 'Adicionar novo vereador' %>
       </div>
       <div class="col-sm-4">
         <%= form_tag( councilmen_path, method: :get) do %>
@@ -20,8 +20,10 @@
         <% end %>
       </div>
       <div class="col-sm-4">
-        <%= link_to '  Relatório dos Vereadores', councilmen_path(@councilman, format: "pdf"), class: 'btn btn-success fa fa-file-pdf',
-                    title: 'Gerar Relatórios de todos os Vereadores Cadastrados no Sistemas' %>
+        <div class="input-group-btn">
+          <%= link_to '  Vereadores', councilmen_path(@councilman, format: "pdf"), class: 'btn btn-success fa fa-file-pdf',
+                      title: 'Gerar Relatórios de todos os Vereadores Cadastrados no Sistemas' %>
+        </div>
       </div>
     </div>
   </div>
