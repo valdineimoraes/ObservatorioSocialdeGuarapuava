@@ -1,8 +1,8 @@
 <tr>
   <td><%= link_to project.name, project %></td>
   <td><%= truncate(project.description, length: 50) %></td>
-  <td><%= link_to project.councilman.name, project.councilman %></td>
   <td><%= link_to project.project_kind.kind, project.project_kind %></td>
+  <td><%= link_to project.councilman.name, project.councilman %></td>
   <td><%= link_to project.meeting.date.to_time.strftime('%d/%m/%Y'), project.meeting%></td>
 
   <% if project.result.nil? %>

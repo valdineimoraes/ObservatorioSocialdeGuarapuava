@@ -29,6 +29,8 @@ pt-BR:
       new: 'Nova Sessão'
       edit: 'Editar Sessão %{name}'
       show: 'Visualizar Sessão %{name}'
+      presents: 'Presença dos Vereadores'
+      presents_update: ' Atualizar Presença dos Vereadores'
     political_mandate:
       name: 'Mandato Politico'
       new: 'Novo Mandato'
@@ -39,6 +41,8 @@ pt-BR:
       new: 'Novo Projeto'
       edit: 'Editar Projeto %{name}'
       show: 'Visualizar Projeto%{name}'
+      vote: 'Votos no Projeto'
+      vote_update: ' Atualizar Votos do Projeto'
     project_kind:
       name: 'Tipos de Projeto'
       new: 'Novo Tipo de Projeto'
@@ -64,6 +68,7 @@ pt-BR:
       date:
         less_thee: 'A data inicial deve menor que a data final'
         less_hour: 'A hora inicial deve ser menor que a hora final'
+        less_hour_presents: 'A hora de chegada deve ser menor que a hora de saída'
       record_invalid: 'A validação falhou: %{errors}'
       restrict_dependent_destroy:
         has_one: 'Não é possível excluir o registro pois existe um %{record} dependente'

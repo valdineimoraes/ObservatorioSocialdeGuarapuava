@@ -18,6 +18,7 @@
           <%= p.simple_fields_for :votes do |v| %>
             <tr>
               <td><%= v.object.councilman.name %></td>
+
               <td><%= v.input_field :vote, collection: Vote.votes.keys.to_a, prompt: "Informe o Voto"%></td>
 
               <% unless v.object.councilman.present? %>
