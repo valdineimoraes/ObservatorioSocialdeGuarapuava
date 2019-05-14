@@ -18,6 +18,9 @@ Rails.application.routes.draw do
 
     resources :councilmen do
       get 'projects', to: 'councilmen#projects'
+      member do
+        get 'export'
+      end
     end
 
     resources :project_kinds do
