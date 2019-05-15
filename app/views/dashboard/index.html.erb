@@ -1,70 +1,80 @@
+<div class="box-header">
+  <h3>Dashboard</h3>
+</div>
 <div class="row">
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-aqua">
-            <div class="inner">
-              <h3><%= @meetings.size %></h3>
-
-              <p>Sessões</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-ios-people-outline"></i>
-            </div>
-            <%= link_to meetings_path, class: "small-box-footer" do %>
-            Mais info <i class="fa fa-arrow-circle-right"></i>
-            <% end %>
-          </div>
-          
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-green">
-            <div class="inner">
-            <h3><%= @projects.size %></h3>
-              <p>Projetos</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-document"></i>
-            </div>
-            <%= link_to projects_path, class: "small-box-footer" do %>
-              Mais info <i class="fa fa-arrow-circle-right"></i>
-              <% end %>
-            </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-yellow">
-            <div class="inner">
-            <h3><%= @councilmen.size %></h3>
-
-              <p>Vereadores </p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-person-add"></i>
-            </div>
-            <%= link_to councilmen_path, class: "small-box-footer" do %>
-              Mais info <i class="fa fa-arrow-circle-right"></i>
-              <% end %> 
-            </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-red">
-            <div class="inner">
-               <h3><%= @project_kinds.size  %></h3>
-
-              <p>Tipos de Projeto</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-pie-graph"></i>
-            </div>
-           <%= link_to project_kinds_path, class: "small-box-footer" do %>
-              Mais info <i class="fa fa-arrow-circle-right"></i>
-              <% end %> 
-          </div>
-        </div>
-        <!-- ./col -->
+  <div class="col-lg-3 col-xs-6">
+    <div class="small-box bg-blue">
+           <div class="inner">
+        <h3><%= @political_mandates.size %></h3>
+        <p>Mandatos Políticos</p>
       </div>
+      <div class="icon">
+        <i class="ion ion-ios-list"></i>
+      </div>
+      <%= link_to political_mandates_path, class: "small-box-footer" do %>
+        Mais info <i class="fa fa-arrow-circle-right"></i>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="col-lg-3 col-xs-6">
+    <div class="small-box bg-aqua">
+      <div class="inner">
+        <h3><%= @meetings.size %></h3>
+        <p>Sessões</p>
+      </div>
+      <div class="icon">
+        <i class="ion ion-ios-people-outline"></i>
+      </div>
+      <%= link_to meetings_path, class: "small-box-footer" do %>
+        Mais info <i class="fa fa-arrow-circle-right"></i>
+      <% end %>
+    </div>
+
+  </div>
+  <div class="col-lg-3 col-xs-6">
+    <div class="small-box bg-green">
+      <div class="inner">
+        <h3><%= @projects.size %></h3>
+        <p>Projetos</p>
+      </div>
+      <div class="icon">
+        <i class="ion ion-document"></i>
+      </div>
+      <%= link_to projects_path, class: "small-box-footer" do %>
+        Mais info <i class="fa fa-arrow-circle-right"></i>
+      <% end %>
+    </div>
+  </div>
+  
+  <div class="col-lg-3 col-xs-6">
+    <div class="small-box bg-yellow">
+      <div class="inner">
+        <h3><%= @councilmen.size %></h3>
+        <p>Vereadores </p>
+      </div>
+      <div class="icon">
+        <i class="ion ion-person-add"></i>
+      </div>
+      <%= link_to councilmen_path, class: "small-box-footer" do %>
+        Mais info <i class="fa fa-arrow-circle-right"></i>
+      <% end %>
+    </div>
+  </div>
+  
+  <div class="col-lg-3 col-xs-6">
+    <div class="small-box bg-red">
+      <div class="inner">
+        <h3><%= @project_kinds.size  %></h3>
+        <p>Tipos de Projeto</p>
+      </div>
+      <div class="icon">
+        <i class="ion ion-pie-graph"></i>
+      </div>
+      <%= link_to project_kinds_path, class: "small-box-footer" do %>
+        Mais info <i class="fa fa-arrow-circle-right"></i>
+      <% end %>
+    </div>
+  </div>
+  
+</div>

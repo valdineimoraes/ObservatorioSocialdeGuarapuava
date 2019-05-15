@@ -1,72 +1,52 @@
-<% breadcrumb :councilmen %>
-
 <div class="box box-info">
   <div class="box-header">
     <h1>Vereadores</h1>
-    
+
     <div class="row">
       <div class="col-sm-4">
-          <%= link_to 'Adicionar Vereador', new_councilman_path, class: "btn btn-info" %>
+        <%= link_to 'Novo Vereador', new_councilman_path, class: "btn btn-info", title: 'Adicionar novo vereador' %>
       </div>
-      <div class="col-sm-4"> 
-      
+      <div class="col-sm-4">
         <%= form_tag( councilmen_path, method: :get) do %>
-            <div class="input-group">
-             <%= text_field_tag 'search', nil, class:"form-control", placeholder:"Digite o nome do vereador" %>
-
-              <div class="input-group-btn">
-                <%= button_tag(type: "submit", class: "btn btn-warning btn-flat") do %>
-               <i class="fa fa-search"></i>
-                <% end %>
-              </div>
+          <div class="input-group">
+            <%= text_field_tag 'search', nil, class:"form-control", placeholder:"Digite o nome do vereador" %>
+            <div class="input-group-btn">
+              <%= button_tag(type: "submit", class: "btn btn-warning btn-flat",
+                             title: "Pesquisar pelo nome dos vereadores") do %>
+                <i class="fa fa-search"></i>
+              <% end %>
             </div>
-          <% end %>
-
+          </div>
+        <% end %>
+      </div>
+      <div class="col-sm-4">
+        <div class="input-group-btn">
+          <%= link_to '  Vereadores', councilmen_path(@councilman, format: "pdf"), class: 'btn btn-success fa fa-file-pdf',
+                      title: 'Gerar Relatórios de todos os Vereadores Cadastrados no Sistemas' %>
+        </div>
       </div>
     </div>
   </div>
 
   <div class="box-body table-responsive">
     <table class="table table-bordered table-striped table-hover">
-    <thead >
-    <tr>
-      <th>Foto</th>
-      <th>Nome</th>
-      <th>Apelido</th>
-      <th>Partido Politico</th>
-      <th>Posição Politica</th>
-      <th>Projetos</th>
-      <th colspan="3">Ações</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @councilmen.each do |councilman| %>
+      <thead >
       <tr>
-        <td><% if (councilman.avatar?)%>
-          <%= image_tag(councilman.avatar.thumb.url) %>
-        <%else%>
-        <%= gravatar_for(councilman, 50, "gravatar")%>
-        <%end%>
-        </td>
-        
-        <td><%= link_to councilman.name, councilman %></td>
-        <td><%= councilman.nickname %></td>
-        <td><%= councilman.political_party %></td>
-        <td><%= I18n.t(councilman.political_position, scope: [:activerecord, :attributes, :councilman, :political_positions])
-%> </td>
-        <td><%= link_to councilman.projects.size, councilman_projects_path(councilman)%></td>
-        <td><%= link_to '', councilman, class: "fa fa-search btn btn-info" , title: "Visualizar Vereador"%></td>
-        <td><%= link_to '', edit_councilman_path(councilman), class: "fa fa-edit btn btn-warning", title: "Editar Vereador" %></td>
-        <td><%= link_to '', councilman, method: :delete, data: { confirm: 'Tem certeza?' }, class: "fa fa-remove btn btn-danger", title: "Excluir Vereador" %></td>
+        <th>Foto</th>
+        <th>Nome</th>
+        <th>Mandato Politico</th>
+        <th>Cargo do Vereador</th>
+        <th>Projetos</th>
+        <th colspan="4">Ações</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-<div class="pagination pagination-sm no-margin pull-right">
-<%= will_paginate @councilmen, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
-</div>
-</div>
-
+      </thead>
+      <tbody>
+      <%= render @councilmen %>
+      </tbody>
+    </table>
+    <div class="pagination pagination-sm no-margin pull-right">
+      <%= will_paginate @councilmen, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+    </div>
+  </div>
 </div>
 

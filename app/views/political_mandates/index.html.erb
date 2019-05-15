@@ -1,0 +1,44 @@
+<div class="box box-info">
+  <div class="box-header">
+    <h3>Mandato Politico</h3>
+    <div class="row">
+      <div class="col-sm-4">
+        <%= link_to 'Novo Mandato', new_political_mandate_path, class: "btn btn-info" %>
+      </div>
+      <div class="col-sm-4">
+        <%= form_tag( political_mandates_path, method: :get) do %>
+          <div class="input-group">
+            <%= text_field_tag 'search', nil, class:"form-control", placeholder:"Pesquisar no mandato politico" %>
+            <div class="input-group-btn">
+              <%= button_tag(type: "submit", class: "btn btn-warning btn-flat",
+                             title: "Pesquisar no mandato politico pela descrição") do %>
+                <i class="fa fa-search"></i>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="box-body table-responsive">
+    <table class="table table-bordered table-striped table-hover">
+      <thead >
+      <tr>
+        <th>ID</th>
+        <th>Descrição</th>
+        <th>Periodo Inicial</th>
+        <th>Periodo Final</th>
+        <th>Vereadores</th>
+        <th colspan="3">Ações</th>
+      </tr>
+      </thead>
+      <tbody>
+      <%= render @political_mandates %>
+      </tbody>
+    </table>
+    <div class="pagination pagination-sm no-margin pull-right">
+      <%= will_paginate @political_mandates, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+    </div>
+  </div>
+</div>
+

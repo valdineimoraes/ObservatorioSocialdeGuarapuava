@@ -1,15 +1,34 @@
 class CouncilmenController < ApplicationController
-  before_action :set_councilman, only: [:show, :edit, :update, :destroy]
+  before_action :set_councilman, only: %i[show edit update destroy export]
+  require './lib/pdfs/coucilman_pdf'
+
+  add_breadcrumb I18n.t('breadcrumbs.councilman.name'), :councilmen_path
+  add_breadcrumb I18n.t('breadcrumbs.councilman.new'),
+                 :new_councilman_path, only: %i[new create]
 
   def index
     if params[:search]
-      @councilmen = Councilman.search(params[:search]).paginate(:page => params[:page], :per_page => 5).order(name: :asc)
-    else  
-      @councilmen = Councilman.all.paginate(:page => params[:page], :per_page => 5).order(name: :asc)
+      @councilmen = Councilman.search(params[:search]).paginate(page: params[:page],
+                                                                per_page: 10).order(name: :asc)
+    else
+      @councilmen = Councilman.all.paginate(page: params[:page],
+                                            per_page: 10).order(name: :asc)
+
+      # prawn pdf para relatório de todos os vereadores
+      respond_to do |f|
+        f.html
+        f.pdf do
+          pdf = CouncilmanPdf.new(@councilmen)
+          send_data pdf.render, filename: 'councilmen.pdf',
+                                type: 'application/pdf', disposition: 'inline'
+        end
+      end
     end
   end
 
   def show
+    add_breadcrumb I18n.t('breadcrumbs.councilman.show',
+                          name: "##{@councilman.name}"), :councilman_path
   end
 
   def new
@@ -17,44 +36,47 @@ class CouncilmenController < ApplicationController
   end
 
   def edit
+    add_breadcrumb I18n.t('breadcrumbs.councilman.edit', name: "##{@councilman.name}"),
+                   :edit_councilman_path
   end
 
   def create
     @councilman = Councilman.new(councilman_params)
-
-    respond_to do |format|
-      if @councilman.save
-        flash[:success] = "Novo vereador adicionado!"
-        format.html { redirect_to @councilman }
-        format.json { render :show, status: :created, location: @councilman }
-      else
-        flash[:error] = "Houve algum problema, reveja os dados inseridos!"
-        format.html { render :new }
-        format.json { render json: @councilman.errors, status: :unprocessable_entity }
-      end
+    if @councilman.save
+      flash[:success] = 'Novo vereador adicionado!'
+      redirect_to @councilman
+    else
+      flash[:error] = 'Houve algum problema, reveja os dados inseridos!'
+      render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @councilman.update(councilman_params)
-        format.html { redirect_to @councilman, notice: "Vereador atualizado com sucesso." }
-        format.json { render :show, status: :ok, location: @councilman }
-      else
-        flash[:error] = "Houve algum problema, reveja os dados inseridos !"
-
-        format.html { render :edit }
-        format.json { render json: @councilman.errors, status: :unprocessable_entity }
-      end
+    if @councilman.update(councilman_params)
+      flash[:success] = 'Vereador atualizado com sucesso!'
+      redirect_to councilmen_path
+    else
+      add_breadcrumb I18n.t('breadcrumbs.councilman.edit', name: "##{@councilman.name}"),
+                     :edit_councilman_path
+      flash[:error] = 'Houve algum problema, reveja os dados inseridos !'
+      render :edit
     end
+  end
+
+  # export pdf - prawn pdf
+  def export
+    CouncilmanPdf::councilman(@councilman.name, @councilman.nickname, @councilman.office, @councilman.political_party)
+    redirect_to '/councilman.pdf'
   end
 
   def destroy
     @councilman.destroy
-    respond_to do |format|
-      format.html { redirect_to councilmen_url, notice: "Vereador removido com sucesso." }
-      format.json { head :no_content }
-    end
+    flash[:success] = 'Vereador destruido com sucesso!'
+    redirect_to councilmen_path
+  end
+
+  def political_mandates
+    @political_mandate = PoliticalMandate.find(params[:political_mandates_id])
   end
 
   def projects
@@ -68,6 +90,11 @@ class CouncilmenController < ApplicationController
   end
 
   def councilman_params
-    params.require(:councilman).permit(:name, :nickname, :political_party, :political_position, :avatar)
+    params.require(:councilman).permit(:name,
+                                       :nickname,
+                                       :office,
+                                       :political_party,
+                                       :political_mandate_id,
+                                       :avatar)
   end
 end

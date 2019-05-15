@@ -1,0 +1,14 @@
+<%= simple_form_for(@political_mandate) do |f| %>
+  <div class="row form-inputs">
+    <div class="col-sm-6 col-md-8">
+      <%= f.input :description %>
+      <%= f.input :first_period, as: :date, include_blank: true, start_year: 2000, end_year: Date.current.year + 20 %>
+      <%= f.input :final_period, as: :date, include_blank: true , start_year: 2000, end_year: Date.current.year + 20 %>
+    </div>
+  </div>
+  <br>
+  <div class="form-actions">
+    <%= f.button :submit %>
+    <%= link_to 'Voltar', political_mandates_path, class:"btn btn-warning" %>
+  </div>
+<% end %>

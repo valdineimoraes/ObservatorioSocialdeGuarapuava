@@ -1,47 +1,26 @@
-
-
-<% breadcrumb :meetings %>
 <div class="box box-info">
   <div class="box-header">
-    <h1>Sessões</h1>
+    <h3>Sessões</h3>
     <%= link_to 'Nova Sessão', new_meeting_path, class: "btn btn-info" %>
   </div>
   <div class="box-body  table-responsive">
     <table class="table table-bordered table-striped">
       <thead class="">
-        <tr>
-          <th>Data</th>
-          <th>Inicio da sessão</th>
-          <th>Fim sessão</th>
-          <th>Notas</th>
-          <th>Projetos</th>
-          <th colspan="4">Ações</th>
-        </tr>
+      <tr>
+        <th>Data</th>
+        <th>Inicio da sessão</th>
+        <th>Fim sessão</th>
+        <th>Notas</th>
+        <th>Projetos</th>
+        <th colspan="4">Ações</th>
+      </tr>
       </thead>
-
       <tbody>
-        <% @meetings.each do |meeting| %>
-          <tr>
-            <td><%= meeting.formatted_date %></td>
-            <td><%= meeting.start_session.to_time.strftime('%H:%M') %></td>
-            
-            <td><%= meeting.end_session.to_time.strftime('%H:%M') %></td>
-            <td><%= meeting.note %></td>
-            <td><%= link_to meeting.projects.size, meeting_projects_path(meeting) %></td>
-
-            
-            <td><%= link_to '', meeting, class: "btn btn-warning fa fa-search", title: "Visualizar Sessão" %></td>
-            <td><%= link_to '', meeting_presents_path(meeting), class: "btn btn-success fa fa-plus", title: "Presentes na Sessão" %>
-            <td><%= link_to '', edit_meeting_path(meeting.id), class:"btn btn-info fa fa-edit", title: "Editar Sessão"%></td>
-            <td><%= link_to '', meeting, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger fa fa-remove" , title: "Remover Sessão"%></td>
-          </tr>
-        <% end %>
+      <%= render @meetings %>
       </tbody>
     </table>
     <div class="pagination pagination-sm no-margin pull-right">
       <%= will_paginate @meetings, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
     </div>
-
   </div>
-  
 </div>

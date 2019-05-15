@@ -1,0 +1,370 @@
+pt-BR:
+  views:
+    pagination:
+      first: '&laquo; Primeiro'
+      last: 'Último &raquo;'
+      previous: '&lsaquo; Anterior'
+      next: 'Próximo &rsaquo;'
+      truncate: '&hellip;'
+  enums:
+    councilman:
+      political_positions:
+        opposition: 'Oposição'
+        situation: 'Situação'
+    votes:
+      vote:
+        favorable: 'Favoravel'
+        contrary: 'Contrário'
+        abstention: 'Abstenção'
+        absent: 'Ausente'
+  breadcrumbs:
+    homepage: 'Página Inicial'
+    councilman:
+      name: 'Vereadores'
+      new: 'Novo(a) Vereador(a)'
+      edit: 'Editar Vereador(a) %{name}'
+      show: 'Visualizar Vereador(a) %{name}'
+    meeting:
+      name: 'Sessões'
+      new: 'Nova Sessão'
+      edit: 'Editar Sessão %{name}'
+      show: 'Visualizar Sessão %{name}'
+      presents: 'Presença dos Vereadores'
+      presents_update: ' Atualizar Presença dos Vereadores'
+    political_mandate:
+      name: 'Mandato Politico'
+      new: 'Novo Mandato'
+      edit: 'Editar Mandato %{name}'
+      show: 'Visualizar Mandato %{name}'
+    project:
+      name: 'Projeto'
+      new: 'Novo Projeto'
+      edit: 'Editar Projeto %{name}'
+      show: 'Visualizar Projeto%{name}'
+      vote: 'Votos no Projeto'
+      vote_update: ' Atualizar Votos do Projeto'
+    project_kind:
+      name: 'Tipos de Projeto'
+      new: 'Novo Tipo de Projeto'
+      edit: 'Editar Tipo de Projeto %{name}'
+      show: 'Visualizar Tipo de Projeto %{name}'
+  helpers:
+    actions: 'Ações'
+    links:
+      back: 'Voltar'
+      cancel: 'Cancelar'
+      confirm: 'Voce tem certeza?'
+      destroy: 'Apagar'
+      new: 'Novo'
+      edit: 'Editar'
+    titles:
+      edit: 'Editar %{model}'
+      save: 'Salvar %{model}'
+      new: 'Novo %{model}'
+      delete: 'Apagar %{model}'
+  errors:
+    messages:
+      permalink: 'Permite apenas letras, números e traços.'
+      date:
+        less_thee: 'A data inicial deve menor que a data final'
+        less_hour: 'A hora inicial deve ser menor que a hora final'
+        less_hour_presents: 'A hora de chegada deve ser menor que a hora de saída'
+      record_invalid: 'A validação falhou: %{errors}'
+      restrict_dependent_destroy:
+        has_one: 'Não é possível excluir o registro pois existe um %{record} dependente'
+        has_many: 'Não é possível excluir o registro pois existem %{record} dependentes'
+  activerecord:
+    models:
+      user:
+        one: 'Usuário'
+        other: 'Usuários'
+      councilman:
+        one: 'Vereador(a)'
+        other: 'Vereadores'
+      meeting:
+        one: 'Sessão'
+        other: 'Sessões'
+      vote:
+        one: 'Voto'
+        other: 'Votos'
+      political_mandate: 'Mandato Politico'
+      project:
+        one: 'Pauta'
+        other: 'Pautas'
+      project_kind:
+        one: 'Tipo de projeto'
+        other: 'Tipos de projeto'
+      session_councilman:
+        one: 'Vereador na Sessão'
+        other: 'Vereadores nas Sessões'
+    attributes:
+      attribute_commons: &commons
+        name: 'Nome'
+        email: 'Email'
+        description: 'Descrição'
+        note: 'Anotações'
+      user:
+        password: 'Senha'
+        password_confirmation: 'Confirmação de senha'
+        remember_me: 'Lembre-me'
+        <<: *commons
+      councilman:
+        <<: *commons
+        nickname: 'Apelido'
+        political_party: 'Partido'
+        political_position: 'Posição Politica'
+        office: 'Cargo'
+        political_mandate: 'Mandato Político'
+        political_positions:
+          opposition: 'Oposição'
+          situation: 'Situação'
+      meeting:
+        <<: *commons
+        date: 'Data da Sessão'
+        start_session: 'Início da sessão'
+        end_session: 'Fim da sessão'
+      political_mandate:
+        <<: *commons
+        first_period: 'Periodo Inicial'
+        final_period: 'Periodo Final'
+      project:
+        <<: *commons
+        session: 'Sessão'
+        description: 'Descrição'
+        project_kind: 'Tipo de projeto'
+        start_project: 'Início da votação'
+        end_project: 'Término da votação'
+        result: 'Resultado'
+        results:
+          postponed: 'Adiado'
+          approved: 'Aprovado'
+          retired: 'Retirado de Pauta'
+          rejected: 'Rejeitado'
+          filed: 'Arquivado'
+        meeting: 'Sessão'
+        councilman: 'Vereador(a)'
+      project_kind:
+        <<: *commons
+        kind: 'Tipo'
+      session_councilman:
+        <<: *commons
+        session: 'Sessão'
+        councilman: 'Vereador(a)'
+        being: 'Presença'
+        beings:
+          present: 'Presente'
+          absent: 'Ausente'
+        arrival: 'Horário de Chegada'
+        leaving: 'Horário de Saída'
+    date:
+      abbr_day_names:
+        - Dom
+        - Seg
+        - Ter
+        - Qua
+        - Qui
+        - Sex
+        - Sáb
+      abbr_month_names:
+        -
+        - Jan
+        - Fev
+        - Mar
+        - Abr
+        - Mai
+        - Jun
+        - Jul
+        - Ago
+        - Set
+        - Out
+        - Nov
+        - Dez
+      day_names:
+        - Domingo
+        - Segunda-feira
+        - Terça-feira
+        - Quarta-feira
+        - Quinta-feira
+        - Sexta-feira
+        - Sábado
+      formats:
+        default: "%d/%m/%Y"
+        long: "%d de %B de %Y"
+        short: "%d de %B"
+      month_names:
+        -
+        - Janeiro
+        - Fevereiro
+        - Março
+        - Abril
+        - Maio
+        - Junho
+        - Julho
+        - Agosto
+        - Setembro
+        - Outubro
+        - Novembro
+        - Dezembro
+      order:
+        - :day
+        - :month
+        - :year
+      datetime:
+        distance_in_words:
+          about_x_hours:
+            one: aproximadamente 1 hora
+            other: aproximadamente %{count} horas
+          about_x_months:
+            one: aproximadamente 1 mês
+            other: aproximadamente %{count} meses
+          about_x_years:
+            one: aproximadamente 1 ano
+            other: aproximadamente %{count} anos
+          almost_x_years:
+            one: quase 1 ano
+            other: quase %{count} anos
+          half_a_minute: meio minuto
+          less_than_x_minutes:
+            one: menos de um minuto
+            other: menos de %{count} minutos
+          less_than_x_seconds:
+            one: menos de 1 segundo
+            other: menos de %{count} segundos
+          over_x_years:
+            one: mais de 1 ano
+            other: mais de %{count} anos
+          x_days:
+            one: 1 dia
+            other: "%{count} dias"
+          x_minutes:
+            one: 1 minuto
+            other: "%{count} minutos"
+          x_months:
+            one: 1 mês
+            other: "%{count} meses"
+          x_years:
+            one: 1 ano
+            other: "%{count} anos"
+          x_seconds:
+            one: 1 segundo
+            other: "%{count} segundos"
+        prompts:
+          day: Dia
+          hour: Hora
+          minute: Minuto
+          month: Mês
+          second: Segundo
+          year: Ano
+      errors:
+        format: "%{attribute} %{message}"
+        messages:
+          accepted: Deve ser aceito
+          blank: Este campo não pode ficar em branco
+          present: Deve ficar em branco
+          confirmation: Não é igual a %{attribute}
+          empty: Não pode ficar vazio
+          equal_to: Deve ser igual a %{count}
+          even: Deve ser par
+          exclusion: Não está disponível
+          greater_than: Deve ser maior que %{count}
+          greater_than_or_equal_to: Deve ser maior ou igual a %{count}
+          inclusion: Não está incluído na lista
+          invalid: não é válido
+          less_than: deve ser menor que %{count}
+          less_than_or_equal_to: deve ser menor ou igual a %{count}
+          model_invalid: 'A validação falhou: %{errors}'
+          not_a_number: não é um número
+          not_an_integer: não é um número inteiro
+          odd: deve ser ímpar
+          required: é obrigatório(a)
+          taken: já está em uso
+          too_long:
+            one: 'é muito longo (máximo: 1 caracter)'
+            other: 'é muito longo (máximo: %{count} caracteres)'
+          too_short:
+            one: 'é muito curto (mínimo: 1 caracter)'
+            other: 'é muito curto (mínimo: %{count} caracteres)'
+          wrong_length:
+            one: não possui o tamanho esperado (1 caracter)
+            other: não possui o tamanho esperado (%{count} caracteres)
+          other_than: deve ser diferente de %{count}
+        template:
+          body: 'Por favor, verifique o(s) seguinte(s) campo(s):'
+          header:
+            one: 'Não foi possível gravar %{model}: 1 erro'
+            other: 'Não foi possível gravar %{model}: %{count} erros'
+      helpers:
+        select:
+          prompt: Por favor selecione
+        submit:
+          create: Criar %{model}
+          submit: Salvar %{model}
+          update: Atualizar %{model}
+      number:
+        currency:
+          format:
+            delimiter: "."
+            format: "%u %n"
+            precision: 2
+            separator: ","
+            significant: false
+            strip_insignificant_zeros: false
+            unit: R$
+        format:
+          delimiter: "."
+          precision: 3
+          separator: ","
+          significant: false
+          strip_insignificant_zeros: false
+        human:
+          decimal_units:
+            format: "%n %u"
+            units:
+              billion:
+                one: bilhão
+                other: bilhões
+              million:
+                one: milhão
+                other: milhões
+              quadrillion:
+                one: quatrilhão
+                other: quatrilhões
+              thousand: mil
+              trillion:
+                one: trilhão
+                other: trilhões
+              unit: ''
+          format:
+            delimiter: ""
+            precision: 3
+            significant: true
+            strip_insignificant_zeros: true
+          storage_units:
+            format: "%n %u"
+            units:
+              byte:
+                one: Byte
+                other: Bytes
+              gb: GB
+              kb: KB
+              mb: MB
+              tb: TB
+        percentage:
+          format:
+            delimiter: "."
+            format: "%n%"
+        precision:
+          format:
+            delimiter: "."
+      support:
+        array:
+          last_word_connector: " e "
+          two_words_connector: " e "
+          words_connector: ", "
+      time:
+        am: ''
+        formats:
+          default: "%a, %d de %B de %Y, %H:%M:%S %z"
+          long: "%d de %B de %Y, %H:%M"
+          short: "%d de %B, %H:%M"
+        pm: ''

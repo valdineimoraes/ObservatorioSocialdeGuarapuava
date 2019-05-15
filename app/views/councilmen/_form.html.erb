@@ -1,19 +1,28 @@
-
 <%= simple_form_for(@councilman) do |f| %>
- 
+  <div class="form-row">
+    <div class="col-sm-9">
 
-  <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :nickname %>
-    <%= f.input :political_party %>
-    <%= f.input :political_position, collection: Councilman.political_positions.keys.to_a %> 
-    
-    
+      <%= f.input :name, autofocus: true %>
 
-    
+      <%= f.input :nickname %>
 
-       <%= f.file_field :avatar %>   
+      <%= f.input :office %>
+    </div>
   </div>
+
+  <div class="form-row">
+    <div class="col-sm-3">
+      <%= f.input :political_party %>
+    </div>
+    <div class="col-sm-6">
+      <%= f.association :political_mandate, label_method: :description, value_method: :id,
+                        prompt: "Escolha um mandato politico" %>
+    </div>
+    <div class="col-sm-6">
+      <%= f.file_field :avatar %>
+    </div>
+  </div>
+
   <br>
 
   <div class="form-actions">

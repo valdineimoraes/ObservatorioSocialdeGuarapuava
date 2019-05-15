@@ -1,26 +1,21 @@
-
 <div class="box box-info">
   <div class="container">
     <div class="box-header">
-
-<h2>Tipo de Projeto</h2>
- </div>
-<h4>
-  <strong>Tipo:</strong>
-  <%= @project_kind.kind %>
-</h4>
-
-<p>
-  <strong>Descrição:</strong>
-  <%= @project_kind.description %>
-</p>
-<br>
-<%= link_to 'Editar', edit_project_kind_path(@project_kind),  class:"btn btn-warning" %> |
-<%= link_to 'Voltar', project_kinds_path, class:"btn btn-info" %>
-
-
-<br><br>
-</div>
+      <h3>Tipo de Projeto</h3>
+    </div>
+    <h4>
+      <strong>Tipo:</strong>
+      <%= @project_kind.kind %>
+    </h4>
+    <p>
+      <strong>Descrição:</strong>
+      <%= @project_kind.description %>
+    </p>
+    <br>
+    <%= link_to 'Editar', edit_project_kind_path(@project_kind),  class:"btn btn-warning" %> |
+    <%= link_to 'Voltar', project_kinds_path, class:"btn btn-info" %>
+    <br><br>
+  </div>
 </div>
 
 

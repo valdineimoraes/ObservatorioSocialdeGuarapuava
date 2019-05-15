@@ -1,65 +1,75 @@
 class ProjectKindsController < ApplicationController
-  before_action :set_project_kind, only: [:show, :edit, :update, :destroy]
+  before_action :set_project_kind, only: %i[show edit update destroy export]
+  require './lib/pdfs/project_kind_pdf'
+
+  add_breadcrumb I18n.t('breadcrumbs.project_kind.name'), :project_kinds_path
+  add_breadcrumb I18n.t('breadcrumbs.project_kind.new'),
+                 :new_project_kind_path, only: %i[new create]
 
   def index
     if params[:search]
-      @project_kinds = ProjectKind.search(params[:search]).paginate(:page => params[:page], :per_page => 5).order(kind: :asc)
-    else  
-      @project_kinds = ProjectKind.all.paginate(:page => params[:page], :per_page => 5).order(kind: :asc)
+      @project_kinds = ProjectKind.search(params[:search]).paginate(page: params[:page],
+                                                                    per_page: 10).order(kind: :asc)
+    else
+      @project_kinds = ProjectKind.all.paginate(page: params[:page],
+                                                per_page: 10).order(kind: :asc)
     end
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @project_kind = ProjectKind.new
   end
 
   def edit
+    add_breadcrumb I18n.t('breadcrumbs.project_kind.edit', name: "##{@project_kind.id}"),
+                   :edit_project_kind_path
   end
 
   def create
     @project_kind = ProjectKind.new(project_kind_params)
-
-    respond_to do |format|
-      if @project_kind.save
-        format.html { redirect_to @project_kind, notice: 'Tipo de projeto criado com sucesso.' }
-        format.json { render :show, status: :created, location: @project_kind }
-      else
-        format.html { render :new }
-        format.json { render json: @project_kind.errors, status: :unprocessable_entity }
-      end
+    if @project_kind.save
+      flash[:success] = 'Tipo de projeto criado com sucesso!'
+      redirect_to @project_kind
+    else
+      flash[:error] = 'Houve algum problema, reveja os dados inseridos !'
+      render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @project_kind.update(project_kind_params)
-        format.html { redirect_to @project_kind, notice: 'Tipo de projeto atualizado com sucesso.' }
-        format.json { render :show, status: :ok, location: @project_kind }
-      else
-        format.html { render :edit }
-        format.json { render json: @project_kind.errors, status: :unprocessable_entity }
-      end
+    if @project_kind.update(project_kind_params)
+      flash[:success] = 'Tipo de projeto atualizado com sucesso!'
+      redirect_to @project_kind
+    else
+      add_breadcrumb I18n.t('breadcrumbs.project_kind.edit', name: "##{@project_kind.id}"),
+                     :edit_project_kind_path
+      flash[:error] = 'Houve algum problema, reveja os dados inseridos !'
+      render :edit
     end
+  end
+
+  # export pdf - prawn pdf
+  def export
+    ProjectKindPdf::project_kind(@project_kind.kind, @project_kind.description, @project_kind.projects.count)
+    redirect_to '/project_kind.pdf'
   end
 
   def destroy
     @project_kind.destroy
-    respond_to do |format|
-      format.html { redirect_to project_kinds_url, notice: 'Tipo de projeto deletado.' }
-      format.json { head :no_content }
-    end
+    flash[:success] = 'Tipo de projeto removido com sucesso!'
+    redirect_to project_kinds_url
   end
+end
 
-  private
-    
-    def set_project_kind
-      @project_kind = ProjectKind.find(params[:id])
-    end
+private
 
-    def project_kind_params
-      params.require(:project_kind).permit(:kind, :description)
-    end
+def set_project_kind
+  @project_kind = ProjectKind.find(params[:id])
+end
+
+def project_kind_params
+  params.require(:project_kind).permit(:kind,
+                                       :description)
 end

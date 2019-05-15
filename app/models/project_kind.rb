@@ -1,7 +1,7 @@
 class ProjectKind < ApplicationRecord
-    
-    scope :search, -> (query) { where("kind like ?", "%#{query}%")}
+  scope :search, ->(query) { where('kind like ?', "%#{query}%") }
 
-    validates :kind, presence: true, uniqueness: true
-    
+  has_many :projects, dependent: :destroy
+
+  validates :kind, presence: true, uniqueness: true
 end

@@ -1,0 +1,27 @@
+<div class="box box-info">
+  <div class="container">
+    <div class="box-header">
+      <h3>Mandato Político</h3>
+    </div>
+    <h4>
+      <strong>Descrição</strong>
+      <%= @political_mandate.description %>
+    </h4>
+    <p>
+      <strong>Periodo Inicial:</strong>
+      <%= @political_mandate.first_period %>
+    </p>
+    <p>
+      <strong>Periodo Final:</strong>
+      <%= @political_mandate.final_period %>
+    </p>
+    <br>
+    <%= link_to 'Editar', edit_political_mandate_path(@political_mandate),  class:"btn btn-warning" %> |
+    <%= link_to 'Voltar', political_mandates_path, class:"btn btn-info" %>
+    <br><br>
+  </div>
+</div>
+
+
+
+

@@ -1,95 +1,62 @@
 <!-- Left side column. contains the logo and sidebar -->
-    <aside class="main-sidebar">
+<aside class="main-sidebar">
+  <!-- sidebar: style can be found in sidebar.less -->
+  <section class="sidebar">
+    <!-- Sidebar Menu -->
+    <ul class="sidebar-menu" data-widget="tree">
+      <li class="header">CADASTROS</li>
 
-      <!-- sidebar: style can be found in sidebar.less -->
-      <section class="sidebar">
-
-        <!-- Sidebar Menu -->
-        <ul class="sidebar-menu" data-widget="tree">
-          <li class="header">CADASTROS</li>
-          
-          <li class="sidebar-item"> 
-              
-              <%= link_to root_path do %>
-              <i class="fa fa-home fa-fw "></i>
-              <span>Inicio</span>
-              <% end%>
-          </li>  
-          
-          <li class="sidebar-item">
-              <%= link_to councilmen_path do %>
-              <i class="fa fa-fw fa-plus "></i>
-              <span>Vereadores</span>
-              <% end%>
-          </li>
-          <li class="sidebar-item">
-              <%= link_to meetings_path do %>
-              <i class="fa fa-fw fa-plus "></i>
-              <span>Sessões</span>
-              <% end%>
-          </li>
-          <li class="sidebar-item">
-              <%= link_to project_kinds_path do %>
-              <i class="fa fa-fw fa-plus "></i>
-              <span>Tipos de Projeto</span>
-              <% end%>
-          </li>
-          <li class="sidebar-item">
-              <%= link_to projects_path do %>
-              <i class="fa fa-fw fa-plus "></i>
-              <span>Projetos</span>
-              <% end%>
-          </li>
-          <li class="sidebar-item">
-              <%= link_to projects_path do %>
-              <i class="fa fa-fw fa-plus "></i>
-              <span>Mandatos </span>
-              <% end%>
-          </li>
-          <!--li class="treeview">
-            <a href="#">
-              <i class="fa fa-fw fa-table "></i>
-              <span>Teste</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <li class="">
-                <a href="http://localhost:8000/admin/courses">
-                  <i class="fa fa-fw fa-circle-o "></i>
-                  <span>teste 1</span>
-                </a>
-              </li>
-              <li class="">
-                <a href="#">
-                  <i class="fa fa-fw fa-circle-o "></i>
-                  <span>Teste 2</span>
-                </a>
-              </li>
-              <li class="">
-                <a href="#">
-                  <i class="fa fa-fw fa-circle-o "></i>
-                  <span>Teste 3</span>
-                </a>
-              </li>
-              <li class="">
-                <a href="#">
-                  <i class="fa fa-fw fa-circle-o "></i>
-                  <span>Teste 4</span>
-                </a>
-              </li>
-            </ul>
-          </li-->
-          <li class="header">CONFIG DA CONTA</li>
-          <li>
-            <%= link_to edit_user_registration_path do%>
-              <i class="fa fa-fw fa-user "></i>
-              <span>Perfil</span>
-            <% end%>
-          </li>
-        </ul>
-        <!-- /.sidebar-menu -->
-      </section>
-      <!-- /.sidebar -->
-    </aside>
+      <li class="sidebar-item">
+        <!-- Mostra o Link para a Dashboard do Sistema -->
+        <%= link_to root_path do %>
+          <i class="fa fa-home fa-fw "></i>
+          <span>Inicio</span>
+        <% end%>
+      </li>
+      <!-- Mostra o Link para os Mandatos Politicos-->
+      <li class="sidebar-item">
+        <%= link_to political_mandates_path do %>
+          <i class="fa fa-list "></i>
+          <span>Mandatos Políticos</span>
+        <% end%>
+      </li>
+      <!-- Mostra o Link para as Sessões -->
+      <li class="sidebar-item">
+        <%= link_to meetings_path do %>
+          <i class="fa fa-users "></i>
+          <span>Sessões</span>
+        <% end%>
+      </li>
+      <!-- Mostra o Link para os vereadores -->
+      <li class="sidebar-item">
+        <%= link_to councilmen_path do %>
+          <i class="fa fa-user-plus "></i>
+          <span>Vereadores</span>
+        <% end%>
+      </li>
+      <!-- Mostra o Link para as Tipos de Projetos-->
+      <li class="sidebar-item">
+        <%= link_to project_kinds_path do %>
+          <i class="fa fa-pie-chart "></i>
+          <span>Tipos de Projeto</span>
+        <% end%>
+      </li>
+      <!-- Mostra o Link para os Projetos ou Pautas -->
+      <li class="sidebar-item">
+        <%= link_to projects_path do %>
+          <i class="fa fa-file "></i>
+          <span>Projetos/Pautas</span>
+        <% end%>
+      </li>
+      <li class="header">CONFIG DA CONTA</li>
+      <li>
+        <%= link_to edit_user_registration_path do%>
+          <i class="fa fa-fw fa-user "></i>
+          <span>Perfil</span>
+        <% end%>
+      </li>
+    </ul>
+    <!-- /.sidebar-menu -->
+  </section>
+  <!-- /.sidebar -->
+</aside>
