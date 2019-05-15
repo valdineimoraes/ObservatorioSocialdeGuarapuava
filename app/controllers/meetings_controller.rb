@@ -1,5 +1,6 @@
 class MeetingsController < ApplicationController
-  before_action :set_meeting, :set_session_councilmen, only: %i[show edit update destroy]
+  before_action :set_meeting, :set_session_councilmen, only: %i[show edit update destroy export]
+  require './lib/pdfs/meeting_pdf'
 
   add_breadcrumb I18n.t('breadcrumbs.meeting.name'), :meetings_path
   add_breadcrumb I18n.t('breadcrumbs.meeting.new'),
@@ -11,17 +12,8 @@ class MeetingsController < ApplicationController
   end
 
   def show
-    @meeting = Meeting.find(params[:id])
-    respond_to do |format|
-      format.html
-      format.pdf do
-        pdf = MeetingPdf.new(@meeting)
-        send_data pdf.render,
-                  filename: "Sessão ##{@meeting.id}.pdf",
-                  type: 'application/pdf',
-                  disposition: 'inline'
-      end
-    end
+    add_breadcrumb I18n.t('breadcrumbs.meeting.show',
+                          name: "##{@meeting.id}"), :meetings_path
   end
 
   def new
@@ -54,6 +46,14 @@ class MeetingsController < ApplicationController
       flash[:error] = 'Houve algum problema, reveja os dados inseridos !'
       render :edit
     end
+  end
+
+   # export pdf - prawn pdf
+  def export
+    MeetingPdf::meeting(@meeting.date, @meeting.start_session.to_time.strftime('%H:%M'),
+                        @meeting.end_session.to_time.strftime('%H:%M'), @meeting.note,
+                        @meeting.projects.size)
+    redirect_to '/meeting.pdf'
   end
 
   def destroy

@@ -39,6 +39,9 @@ Rails.application.routes.draw do
       patch 'presents', to: 'meetings#update_presents'
       get 'projects', to: 'meetings#projects'
       get 'new', to: 'meetings#new_project'
+      member do
+        get 'export'
+      end
     end
 
     resources :political_mandates do
