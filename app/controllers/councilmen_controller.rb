@@ -1,5 +1,6 @@
 class CouncilmenController < ApplicationController
-  before_action :set_councilman, only: %i[show edit update destroy]
+  before_action :set_councilman, only: %i[show edit update destroy export]
+  require './lib/pdfs/coucilman_pdf'
 
   add_breadcrumb I18n.t('breadcrumbs.councilman.name'), :councilmen_path
   add_breadcrumb I18n.t('breadcrumbs.councilman.new'),
@@ -60,6 +61,12 @@ class CouncilmenController < ApplicationController
       flash[:error] = 'Houve algum problema, reveja os dados inseridos !'
       render :edit
     end
+  end
+
+  # export pdf - prawn pdf
+  def export
+    CouncilmanPdf::councilman(@councilman.name, @councilman.nickname, @councilman.office, @councilman.political_party)
+    redirect_to '/councilman.pdf'
   end
 
   def destroy

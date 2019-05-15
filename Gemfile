@@ -36,6 +36,9 @@ gem 'prawn'
 gem 'prawn-table'
 gem 'responders'
 
+#relatorios pdf
+gem 'prawn-rails'
+
 # breadcrumbs
 gem 'gretel', '~> 3.0', '>= 3.0.9'
 

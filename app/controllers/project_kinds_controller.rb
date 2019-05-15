@@ -1,5 +1,6 @@
 class ProjectKindsController < ApplicationController
-  before_action :set_project_kind, only: %i[show edit update destroy]
+  before_action :set_project_kind, only: %i[show edit update destroy export]
+  require './lib/pdfs/project_kind_pdf'
 
   add_breadcrumb I18n.t('breadcrumbs.project_kind.name'), :project_kinds_path
   add_breadcrumb I18n.t('breadcrumbs.project_kind.new'),
@@ -47,6 +48,12 @@ class ProjectKindsController < ApplicationController
       flash[:error] = 'Houve algum problema, reveja os dados inseridos !'
       render :edit
     end
+  end
+
+  # export pdf - prawn pdf
+  def export
+    ProjectKindPdf::project_kind(@project_kind.kind, @project_kind.description, @project_kind.projects.count)
+    redirect_to '/project_kind.pdf'
   end
 
   def destroy

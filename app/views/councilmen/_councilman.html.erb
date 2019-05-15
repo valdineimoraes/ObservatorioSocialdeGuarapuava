@@ -12,8 +12,9 @@
   <td><%= link_to councilman.projects.size, councilman_projects_path(councilman)%></td>
 
   <!--Ações dos Botões -->
-  <td><%= link_to '', councilman_url(councilman, format: "pdf"),
-                  class: "fa fa-file-pdf btn btn-success" , title: "Gerar Relatório em PDF do Vereador"%></td>
+  <td><%= link_to '', export_councilman_path(councilman), target: "_blank",
+                  class: "fa fa-file-pdf btn btn-success" ,
+                  title: "Gerar Relatório em PDF do Tipo de Projeto"%></td>
   <td><%= link_to '', councilman,
                   class: "fa fa-search btn btn-info" , title: "Visualizar Vereador"%></td>
   <td><%= link_to '', edit_councilman_path(councilman),

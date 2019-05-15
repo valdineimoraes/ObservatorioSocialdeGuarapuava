@@ -63,6 +63,9 @@ class MeetingsController < ApplicationController
   end
 
   def presents
+    add_breadcrumb I18n.t('breadcrumbs.meeting.presents'),
+                   :meeting_presents_path
+
     @meeting = Meeting.find(params[:meeting_id])
 
     Councilman.all.each do |c|
@@ -71,6 +74,9 @@ class MeetingsController < ApplicationController
   end
 
   def update_presents
+    add_breadcrumb I18n.t('breadcrumbs.meeting.presents_update'),
+                   :meeting_presents_path
+
     @meeting = Meeting.find(params[:meeting_id])
     sc_params = params.require(:meeting)
                       .permit(session_councilmen_attributes:

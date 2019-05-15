@@ -13,13 +13,21 @@ Rails.application.routes.draw do
   end
 
   authenticate :user do
+
     root to: 'dashboard#index'
 
     resources :councilmen do
       get 'projects', to: 'councilmen#projects'
+      member do
+        get 'export'
+      end
     end
 
-    resources :project_kinds
+    resources :project_kinds do
+      member do
+        get 'export'
+      end
+    end
 
     resources :projects do
       get 'votes', to: 'projects#votes'

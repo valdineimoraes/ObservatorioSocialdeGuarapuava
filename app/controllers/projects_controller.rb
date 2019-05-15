@@ -36,6 +36,9 @@ class ProjectsController < ApplicationController
   end
 
   def votes
+    add_breadcrumb I18n.t('breadcrumbs.project.vote'),
+                   :project_votes_path
+
     @project = Project.find(params[:project_id])
 
     Councilman.all.each do |c|
@@ -67,8 +70,11 @@ class ProjectsController < ApplicationController
   end
 
   def update_votes
+    add_breadcrumb I18n.t('breadcrumbs.project.vote_update'),
+                   :project_votes_path
     @project = Project.find(params[:project_id])
     vote_params = params.require(:project).permit(votes_attributes: %i[id vote])
+
 
     if @project.update(vote_params)
       flash[:success] = 'Votos atualizados com sucesso'
