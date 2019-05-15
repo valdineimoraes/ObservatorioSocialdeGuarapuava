@@ -1,5 +1,6 @@
 class PoliticalMandatesController < ApplicationController
-  before_action :set_political_mandate, only: %i[show edit update destroy]
+  before_action :set_political_mandate, only: %i[show edit update destroy export]
+  require './lib/pdfs/political_mandate_pdf'
 
   add_breadcrumb I18n.t('breadcrumbs.political_mandate.name'), :political_mandates_path
   add_breadcrumb I18n.t('breadcrumbs.political_mandate.new'),
@@ -57,6 +58,13 @@ class PoliticalMandatesController < ApplicationController
     @political_mandate.destroy
     flash[:success] = 'Mandato politico destruido com sucesso!'
     redirect_to political_mandates_path
+  end
+
+  # export pdf - prawn pdf
+  def export
+    PoliticalMandatePdf::political_mandate(@political_mandate.description, @political_mandate.first_period,
+                                          @political_mandate.final_period, @political_mandate.councilmen.size)
+    redirect_to '/political_mandate.pdf'
   end
 
   def councilman

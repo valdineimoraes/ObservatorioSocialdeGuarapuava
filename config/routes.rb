@@ -43,6 +43,9 @@ Rails.application.routes.draw do
 
     resources :political_mandates do
       get 'councilman', to: 'political_mandate#councilman'
+      member do
+        get 'export'
+      end
     end
   end
 end
