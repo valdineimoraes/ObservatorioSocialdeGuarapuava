@@ -1,6 +1,6 @@
 require 'prawn'
 
-module MeetingPdf
+module ProjectPdf
   PDF_OPTIONS = {
       # Escolhe o Page size como uma folha A4
       :page_size   => "A4",
@@ -10,7 +10,8 @@ module MeetingPdf
       :margin      => [40, 75]
   }
 
-  def self.meeting date, start_session, end_session, note, projects
+  def self.project name, description, project_kind, councilman, meeting, result
+    
     Prawn::Document.new(PDF_OPTIONS) do |pdf|
       pdf.image "#{Rails.root}/app/assets/images/os-logo.png", :at => [2, 770], :width => 100
       # Define a cor do traçado
@@ -20,23 +21,28 @@ module MeetingPdf
       pdf.text "Rua XV de Novembro, 7599, Centro", :size => 14, :style => :bold, :align => :center
       pdf.text "Guarapuava - PR", :size => 14, :style => :bold, :align => :center
       pdf.move_down 30
-      # Titulo do relatório
-      pdf.text "Relatório de Sessões", :size => 16, :style => :bold, :align => :center
+      pdf.text "Relatório de Projeto", :size => 16, :style => :bold, :align => :center
       # Move mais 30 PDF points para baixo o cursor
       pdf.move_down 30
-      #Titulo do Relatório
-      pdf.text "Data da Sessão: #{date}", :size => 14, :align => :justify,
+      # Escreve o texto 
+      pdf.text "Projeto: #{name}", :size => 14, :align => :justify,
                :inline_format => true
       # Move mais 30 PDF points para baixo o cursor
       pdf.move_down 10
       # Adiciona o nome com 12 PDF points, justify e com o formato inline (Observe que o <b></b> funciona para deixar em negrito)
-      pdf.text "Inicio da Sessão: #{start_session} - Fim da Sessão: #{end_session}", :size => 12,
+      pdf.text "Descrição do Projeto: #{description}", :size => 12,
                :align => :justify, :inline_format => true
       pdf.move_down 5
-      pdf.text "Anotações: #{note}", :size => 12,
+      pdf.text "Tipo do Projeto: #{project_kind}", :size => 12,
                :align => :justify, :inline_format => true
       pdf.move_down 5
-      pdf.text "Projetos votados na sessão: #{projects}", :size => 12,
+      pdf.text "Vereador que Propos: #{councilman}", :size => 12,
+               :align => :justify, :inline_format => true
+      pdf.move_down 5
+      pdf.text "Disposto na Sessão: #{meeting}", :size => 12,
+               :align => :justify, :inline_format => true
+      pdf.move_down 5
+      pdf.text "Resultado da Votação: #{result}", :size => 12,
                :align => :justify, :inline_format => true
       # Muda de font para Helvetica
       pdf.font "Helvetica"
@@ -44,7 +50,8 @@ module MeetingPdf
       pdf.number_pages "Gerado: #{(Time.now).strftime("%d/%m/%y as %H:%M")} - Página ", :start_count_at => 0,
                        :page_filter => :all, :at => [pdf.bounds.right - 140, 7], :align => :right, :size => 8
       # Gera no nosso PDF e coloca na pasta public
-      pdf.render_file('public/meeting.pdf')
+      pdf.render_file('public/project.pdf')
     end
   end
+
 end

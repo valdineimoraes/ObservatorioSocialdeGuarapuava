@@ -1,7 +1,8 @@
 class ProjectsController < ApplicationController
   before_action :set_project, :set_meeting, :set_session_councilmen,
-                only: %i[show edit update destroy]
+                only: %i[show edit update destroy export]
   after_action :set_result, only: [:update_votes]
+  require './lib/pdfs/project_pdf'
 
   add_breadcrumb I18n.t('breadcrumbs.project.name'), :projects_path
   add_breadcrumb I18n.t('breadcrumbs.project.new'),
@@ -82,6 +83,15 @@ class ProjectsController < ApplicationController
       flash[:error] = 'Não foi possível atualizar os dados'
     end
     redirect_to action: 'index'
+  end
+
+  # export pdf - prawn pdf
+  def export
+    ProjectPdf::project(@project.name, @project.description,
+                        @project.project_kind.kind, @project.councilman.name,
+                        @project.meeting.date.to_time.strftime('%d/%m/%Y'),
+                        @project.result)
+    redirect_to '/project.pdf'
   end
 
   def destroy

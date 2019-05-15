@@ -48,7 +48,7 @@ class MeetingsController < ApplicationController
     end
   end
 
-   # export pdf - prawn pdf
+  # export pdf - prawn pdf
   def export
     MeetingPdf::meeting(@meeting.date, @meeting.start_session.to_time.strftime('%H:%M'),
                         @meeting.end_session.to_time.strftime('%H:%M'), @meeting.note,

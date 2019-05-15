@@ -52,7 +52,7 @@ namespace :db do
       Project.find_or_create_by!(
         meeting: Meeting.all.sample,
         councilman: Councilman.all.sample,
-        name: Faker::Name.unique.name,
+        name: Faker::Hipster.sentence,
         project_kind: ProjectKind.all.sample,
         description: Faker::Lorem.paragraph(2)
       )

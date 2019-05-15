@@ -32,6 +32,9 @@ Rails.application.routes.draw do
     resources :projects do
       get 'votes', to: 'projects#votes'
       patch 'votes', to: 'projects#update_votes'
+      member do
+        get 'export'
+      end
     end
 
     resources :meetings do
