@@ -7,25 +7,12 @@
                              'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application',
                              'data-turbolinks-track': 'reload' %>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 <body>
-<div class="container">
-  <div class="row row-session">
-    <div class="col-md-4 logo-sessions" >
-      <%= link_to image_tag("os-logo.png", alt: "Observatorio Social logo", class: 'logos os-logo'), root_path %>
-      <%= link_to image_tag("utfpr-logo.jpg", alt: "Observatorio Social logo", class: 'logos utfpr-logo'), 'http://portal.utfpr.edu.br/' %>
-    </div>
-    <div class="col-md-6 form-session">
-      <div class="vertical-centering">
-        <%= render 'shared/flash_messages'%>
-        <div>
-          <h3 class="text-center gray-text2"><%= yield :title %></h3>
-          <p class="gray-text2"><%= yield :sub_title %></p>
-        </div>
-        <%= yield %>
-      </div> <!-- .vertical-centering -->
-    </div>
-  </div>
-</div> <!-- sessions -->
+  <div class="container">
+    <%= yield %>
+  </div> 
 </body>
 </html>
