@@ -3,6 +3,11 @@ User.create([{
               email: 'teste@teste.com',
               password: '123456'
             }])
+User.create([{
+              name: 'Valdinei'
+              email: 'valdineimoraesantonio@hotmail.com'
+              password: '123456'
+            }])
 
 Councilman.create([{
                     name: 'Celso Lara da Costa',
