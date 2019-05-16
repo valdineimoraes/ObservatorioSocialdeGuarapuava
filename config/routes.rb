@@ -13,7 +13,6 @@ Rails.application.routes.draw do
   end
 
   authenticate :user do
-
     root to: 'dashboard#index'
 
     resources :councilmen do

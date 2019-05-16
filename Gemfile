@@ -36,7 +36,7 @@ gem 'prawn'
 gem 'prawn-table'
 gem 'responders'
 
-#relatorios pdf
+# relatorios pdf
 gem 'prawn-rails'
 
 # breadcrumbs

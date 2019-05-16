@@ -76,7 +76,6 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:project_id])
     vote_params = params.require(:project).permit(votes_attributes: %i[id vote])
 
-
     if @project.update(vote_params)
       flash[:success] = 'Votos atualizados com sucesso'
     else
@@ -87,10 +86,10 @@ class ProjectsController < ApplicationController
 
   # export pdf - prawn pdf
   def export
-    ProjectPdf::project(@project.name, @project.description,
-                        @project.project_kind.kind, @project.councilman.name,
-                        @project.meeting.date.to_time.strftime('%d/%m/%Y'),
-                        @project.result)
+    ProjectPdf.project(@project.name, @project.description,
+                       @project.project_kind.kind, @project.councilman.name,
+                       @project.meeting.date.to_time.strftime('%d/%m/%Y'),
+                       @project.result)
     redirect_to '/project.pdf'
   end
 

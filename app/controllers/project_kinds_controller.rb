@@ -52,7 +52,7 @@ class ProjectKindsController < ApplicationController
 
   # export pdf - prawn pdf
   def export
-    ProjectKindPdf::project_kind(@project_kind.kind, @project_kind.description, @project_kind.projects.count)
+    ProjectKindPdf.project_kind(@project_kind.kind, @project_kind.description, @project_kind.projects.count)
     redirect_to '/project_kind.pdf'
   end
 

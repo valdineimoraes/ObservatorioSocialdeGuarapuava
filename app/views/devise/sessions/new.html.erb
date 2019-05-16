@@ -1,30 +1,30 @@
 <% provide(:head_title, "Entrar") %>
 <div class="form-signin">
-    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name),
-                        class:'form-signin') do |f| %>
-      <div class="text-center mb-4">
-        <%= link_to image_tag("os-logo.png", alt: "Observatorio Social logo", 
+  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name),
+                      class:'form-signin') do |f| %>
+    <div class="text-center mb-4">
+      <%= link_to image_tag("os-logo.png", alt: "Observatorio Social logo",
                             size:"180x92"), root_path %>
-                            <br> <br> <br> <br>
-         <%= render 'shared/flash_messages'%>
-        <h1 class="h3 mb-3 font-weight-normal">Sistema OBS</h1>
-        <p>Entre com seu usuário e senha para acessar o sistema</p>
-      </div>
-        <div class="form-label-group ">
-          <%= f.input :email, required: true, autofocus: true, id:'inputEmail', class:'form-control', 
-                          placeholder:'Digite seu Email' %>
-        </div>
-        <div class="form-label-group">
-          <%= f.input :password, id:'inputPassword', class:'form-control', 
-                          placeholder:'Digite sua Senha', required: true %>
-        </div>
-        <div class="checkbox mb-3">
-          <label>
-            <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-          </label>
-        </div>
-        <%= f.button :submit, "Entrar",  class:'btn btn-lg btn-primary btn-block ' %>
-        <%= render "devise/shared/links", class:'pull-right clearfix' %>
-        <p class="mt-5 mb-3 text-muted text-center">© 2017-2018</p>
-    <% end %>
+      <br> <br> <br> <br>
+      <%= render 'shared/flash_messages'%>
+      <h1 class="h3 mb-3 font-weight-normal">Bem Vindo ao Sistema OBS</h1>
+      <p>Entre com seu usuário e senha para acessar o sistema</p>
+    </div>
+    <div class="form-label-group ">
+      <%= f.input :email, required: true, autofocus: true, id:'inputEmail', class:'form-control',
+                  placeholder:'Digite seu Email' %>
+    </div>
+    <div class="form-label-group">
+      <%= f.input :password, id:'inputPassword', class:'form-control',
+                  placeholder:'Digite sua Senha', required: true %>
+    </div>
+    <div class="checkbox mb-3">
+      <label>
+        <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+      </label>
+    </div>
+    <%= f.button :submit, "Entrar",  class:'btn btn-lg btn-primary btn-block ' %>
+    <%= render "devise/shared/links", class:'pull-right clearfix' %>
+    <p class="mt-5 mb-3 text-muted text-center">© Observatorio Social de Guarapuava-PR</p>
+  <% end %>
 </div>
