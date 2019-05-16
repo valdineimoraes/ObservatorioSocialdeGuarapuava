@@ -4,8 +4,8 @@ User.create([{
               password: '123456'
             }])
 User.create([{
-              name: 'Valdinei'
-              email: 'valdineimoraesantonio@hotmail.com'
+              name: 'Valdinei',
+              email: 'valdineimoraesantonio@hotmail.com',
               password: '123456'
             }])
 
