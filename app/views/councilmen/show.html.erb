@@ -10,9 +10,10 @@
         <%end%>
       </div>
       <div class="col-sm-4">
-        <h3 class="profile-username text-center"><%= @councilman.nickname %></h3>
-        <p class="text-muted text-center"><%= @councilman.name %></p>
-        <p class="text-muted text-center"><%= @councilman.political_mandate.description %></p>
+        <h3 class="profile-username text-center">Vereador(a): <%= @councilman.name %></h3>
+        <p class="text-muted text-center">Apelido: <%= @councilman.nickname %></p>
+        <p class="text-muted text-center">Partido Político: <%= @councilman.political_party %></p>
+        <p class="text-muted text-center">Mandato Político: <%= @councilman.political_mandate.description %></p>
       </div>
     </div>
     <br>
@@ -22,9 +23,6 @@
       </li>
       <li class="list-group-item">
         <b>Projetos que apresentou</b> <a class="pull-right"><%=@councilman.projects.size%></a>
-      </li>
-      <li class="list-group-item">
-        <b>Partido</b> <a class="pull-right"><%=@councilman.political_party%></a>
       </li>
     </ul>
   </div>
