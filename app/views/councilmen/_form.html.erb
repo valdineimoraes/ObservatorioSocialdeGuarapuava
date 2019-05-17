@@ -1,4 +1,4 @@
-<%= simple_form_for(@councilman) do |f| %>
+<%= simple_form_for(@councilman, multiple: true) do |f| %>
   <div class="form-row">
     <div class="col-sm-9">
       <%= f.input :name, autofocus: true %>
