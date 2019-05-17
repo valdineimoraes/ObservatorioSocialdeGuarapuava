@@ -14,7 +14,7 @@ namespace :db do
     User.create_with(name: 'Teste', password: '123456')
         .find_or_create_by!(email: 'teste@teste.com')
 
-    15.times do
+    10.times do
       PoliticalMandate.find_or_create_by!(
         description: Faker::Restaurant.unique.name,
         first_period: Faker::Date.between(2.year.ago, 9.months.ago),
