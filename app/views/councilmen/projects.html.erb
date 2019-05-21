@@ -24,14 +24,21 @@
           <td><%= truncate(project.description, length: 50) %></td>
           <td><%= project.councilman.name %></td>
           <td><%= project.project_kind.kind %></td>
-          <td><%= project.result %></td>
+          <% if project.result.nil? %>
+            <td>Sem resultado</td>
+          <% else %>
+            <td><%= I18n.t(project.result, scope: [:activerecord, :attributes, :project, :results]) %></td>
+          <% end%>
+          <!-- Ações dos botões -->
+          <td><%= link_to '',export_project_path(project), target: "_blank",
+                          class: "fa fa-file-pdf btn btn-success" ,
+                          title: "Gerar Relatório em PDF do Projeto"%></td>
+          <td><%= link_to '', project, class: "btn btn-info fa fa-search", title: 'Visualizar Projeto' %></td>
           <td><%= link_to '', project_votes_path(project),
-                          class: "btn btn-success fa fa-plus" %>
-          <td><%= link_to '', project, class: "btn btn-info fa fa-search" %></td>
-          <td><%= link_to '', edit_project_path(project),
-                          class: "btn btn-warning fa fa-edit"  %></td>
+                  class: "btn btn-success fa fa-vote-yea", title: 'Informar Votos dos Vereadores no Projeto' %><td>
+          <%= link_to '', edit_project_path(project), class: "btn btn-warning fa fa-edit", title:"Editar Projeto"  %></td> 
           <td><%= link_to '', project, method: :delete, data: { confirm: 'Are you sure?' },
-                          class: "btn btn-danger fa fa-remove"  %></td>
+                          class: "btn btn-danger fa fa-remove", title:"Excluir Projeto"  %></td>
         </tr>
       <% end %>
       </tbody>

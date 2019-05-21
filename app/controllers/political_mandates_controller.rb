@@ -68,7 +68,12 @@ class PoliticalMandatesController < ApplicationController
   end
 
   def councilman
-    @councilman = Councilman.find(params[:councilman_id])
+    @political_mandate = PoliticalMandate.find(params[:id])
+  end
+
+  def new_councilman
+    @political_mandate = PoliticalMandate.find(params[:id])
+    @councilman = Councilman.new
   end
 
   private
