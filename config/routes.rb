@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     end
 
     resources :project_kinds do
+      get 'projects', to: 'project_kinds#projects'
       member do
         get 'export'
       end
@@ -47,7 +48,7 @@ Rails.application.routes.draw do
     end
 
     resources :political_mandates do
-      get 'councilman', to: 'political_mandate#councilman'
+      get 'councilmen', to: 'political_mandates#councilmen'
       member do
         get 'export'
       end

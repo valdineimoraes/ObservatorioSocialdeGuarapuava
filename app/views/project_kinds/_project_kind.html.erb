@@ -1,7 +1,7 @@
 <tr>
   <td><%= project_kind.kind %></td>
   <td><%= project_kind.description %></td>
-  <td><%= project_kind.projects.count %></td>
+  <td><%= link_to project_kind.projects.count, project_kind_projects_path(project_kind) %></td>
 
   <td><%= link_to '', export_project_kind_path(project_kind), target: "_blank",
                   class: "fa fa-file-pdf btn btn-success" ,

@@ -67,8 +67,8 @@ class PoliticalMandatesController < ApplicationController
     redirect_to '/political_mandate.pdf'
   end
 
-  def councilman
-    @political_mandate = PoliticalMandate.find(params[:id])
+  def councilmen
+    @political_mandate = PoliticalMandate.find(params[:political_mandate_id])
   end
 
   def new_councilman

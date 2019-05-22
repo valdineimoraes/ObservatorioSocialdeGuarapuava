@@ -75,10 +75,6 @@ class CouncilmenController < ApplicationController
     redirect_to councilmen_path
   end
 
-  def political_mandates
-    @political_mandate = PoliticalMandate.find(params[:political_mandates_id])
-  end
-
   def projects
     @councilman = Councilman.find(params[:councilman_id])
   end

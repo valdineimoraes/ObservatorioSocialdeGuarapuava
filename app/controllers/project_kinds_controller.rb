@@ -56,6 +56,10 @@ class ProjectKindsController < ApplicationController
     redirect_to '/project_kind.pdf'
   end
 
+  def projects
+    @project_kind = ProjectKind.find(params[:project_kind_id])
+  end
+
   def destroy
     @project_kind.destroy
     flash[:success] = 'Tipo de projeto removido com sucesso!'

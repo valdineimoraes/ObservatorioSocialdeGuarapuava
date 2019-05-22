@@ -62,10 +62,10 @@ class MeetingsController < ApplicationController
     redirect_to meetings_url
   end
 
-  def projects    
+  def projects
     @meeting = Meeting.find(params[:meeting_id])
   end
-  
+
   def presents
     add_breadcrumb I18n.t('breadcrumbs.meeting.presents'),
                    :meeting_presents_path
