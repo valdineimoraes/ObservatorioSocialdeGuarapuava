@@ -1,5 +1,7 @@
 //= require simplemde/simplemde.min
 
+window.OBS = {};
+
 $(document).on('turbolinks:load', function() {
     OBS.loadMarkdownEditor();
 });
@@ -17,3 +19,5 @@ OBS.loadMarkdownEditor = function () {
         $(this).html(html);
     })
 };
+
+$('.sidebar-toggle').pushMenu();
