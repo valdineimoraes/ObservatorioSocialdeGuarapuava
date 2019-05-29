@@ -62,13 +62,18 @@ class PoliticalMandatesController < ApplicationController
 
   # export pdf - prawn pdf
   def export
-    PoliticalMandatePdf::political_mandate(@political_mandate.description, @political_mandate.first_period,
+    PoliticalMandatePdf.political_mandate(@political_mandate.description, @political_mandate.first_period,
                                           @political_mandate.final_period, @political_mandate.councilmen.size)
     redirect_to '/political_mandate.pdf'
   end
 
-  def councilman
-    @councilman = Councilman.find(params[:councilman_id])
+  def councilmen
+    @political_mandate = PoliticalMandate.find(params[:political_mandate_id])
+  end
+
+  def new_councilman
+    @political_mandate = PoliticalMandate.find(params[:id])
+    @councilman = Councilman.new
   end
 
   private

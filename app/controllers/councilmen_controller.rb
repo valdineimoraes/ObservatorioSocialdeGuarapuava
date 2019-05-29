@@ -65,7 +65,7 @@ class CouncilmenController < ApplicationController
 
   # export pdf - prawn pdf
   def export
-    CouncilmanPdf::councilman(@councilman.name, @councilman.nickname, @councilman.office, @councilman.political_party)
+    CouncilmanPdf.councilman(@councilman.name, @councilman.nickname, @councilman.office, @councilman.political_party)
     redirect_to '/councilman.pdf'
   end
 
@@ -73,10 +73,6 @@ class CouncilmenController < ApplicationController
     @councilman.destroy
     flash[:success] = 'Vereador destruido com sucesso!'
     redirect_to councilmen_path
-  end
-
-  def political_mandates
-    @political_mandate = PoliticalMandate.find(params[:political_mandates_id])
   end
 
   def projects

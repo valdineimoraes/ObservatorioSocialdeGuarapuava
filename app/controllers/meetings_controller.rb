@@ -50,9 +50,9 @@ class MeetingsController < ApplicationController
 
   # export pdf - prawn pdf
   def export
-    MeetingPdf::meeting(@meeting.date, @meeting.start_session.to_time.strftime('%H:%M'),
-                        @meeting.end_session.to_time.strftime('%H:%M'), @meeting.note,
-                        @meeting.projects.size)
+    MeetingPdf.meeting(@meeting.date, @meeting.start_session.to_time.strftime('%H:%M'),
+                       @meeting.end_session.to_time.strftime('%H:%M'), @meeting.note,
+                       @meeting.projects.size)
     redirect_to '/meeting.pdf'
   end
 
@@ -60,6 +60,10 @@ class MeetingsController < ApplicationController
     @meeting.destroy
     flash[:success] = 'Sessão removida com sucesso!'
     redirect_to meetings_url
+  end
+
+  def projects
+    @meeting = Meeting.find(params[:meeting_id])
   end
 
   def presents

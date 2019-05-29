@@ -1,15 +1,11 @@
 <%= simple_form_for(@councilman) do |f| %>
   <div class="form-row">
     <div class="col-sm-9">
-
       <%= f.input :name, autofocus: true %>
-
       <%= f.input :nickname %>
-
       <%= f.input :office %>
     </div>
   </div>
-
   <div class="form-row">
     <div class="col-sm-3">
       <%= f.input :political_party %>
@@ -22,9 +18,7 @@
       <%= f.file_field :avatar %>
     </div>
   </div>
-
   <br>
-
   <div class="form-actions">
     <%= f.button :submit %>
     <%= link_to 'Voltar', councilmen_path, class:"btn btn-warning" %>

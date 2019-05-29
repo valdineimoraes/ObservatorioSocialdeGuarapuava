@@ -6,6 +6,7 @@ class Councilman < ApplicationRecord
 
   belongs_to :political_mandate
 
+  has_many :votes, dependent: :destroy
   has_many :projects, dependent: :destroy
   has_many :session_councilmen, dependent: :destroy
   has_many :meetings, through: :session_councilmen, dependent: :destroy

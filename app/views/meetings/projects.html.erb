@@ -1,13 +1,12 @@
 <div class="box">
   <div class="box-header">
-    <h1>Projetos</h1>
-    <%= link_to 'Novo Projeto', meeting_new_path, class: "btn btn-info" %>
+    <h3>Projetos da Sessão: <%= @meeting.date.to_time.strftime('%d/%m/%Y')%></h3>
+    <%= link_to 'Novo Projeto', meeting_new_path(@meeting), class: "btn btn-info", title:"Cadastrar novo Projeto" %>
   </div>
   <div class="box-body table-responsive">
     <table class="table table-bordered">
       <thead>
       <tr>
-        <th>Sessão</th>
         <th>Nome</th>
         <th>Descrição</th>
         <th>Proposto pelo Vereador</th>
@@ -16,32 +15,30 @@
         <th colspan="3">Ações</th>
       </tr>
       </thead>
+
       <tbody>
       <% @meeting.projects.each do |project| %>
         <tr>
-          <td><%= link_to project.meeting.date.to_time.strftime('%d/%m/%Y'), project.meeting%></td>
           <td><%= link_to project.name, project %></td>
           <td><%= truncate(project.description, length: 50) %></td>
           <td><%= link_to project.councilman.name, project.councilman %></td>
-          <td><%= link_to project.project_kind.kind, project.project_kind %></td>
-
+          <td><%= project.project_kind.kind %></td>
           <% if project.result.nil? %>
             <td>Sem resultado</td>
           <% else %>
             <td><%= I18n.t(project.result, scope: [:activerecord, :attributes, :project, :results]) %></td>
           <% end%>
-
-          <td><%= link_to '', project_votes_path(project),
-                          class: "btn btn-success fa fa-vote-yea", title: 'Informar Votos dos Vereadores no Projeto' %>
+          <!-- Ações dos botões -->
+          <td><%= link_to '',export_project_path(project), target: "_blank",
+                          class: "fa fa-file-pdf btn btn-success" ,
+                          title: "Gerar Relatório em PDF do Projeto"%></td>
           <td><%= link_to '', project, class: "btn btn-info fa fa-search", title: 'Visualizar Projeto' %></td>
-          <td><%= link_to '', edit_project_path(project),
-                          class: "btn btn-warning fa fa-edit", title: 'Editar Projeto'  %></td>
-          <td><%= link_to '', project, method: :delete, data: { confirm: 'Are you sure?' },
-                          class: "btn btn-danger fa fa-remove" , title: 'Excluir Projeto' %></td>
+          <td><%= link_to '', project_votes_path(project),
+                          class: "btn btn-success fa fa-vote-yea", title: 'Informar Votos dos Vereadores no Projeto' %><td><%= link_to '', edit_project_path(project), class: "btn btn-warning fa fa-edit", title:"Editar Projeto"  %></td>
+          <td><%= link_to '', project, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger fa fa-remove", title:"Remover Projeto"  %></td>
         </tr>
       <% end %>
       </tbody>
     </table>
   </div>
 </div>
-

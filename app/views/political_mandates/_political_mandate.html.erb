@@ -3,7 +3,7 @@
   <td><%= political_mandate.description %></td>
   <td><%= political_mandate.first_period %></td>
   <td><%= political_mandate.final_period %></td>
-  <td><%= political_mandate.councilmen.size %></td>
+  <td><%= link_to political_mandate.councilmen.size, political_mandate_councilmen_path(political_mandate)%></td>
 
   <!--Ações dos Botões -->
   <td><%= link_to '', export_political_mandate_path(political_mandate), target: "_blank",

@@ -7,4 +7,5 @@
  //= require popper
  //= require bootstrap-sprockets
 
+ //= require adminlte
  //= require config/simplemde

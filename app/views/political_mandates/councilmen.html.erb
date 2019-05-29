@@ -1,0 +1,56 @@
+<div class="box box-info">
+  <div class="box-header">
+    <h3>Vereadores cadastrados no Mandato: <%= @political_mandate.description %></h3>
+    <div class="row">
+      <div class="col-sm-4">
+        <%= link_to 'Novo Vereador', new_councilman_path, class: "btn btn-info", title: 'Adicionar novo vereador' %>
+      </div>
+    </div>
+  </div>
+  <div class="box-body table-responsive">
+    <table class="table table-bordered table-striped table-hover">
+      <thead >
+      <tr>
+        <th>Foto</th>
+        <th>Nome</th>
+        <th>Cargo do Vereador</th>
+        <th>Projetos</th>
+        <th colspan="4">Ações</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @political_mandate.councilmen.each do |councilman| %>
+        <tr>
+          <td><% if (councilman.avatar?)%>
+              <%= image_tag(councilman.avatar.thumb.url) %>
+            <%else%>
+              <%= gravatar_for(councilman, 50, "gravatar")%>
+            <%end%>
+          </td>
+          <td><%= link_to councilman.name, councilman %></td>
+          <td><%= councilman.office %></td>
+          <td><%= link_to councilman.projects.size, councilman_projects_path(councilman)%></td>
+          <!--Ações dos Botões -->
+          <td><%= link_to '', export_councilman_path(councilman), target: "_blank",
+                          class: "fa fa-file-pdf btn btn-success" ,
+                          title: "Gerar Relatório em PDF do Vereador"%></td>
+          <td><%= link_to '', councilman,
+                          class: "fa fa-search btn btn-info" , title: "Visualizar Vereador"%></td>
+          <td><%= link_to '', edit_councilman_path(councilman),
+                          class: "fa fa-edit btn btn-warning", title: "Editar Vereador" %></td>
+          <td><%= link_to '', councilman, method: :delete, data: { confirm: 'Tem certeza?' },
+                          class: "fa fa-remove btn btn-danger", title: "Excluir Vereador" %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+
+
+
+
+   
