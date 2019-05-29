@@ -26,7 +26,22 @@ RSpec.describe 'Political_Mandates', type: :feature do
 
         expect_alert_success(resource_name, 'flash.create')
 
-        expect_page_have_in('table tbody', attributes[:description])
+        within('table tbody') do
+          expect(page).to have_content(attributes[:description])
+        end
+      end
+    end
+
+    context 'when invalid fields' do
+      it 'show errors' do
+        submit_form
+
+        expect(page).to have_selector('div.alert.alert-danger',
+                                      text: I18n.t('flash.actions.errors'))
+
+        within('div.meeting_start_session') do
+          expect(page).to have_content(I18n.t('errors.messages.less_hour'))
+        end
       end
     end
   end
