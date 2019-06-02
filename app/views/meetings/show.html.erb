@@ -16,7 +16,7 @@
     </p>
     <p>
       <strong>Projetos: </strong>
-      <%= @meeting.projects.size %>
+      <td><%= link_to @meeting.projects.size, meeting_projects_path(@meeting) %></td>
     </p>
     <p>
       <strong>Anotações:</strong>

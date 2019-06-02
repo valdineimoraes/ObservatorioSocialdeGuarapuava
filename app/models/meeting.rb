@@ -1,5 +1,4 @@
 class Meeting < ApplicationRecord
-
   has_many :projects, dependent: :destroy
 
   has_many :session_councilmen, inverse_of: :meeting

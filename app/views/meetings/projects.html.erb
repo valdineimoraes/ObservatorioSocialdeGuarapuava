@@ -1,6 +1,6 @@
 <div class="box">
   <div class="box-header">
-    <h1>Projetos da Sessão: <%= @meeting.date.to_time.strftime('%d/%m/%Y')%></h1>
+    <h3>Projetos da Sessão: <%= @meeting.date.to_time.strftime('%d/%m/%Y')%></h3>
     <%= link_to 'Novo Projeto', meeting_new_path(@meeting), class: "btn btn-info", title:"Cadastrar novo Projeto" %>
   </div>
   <div class="box-body table-responsive">

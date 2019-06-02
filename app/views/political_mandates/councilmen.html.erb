@@ -1,6 +1,6 @@
 <div class="box box-info">
   <div class="box-header">
-    <h3>Vereadores</h3>
+    <h3>Vereadores cadastrados no Mandato: <%= @political_mandate.description %></h3>
     <div class="row">
       <div class="col-sm-4">
         <%= link_to 'Novo Vereador', new_councilman_path, class: "btn btn-info", title: 'Adicionar novo vereador' %>
@@ -13,7 +13,6 @@
       <tr>
         <th>Foto</th>
         <th>Nome</th>
-        <th>Mandato Politico</th>
         <th>Cargo do Vereador</th>
         <th>Projetos</th>
         <th colspan="4">Ações</th>
@@ -29,7 +28,6 @@
             <%end%>
           </td>
           <td><%= link_to councilman.name, councilman %></td>
-          <td><%= link_to councilman.political_mandate.description, councilman.political_mandate %></td>
           <td><%= councilman.office %></td>
           <td><%= link_to councilman.projects.size, councilman_projects_path(councilman)%></td>
           <!--Ações dos Botões -->
