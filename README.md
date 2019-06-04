@@ -29,7 +29,7 @@ Outra parte muito importante do sistema é fornecer relatórios automatizados pa
 * Altere o usuário e a senha do seu Postgres BD no arquivo do projeto `config / database.yml`.
 * Após isso digite: ` rails db: create`  (criar o banco de dados no BD Postgres) 
 
-* Em seguida, execute as migrações para criar as tabelas no banco de dados:
+* Em seguida, execute as migrações para criar as tabelas no banco de dados, o seed para as configurações iniciais do sistema e o populate para popular as tabelas:
   ` rails db: migrate db:seed db:populate`
 
 * Para acessar o sistema digite no seu navegador de internet o seguinte endeço: `http://localhost:3000`
