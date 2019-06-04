@@ -18,18 +18,16 @@ Outra parte muito importante do sistema é fornecer relatórios automatizados pa
 * Rails 
 * PostgreSQL
 
-
-
-## System Installation
+## Instalação
 
 * Faça o Clone do projeto (https://github.com/valdineimoraes/ObservatorioSocialdeGuarapuava.git).
 
 * Entre na pasta do projeto ` $ cd ObservatorioSocialdeGuarapuava `
-* No seu terminal o seguinte comando:
-  * bundle install (irá instalar todas as gem do sistema e suas dependências)
+* No seu terminal digite o seguinte comando:
+  * `bundle install` (irá instalar todas as gem do sistema e suas dependências)
 
-* Altere o usuário e a senha do seu Postgres BD no arquivo Project config / database.yml.
-* Após isso digite: ` rails db: create  (criar o banco de dados no BD Postgres) `
+* Altere o usuário e a senha do seu Postgres BD no arquivo do projeto `config / database.yml`.
+* Após isso digite: ` rails db: create`  (criar o banco de dados no BD Postgres) 
 
 * Em seguida, execute as migrações para criar as tabelas no banco de dados:
   ` rails db: migrate db:seed db:populate`
