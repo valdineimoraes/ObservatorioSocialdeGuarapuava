@@ -13,7 +13,7 @@ Com  isso  o  sistema  OBS-Guarapuava  se  torna  muito  importante,  pois  tem 
 
 Outra parte muito importante do sistema é fornecer relatórios automatizados para diferentes  situações,  como:  participações  do  vereador  nas  sessões  (reuniões),  projetos  que o  vereador  propos,  bem  como  a  votação  desses  projetos  (se  foi  aprovado  ou  não), tipos  de projetos  propostos,  quantidade  de  projetos  que  foram  prospostos.  Esses  relatórios  gerados poderão ser publicados em jornais e postados em redes sociais para que atinja o máximo de pessoas possíveis para o conhecimento dessas informações
 
-## Requisitos
+## Requisitos - Siga as instalações dos requisitos na ordem dos links nas Refêrencias.
 * Ruby
 * Rails 
 * PostgreSQL
@@ -34,3 +34,9 @@ Outra parte muito importante do sistema é fornecer relatórios automatizados pa
 
 * Para acessar o sistema digite no seu navegador de internet o seguinte endeço: `http://localhost:3000`
 * Digite o seguinte usuário e senha: `email: teste@teste.com` e a `senha: 123456`
+
+## Referências
+* Ruby - https://www.ruby-lang.org/pt/documentation/installation/
+* Rails - https://onebitcode.com/rails-linux/
+* PostgreSQL - https://www.postgresql.org/download/linux/ubuntu/
+* Tutorial mais Completo de instalação - https://nandovieira.com.br/configurando-ruby-rails-mysql-postgresql-git-no-ubuntu
