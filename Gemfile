@@ -57,6 +57,14 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
 
+  gem 'capistrano',         require: false
+  gem 'sshkit-sudo',        require: false
+  gem 'capistrano-rvm',     require: false
+  gem 'capistrano-rails',   require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano3-puma',   require: false
+  gem 'capistrano-rails-db',require: false
+
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'brakeman'
