@@ -50,9 +50,9 @@ module MeetingPdf
       session_councilmen.each do |presents|
         pdf.text "#{presents.councilman.name}"
         pdf.text "#{if presents.present?
-                      pdf.text "Ausente"
-                    else
                       pdf.text "Presente"
+                    else
+                      pdf.text "Ausente"
                     end }"
       end
       pdf.text "_______________________________________________________________"
@@ -67,10 +67,9 @@ module MeetingPdf
         pdf.text "Projeto: #{project.name}"
         pdf.text "Descrição: #{project.description}"
         pdf.text "Tipo de Projeto: #{project.project_kind.kind}"
-        pdf.text "Disposto na Sessão: #{project.meeting.date.to_time.strftime('%d/%m/%Y')}"
         pdf.text "Proposto pelo(a) Vereador(a): #{project.councilman.name} "
         pdf.text " #{if project.result.nil?
-                       pdf.text "Resultado da Votação: Sem Votação, ainda não foi votado."
+                       pdf.text "Resultado da Votação: Sem Resultado pois ainda não foi votado."
                      else
                        pdf.text "Resultado da Votação: #{(I18n.t("activerecord.attributes.project.results.#{project.result}"))}"
                      end }"
