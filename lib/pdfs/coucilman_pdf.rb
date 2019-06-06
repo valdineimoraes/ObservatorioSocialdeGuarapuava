@@ -10,7 +10,7 @@ module CouncilmanPdf
     margin: [40, 75]
   }.freeze
 
-  def self.councilman(name, nickname, office, political_party)
+  def self.councilman(name, nickname, office, political_party, projects)
     Prawn::Document.new(PDF_OPTIONS) do |pdf|
       pdf.image "#{Rails.root}/app/assets/images/os-logo.png", at: [2, 770], width: 100
       # Define a cor do traçado
@@ -35,6 +35,11 @@ module CouncilmanPdf
                                   align: :justify, inline_format: true
       pdf.text "Apelido: #{political_party}", size: 12,
                                               align: :justify, inline_format: true
+
+      projects.each do |project|
+        pdf.move_down 2
+        pdf.text "Projeto: #{project.name} - Descrição: #{project.description}"
+      end
       # Muda de font para Helvetica
       pdf.font 'Helvetica'
       # Inclui em baixo da folha do lado direito a data e o némero da página usando a tag page

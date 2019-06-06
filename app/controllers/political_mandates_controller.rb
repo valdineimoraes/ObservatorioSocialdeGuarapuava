@@ -63,7 +63,8 @@ class PoliticalMandatesController < ApplicationController
   # export pdf - prawn pdf
   def export
     PoliticalMandatePdf.political_mandate(@political_mandate.description, @political_mandate.first_period,
-                                          @political_mandate.final_period, @political_mandate.councilmen.size)
+                                          @political_mandate.final_period, @political_mandate.councilmen.size,
+                                          @political_mandate.councilmen)
     redirect_to '/political_mandate.pdf'
   end
 

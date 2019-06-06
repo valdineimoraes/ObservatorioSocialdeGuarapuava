@@ -15,6 +15,10 @@
       <strong>Periodo Final:</strong>
       <%= @political_mandate.final_period %>
     </p>
+    <p>
+      <strong>Vereadores Cadastrados: </strong>
+      <%= @political_mandate.councilmen.size %>
+    </p>
     <br>
     <%= link_to 'Editar', edit_political_mandate_path(@political_mandate),  class:"btn btn-warning" %> |
     <%= link_to 'Voltar', political_mandates_path, class:"btn btn-info" %>

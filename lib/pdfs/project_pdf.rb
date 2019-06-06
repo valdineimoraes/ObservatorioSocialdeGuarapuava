@@ -10,7 +10,7 @@ module ProjectPdf
     margin: [40, 75]
   }.freeze
 
-  def self.project(name, description, project_kind, councilman, meeting, result)
+  def self.project(name, description, project_kind, councilman, meeting, result, votes)
     Prawn::Document.new(PDF_OPTIONS) do |pdf|
       pdf.image "#{Rails.root}/app/assets/images/os-logo.png", at: [2, 770], width: 100
       # Define a cor do traçado
@@ -43,6 +43,12 @@ module ProjectPdf
       pdf.move_down 5
       pdf.text "Resultado da Votação: #{result}", size: 12,
                                                   align: :justify, inline_format: true
+
+      pdf.move_down 5
+      votes.each do |v|
+        pdf.text "#{v.councilman.name} - #{I18n.t("enums.votes.vote.#{v.vote}")}"
+        pdf.move_down 2
+      end
       # Muda de font para Helvetica
       pdf.font 'Helvetica'
       # Inclui em baixo da folha do lado direito a data e o némero da página usando a tag page

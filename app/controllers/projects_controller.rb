@@ -89,7 +89,7 @@ class ProjectsController < ApplicationController
     ProjectPdf.project(@project.name, @project.description,
                        @project.project_kind.kind, @project.councilman.name,
                        @project.meeting.date.to_time.strftime('%d/%m/%Y'),
-                       @project.result)
+                       @project.result, @project.votes)
     redirect_to '/project.pdf'
   end
 

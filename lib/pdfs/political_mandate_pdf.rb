@@ -10,7 +10,7 @@ module PoliticalMandatePdf
     margin: [40, 75]
   }.freeze
 
-  def self.political_mandate(description, first_period, final_period, councilman)
+  def self.political_mandate(description, first_period, final_period, qtde_councilman, councilmen)
     Prawn::Document.new(PDF_OPTIONS) do |pdf|
       pdf.image "#{Rails.root}/app/assets/images/os-logo.png", at: [2, 770], width: 100
       # Define a cor do traçado
@@ -35,9 +35,13 @@ module PoliticalMandatePdf
       pdf.text "Periodo Final: #{final_period}", size: 12,
                                                  align: :justify, inline_format: true
       pdf.move_down 5
-      pdf.text "Qtde de Vereadores: #{councilman}", size: 12,
+      pdf.text "Qtde de Vereadores: #{qtde_councilman}", size: 12,
                                                     align: :justify, inline_format: true
       pdf.move_down 5
+      councilmen.each do |councilman|
+        pdf.text "Nome: #{councilman.name} "
+        pdf.move_down 2
+      end
       pdf.font 'Helvetica'
       # Inclui em baixo da folha do lado direito a data e o némero da página usando a tag page
       pdf.number_pages "Gerado: #{Time.now.strftime('%d/%m/%y as %H:%M')} - Página ", start_count_at: 0,

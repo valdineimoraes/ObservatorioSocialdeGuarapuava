@@ -11,20 +11,15 @@
             <tr>
               <th>Vereador</th>
               <th>Voto</th>
-              <th>Presença</th>
+
             </tr>
           </thead>
           <tbody>
             <%= p.simple_fields_for :votes do |v| %>
               <tr>
                 <td><%= v.object.councilman.name %></td>
-                <td><%= v.input_field :vote, collection: Vote.votes.keys.to_a, prompt: "Informe o Voto"%></td>
-
-                <% unless v.object.councilman.present? %>
-                  <td><span class="badge bg-red text-center">AUSENTE</span></td>
-                <% else %>
-                  <td><span class="badge bg-green text-center" >PRESENTE</span></td>
-                <%end%>
+                
+                <td><%= v.input_field :vote, collection: Vote.vote_for_select, prompt: "Informe o Voto"%></td>
 
               </tr>
             <% end %>
