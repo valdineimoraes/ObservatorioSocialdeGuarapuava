@@ -37,15 +37,23 @@ module PoliticalMandatePdf
       pdf.move_down 5
       pdf.text "Qtde de Vereadores: #{qtde_councilman}", size: 12,
                                                     align: :justify, inline_format: true
-      pdf.move_down 5
+      pdf.move_down 8
+
+      pdf.text "Vereadores cadastrados no Mandato Político", size: 14, style: :bold, align: :center
+      pdf.text "_______________________________________________________________"
       councilmen.each do |councilman|
         pdf.text "Nome: #{councilman.name} "
-        pdf.move_down 2
+        pdf.text "Apelido: #{councilman.nickname} "
+        pdf.text "Cargo: #{councilman.office} "
+        pdf.text "Partido Político: #{councilman.political_party} "
+        pdf.text "Projetos Propostos: #{councilman.projects.size} "
+        pdf.text "_______________________________________________________________"
       end
       pdf.font 'Helvetica'
-      # Inclui em baixo da folha do lado direito a data e o némero da página usando a tag page
-      pdf.number_pages "Gerado: #{Time.now.strftime('%d/%m/%y as %H:%M')} - Página ", start_count_at: 0,
-                                                                                      page_filter: :all, at: [pdf.bounds.right - 140, 7], align: :right, size: 8
+      # Inclui em baixo da folha do lado direito a data e o némero da  página usando a tag page
+      pdf.number_pages "Gerado: #{Time.now.strftime('%d/%m/%y as %H:%M')} - Página: <page> de <total> ",
+                       {start_count_at: 1, page_filter: :all, at: [pdf.bounds.right - 170, 7],
+                        align: :right, size: 8}
       # Gera no nosso PDF e coloca na pasta public
       pdf.render_file('public/political_mandate.pdf')
     end

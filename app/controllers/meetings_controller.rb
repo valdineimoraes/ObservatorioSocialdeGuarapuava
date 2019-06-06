@@ -52,7 +52,7 @@ class MeetingsController < ApplicationController
   def export
     MeetingPdf.meeting(@meeting.date, @meeting.start_session.to_time.strftime('%H:%M'),
                        @meeting.end_session.to_time.strftime('%H:%M'), @meeting.note,
-                       @meeting.projects.size)
+                       @meeting.projects.size, @meeting.projects, @meeting.session_councilmen)
     redirect_to '/meeting.pdf'
   end
 

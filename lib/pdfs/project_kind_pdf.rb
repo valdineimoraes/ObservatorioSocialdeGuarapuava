@@ -37,8 +37,9 @@ module ProjectKindPdf
       # Muda de font para Helvetica
       pdf.font 'Helvetica'
       # Inclui em baixo da folha do lado direito a data e o némero da página usando a tag page
-      pdf.number_pages "Gerado: #{Time.now.strftime('%d/%m/%y as %H:%M')} - Página ", start_count_at: 0,
-                                                                                      page_filter: :all, at: [pdf.bounds.right - 140, 7], align: :right, size: 8
+      pdf.number_pages "Gerado: #{Time.now.strftime('%d/%m/%y as %H:%M')} - Página: <page> de <total> ",
+                       {start_count_at: 1, page_filter: :all, at: [pdf.bounds.right - 170, 7],
+                        align: :right, size: 8}
       # Gera no nosso PDF e coloca na pasta public
       pdf.render_file('public/project_kind.pdf')
     end
