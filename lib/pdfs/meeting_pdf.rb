@@ -40,12 +40,12 @@ module MeetingPdf
                align: :justify, inline_format: true
 
       # Vereadores presentes na sessão
-      pdf.move_down 8
-      pdf.text "Lista de Projetos da Sessão", size: 12, style: :bold,
+      pdf.move_down 10
+      pdf.text "Lista de Presença dos Veredores na Sessão", size: 12, style: :bold,
                align: :center, inline_format: true
+
       pdf.text "_______________________________________________________________"
       pdf.text "Vereador                  -         Presença", style: :bold
-
 
       session_councilmen.each do |presents|
         pdf.text "#{presents.councilman.name}"
@@ -55,12 +55,14 @@ module MeetingPdf
                       pdf.text "Presente"
                     end }"
       end
+      pdf.text "_______________________________________________________________"
 
       # Projetos cadastrados na sessão
-      pdf.move_down 8
+      pdf.move_down 10
       pdf.text "Lista de Projetos da Sessão", size: 12, style: :bold,
                align: :center, inline_format: true
       pdf.text "_______________________________________________________________"
+
       projects.each do |project|
         pdf.text "Projeto: #{project.name}"
         pdf.text "Descrição: #{project.description}"
@@ -70,7 +72,7 @@ module MeetingPdf
         pdf.text " #{if project.result.nil?
                        pdf.text "Resultado da Votação: Sem Votação, ainda não foi votado."
                      else
-                       pdf.text "Resultado da Votação #{(I18n.t("activerecord.attributes.project.results.#{project.result}"))}"
+                       pdf.text "Resultado da Votação: #{(I18n.t("activerecord.attributes.project.results.#{project.result}"))}"
                      end }"
         pdf.text "_______________________________________________________________"
       end
