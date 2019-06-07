@@ -34,7 +34,7 @@ module CouncilmanPdf
       pdf.text "Partido Político: #{political_party}", size: 12,
                align: :justify, inline_format: true
       pdf.move_down 10
-
+      
       pdf.text "Projetos Propostos pelo Vereador", size: 14, style: :bold, align: :center
       pdf.text "_______________________________________________________________"
       projects.each do |project|

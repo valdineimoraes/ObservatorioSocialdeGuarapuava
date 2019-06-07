@@ -45,11 +45,11 @@ module MeetingPdf
                align: :center, inline_format: true
 
       pdf.text "_______________________________________________________________"
-      pdf.text "Vereador                  -         Presença", style: :bold
+      pdf.text "Vereador           -         Presença", style: :bold
 
-      session_councilmen.each do |presents|
-        pdf.text "#{presents.councilman.name}"
-        pdf.text "#{if presents.present?
+      session_councilmen.each do |present|
+        pdf.text "#{present.councilman.name}"
+        pdf.text "#{if present.present?
                       pdf.text "Presente"
                     else
                       pdf.text "Ausente"
