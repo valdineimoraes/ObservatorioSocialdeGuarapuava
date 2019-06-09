@@ -3,11 +3,11 @@ lock "~> 3.11.0"
 
 set :stages, ["production"]
 
-set :application,     'my_app_name'
+set :application,     'ObservatorioSocialdeGuarapuava'
 set :branch,          'production'
 
 set :user,            'deployer'
-set :repo_url,        "git@example.com:me/my_repo.git"
+set :repo_url,        "https://github.com/valdineimoraes/ObservatorioSocialdeGuarapuava"
 set :keep_releases,   3
 
 set :puma_threads,    [4, 16] # Min and Max threads per worker
@@ -22,7 +22,7 @@ set :puma_workers,    1       # Change to match your CPU core count
 set :pty,             true    # is a pair of pseudo-devices, one of which, the slave, emulates a real text terminal device, the other of which, the master, provides the means by which a terminal emulator process controls the slave.
 set :use_sudo,        false   # not use sudo to run the comands
 set :deploy_via,      :remote_cache # allows you to cache your deployment repo to make deployment much faster.
-set :deploy_to,       "/home/#{fetch(:user)}/apps/#{fetch(:application)}"
+set :deploy_to,       "/home/#{fetch(:user)}/#{fetch(:application)}"
 set :ssh_options,     { forward_agent: true, user: fetch(:user), keys: %w(~/.ssh/id_rsa) } # Log in with ssh and private key
 
 set :puma_bind,       "unix://#{shared_path}/tmp/sockets/#{fetch(:application)}-puma.sock" # Bind the server to url
@@ -86,7 +86,7 @@ namespace :deploy do
         sudo :rm, '/etc/nginx/sites-enabled/default'
       end
 
-      sudo "ln -nfs /home/#{fetch(:user)}/apps/#{fetch(:application)}/current/config/nginx.conf /etc/nginx/sites-enabled/#{fetch(:application)}"
+      sudo "ln -nfs /home/#{fetch(:user)}/#{fetch(:application)}/config/nginx.conf /etc/nginx/sites-enabled/#{fetch(:application)}"
       sudo :service, :nginx, :reload
 
       execute "PGPASSWORD=#{fetch(:db_pwd)} psql --user postgres -c 'create database observatoriosocial_production;'"
