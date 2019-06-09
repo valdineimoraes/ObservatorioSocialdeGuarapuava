@@ -1,4 +1,4 @@
- Include default deployment tasks
+# Include default deployment tasks
 require 'capistrano/setup'
 require "capistrano/deploy"
 
