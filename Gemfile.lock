@@ -77,6 +77,9 @@ GEM
     brakeman (4.5.0)
     breadcrumbs_on_rails (3.0.1)
     builder (3.2.3)
+    bullet (6.0.0)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.11)
     byebug (11.0.1)
     capistrano (3.11.0)
       airbrussh (>= 1.0.0)
@@ -451,6 +454,7 @@ GEM
     uglifier (4.1.20)
       execjs (>= 0.3.0, < 3)
     unicode-display_width (1.5.0)
+    uniform_notifier (1.12.1)
     virtus (1.0.5)
       axiom-types (~> 0.1)
       coercible (~> 1.0)
@@ -483,6 +487,7 @@ DEPENDENCIES
   bootstrap (>= 4.3.1)
   brakeman
   breadcrumbs_on_rails
+  bullet
   byebug
   capistrano
   capistrano-bundler

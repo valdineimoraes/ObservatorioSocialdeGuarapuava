@@ -50,6 +50,10 @@ group :development, :test do
   gem 'faker'
   gem 'fuubar'
   gem 'rspec-rails', '~> 3.7'
+  gem 'brakeman', require: false
+  gem 'rubocop', require: false
+  gem 'rubocop-rspec', require: false
+  gem 'bullet'
 end
 
 group :development do
