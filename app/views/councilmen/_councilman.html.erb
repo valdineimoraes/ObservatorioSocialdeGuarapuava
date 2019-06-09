@@ -6,8 +6,8 @@
     <%end%>
   </td>
   <td><%= link_to councilman.name, councilman %></td>
-  <td><%= link_to councilman.political_mandate.description, councilman.political_mandate %></td>
   <td><%= councilman.office %></td>
+  <td><%= link_to councilman.political_mandate.description, councilman.political_mandate %></td>
   <td><%= link_to councilman.projects.size, councilman_projects_path(councilman)%></td>
   <!--Ações dos Botões -->
   <td><%= link_to '', export_councilman_path(councilman), target: "_blank",

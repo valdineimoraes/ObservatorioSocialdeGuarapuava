@@ -65,7 +65,8 @@ class CouncilmenController < ApplicationController
 
   # export pdf - prawn pdf
   def export
-    CouncilmanPdf.councilman(@councilman.name, @councilman.nickname, @councilman.office, @councilman.political_party)
+    CouncilmanPdf.councilman(@councilman.name, @councilman.nickname, @councilman.office,
+                             @councilman.political_party, @councilman.projects)
     redirect_to '/councilman.pdf'
   end
 

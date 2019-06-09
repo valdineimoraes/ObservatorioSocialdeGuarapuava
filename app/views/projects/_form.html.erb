@@ -1,15 +1,24 @@
 <%= simple_form_for(@project) do |f| %>
-  <div class="form-inputs">
-    <%= f.association :meeting, label_method: :formatted_date, value_method: :id,
-                      prompt: "Escolha a data da sessão" %>
-    <%= f.association :councilman, label_method: :name, value_method: :id,
-                      prompt: "Escolha o vereador" %>
-    <%= f.input :name %>
-    <div class= "form-group">
+  <div class="form-row">
+    <div class="col-sm-4">
+      <%= f.association :meeting, label_method: :formatted_date, value_method: :id,
+                        prompt: "Escolha a data da sessão" %>
+    </div>
+    <div class="col-sm-8">
+      <%= f.association :councilman, label_method: :name, value_method: :id,
+                        prompt: "Escolha o vereador" %>
+    </div>
+    <div class="col-sm-12">
+      <%= f.input :name %>
+    </div>
+    <div class="col-sm-4">
       <%= f.association :project_kind, label_method: :kind, value_method: :id,
                         prompt: "Escolha o tipo de projeto" %>
     </div>
-    <%= f.input :description %>
+    <div class="col-sm-12">
+      <%= f.input :description, input_html: {class: 'markdown-editor'} %>
+    </div>
+
     <div class="form-actions">
       <%= f.button :submit %>
       <%= link_to 'Voltar', projects_path, class:"btn btn-warning" %>

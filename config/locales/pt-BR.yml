@@ -7,10 +7,6 @@ pt-BR:
       next: 'Próximo &rsaquo;'
       truncate: '&hellip;'
   enums:
-    councilman:
-      political_positions:
-        opposition: 'Oposição'
-        situation: 'Situação'
     votes:
       vote:
         favorable: 'Favoravel'

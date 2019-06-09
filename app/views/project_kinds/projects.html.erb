@@ -6,10 +6,9 @@
     <table class="table table-bordered">
       <thead>
       <tr>
-        <th>Sessão</th>
-        <th>Nome</th>
-        <th>Descrição</th>
+        <th>Nome do Projeto</th>
         <th>Proposto pelo Vereador</th>
+        <th>Disposto na Sessão</th>
         <th>Resultado</th>
         <th colspan="4">Ações</th>
       </tr>
@@ -17,11 +16,10 @@
 
       <tbody>
       <% @project_kind.projects.each do |project| %>
-        <tr>
-          <td><%= link_to project.meeting.date.to_time.strftime('%d/%m/%Y'), project.meeting%></td>
+        <tr></tr>
           <td><%= link_to project.name, project %></td>
-          <td><%= truncate(project.description, length: 50) %></td>
           <td><%= link_to project.councilman.name, project.councilman %></td>
+          <td><%= link_to project.meeting.date.to_time.strftime('%d/%m/%Y'), project.meeting%></td>
           <% if project.result.nil? %>
             <td>Sem resultado</td>
           <% else %>

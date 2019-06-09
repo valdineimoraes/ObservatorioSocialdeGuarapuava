@@ -18,6 +18,7 @@ gem 'i18n_rails_helpers'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'jquery-turbolinks'
+gem 'lte-rails'
 gem 'kaminari'
 gem 'mini_magick', '~> 4.3'
 gem 'pg', '0.18.4'
@@ -56,6 +57,14 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
+
+  gem 'capistrano',         require: false
+  gem 'sshkit-sudo',        require: false
+  gem 'capistrano-rvm',     require: false
+  gem 'capistrano-rails',   require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano3-puma',   require: false
+  gem 'capistrano-rails-db',require: false
 
   gem 'better_errors'
   gem 'binding_of_caller'
