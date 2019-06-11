@@ -44,7 +44,7 @@ class CouncilmenController < ApplicationController
     @councilman = Councilman.new(councilman_params)
     if @councilman.save
       flash[:success] = 'Novo vereador adicionado!'
-      redirect_to @councilman
+      redirect_to councilmen_path
     else
       flash[:error] = 'Houve algum problema, reveja os dados inseridos!'
       render :new

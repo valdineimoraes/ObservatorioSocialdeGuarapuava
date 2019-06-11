@@ -39,7 +39,7 @@ module CouncilmanPdf
       pdf.text "_______________________________________________________________"
       projects.each do |project|
         pdf.move_down 2
-        pdf.text "Projeto: #{project.name}"
+        pdf.text "Projeto: #{project.name}", size: 12, style: :bold, align: :justify
         pdf.text "Descrição: #{project.description}"
         pdf.text "Tipo de Projeto: #{project.project_kind.kind}"
         pdf.text "Disposto na Sessão: #{project.meeting.date.to_time.strftime('%d/%m/%Y')}"

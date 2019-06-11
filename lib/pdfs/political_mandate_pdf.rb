@@ -42,7 +42,7 @@ module PoliticalMandatePdf
       pdf.text "Vereadores cadastrados no Mandato Político", size: 14, style: :bold, align: :center
       pdf.text "_______________________________________________________________"
       councilmen.each do |councilman|
-        pdf.text "Nome: #{councilman.name} "
+        pdf.text "Nome: #{councilman.name} ", size: 12, style: :bold, align: :justify
         pdf.text "Apelido: #{councilman.nickname} "
         pdf.text "Cargo: #{councilman.office} "
         pdf.text "Partido Político: #{councilman.political_party} "

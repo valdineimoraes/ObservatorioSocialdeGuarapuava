@@ -13,6 +13,9 @@ namespace :db do
 
     User.create_with(name: 'Teste', password: '123456')
         .find_or_create_by!(email: 'teste@teste.com')
+    
+    User.create_with(name:'Admin', password: '123456')
+        .find_or_create_by!(email: 'admin@admin.com' )
 
     2.times do
       PoliticalMandate.find_or_create_by!(

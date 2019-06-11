@@ -43,7 +43,7 @@ module ProjectKindPdf
       pdf.text "_______________________________________________________________"
 
       projects.each do |project|
-        pdf.text "Projeto: #{project.name}"
+        pdf.text "Projeto: #{project.name}", size: 12, style: :bold, align: :justify
         pdf.text "Descrição: #{project.description}"
         pdf.text "Proposto pelo(a) Vereador(a): #{project.councilman.name} "
         pdf.text " #{if project.result.nil?
