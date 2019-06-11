@@ -51,7 +51,7 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
     if @project.save
       flash[:success] = 'Pauta criada com sucesso!'
-      redirect_to @project
+      redirect_to projects_path
     else
       flash[:error] = 'Existem dados incorretos! Por favor verifique.'
       render :new
@@ -61,7 +61,7 @@ class ProjectsController < ApplicationController
   def update
     if @project.update(project_params)
       flash[:success] = 'Pauta atualizada com sucesso!'
-      redirect_to @project
+      redirect_to projects_path
     else
       add_breadcrumb I18n.t('breadcrumbs.project.edit', name: "##{@project.id}"),
                      :edit_project_path

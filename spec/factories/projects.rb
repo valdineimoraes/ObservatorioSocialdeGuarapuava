@@ -2,8 +2,8 @@ FactoryBot.define do
   factory :project do
     meeting
     councilman
-    sequence(:name) { |n| "Nome#{n}" }
+    sequence(:name) { Faker::Hipster.sentence }
     project_kind
-    sequence(:description) { |n| "Descricao#{n}" }
+    sequence(:description) { Faker::Lorem.paragraph(2) }
   end
 end
