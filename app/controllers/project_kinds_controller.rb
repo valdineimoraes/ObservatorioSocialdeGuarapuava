@@ -31,7 +31,7 @@ class ProjectKindsController < ApplicationController
     @project_kind = ProjectKind.new(project_kind_params)
     if @project_kind.save
       flash[:success] = 'Tipo de projeto criado com sucesso!'
-      redirect_to @project_kind
+      redirect_to project_kinds_path
     else
       flash[:error] = 'Houve algum problema, reveja os dados inseridos !'
       render :new
@@ -41,7 +41,7 @@ class ProjectKindsController < ApplicationController
   def update
     if @project_kind.update(project_kind_params)
       flash[:success] = 'Tipo de projeto atualizado com sucesso!'
-      redirect_to @project_kind
+      redirect_to project_kinds_path
     else
       add_breadcrumb I18n.t('breadcrumbs.project_kind.edit', name: "##{@project_kind.id}"),
                      :edit_project_kind_path

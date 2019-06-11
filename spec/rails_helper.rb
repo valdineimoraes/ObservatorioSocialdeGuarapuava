@@ -5,8 +5,6 @@ require File.expand_path('../config/environment', __dir__)
 # Prevent database truncation if the environment is production
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 
-require 'support/bullet'
-
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 require 'support/shoulda'
@@ -14,7 +12,7 @@ require 'support/factory_bot'
 require 'support/database_cleaner'
 require 'support/simplecov'
 require 'support/helpers/form'
-
+require 'support/bullet'
 require 'support/file_spec_helper'
 require 'support/carrier_wave'
 

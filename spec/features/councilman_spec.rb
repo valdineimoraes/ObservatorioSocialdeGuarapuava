@@ -2,12 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'Councilman', type: :feature do
 
-  let(:Councilman) {create :Councilman}
-  let(:Councilman) {Councilman.model_name.human}
-
-  before(:each) do
-    login_as admin, scope: :admin
-  end
+  let(:resource_name) {Councilman.model_name.human}
 
   describe '#create councilmen' do
 
@@ -101,34 +96,16 @@ RSpec.feature 'Councilman', type: :feature do
 
       councilmen.each do |councilman|
         expect(page).to have_content(councilman.name)
-        expect(page).to have_content(councilman.nickname) #######
+        expect(page).to have_content(councilman.nickname)
+        expect(page).to have_content(councilman.office)
+        expect(page).to have_content(councilman.political_mandate.description)
+        expect(page).to have_content(councilman.projects.size)
         
-        expect(page).to have_content(councilman.name)
-        expect(page).to have_content(councilman.name)
-        expect(page).to have_content(I18n.l(councilman.created_at, format: :long))
-
-        expect(page).to have_link(href: admins_councilman_path(councilman))
-        expect(page).to have_link(href: edit_admins_councilman_path(councilman))
-        destroy_link = "a[href='#{admins_councilman_path(councilman)}'][data-method='delete']"
+        expect(page).to have_link(href: export_councilman_path(councilman))
+        expect(page).to have_link(href: councilman_path(councilman))
+        expect(page).to have_link(href: edit_councilman_path(councilman))
+        destroy_link = "a[href='#{councilman_path(councilman)}'][data-method='delete']"
         expect(page).to have_css(destroy_link)
-      end
-    end
-  end
-
-  describe '#show' do
-    context 'show councilmans' do
-      it 'show councilman page' do
-        councilman = create(:councilman)
-        visit admins_councilman_path(councilman)
-
-        expect(page).to have_content(councilman.name)
-        expect(page).to have_content(councilman.gender)
-        expect(page).to have_content(councilman.email)
-        expect(page).to have_content(councilman.lattes)
-        expect(page).to have_content(councilman.occupation_area)
-        expect(page).to have_content(councilman.councilman_category.name)
-        expect(page).to have_content(councilman.councilman_title.name)
-
       end
     end
   end

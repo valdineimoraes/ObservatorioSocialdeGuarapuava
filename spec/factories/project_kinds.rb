@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :project_kind do
-    sequence(:kind) { |n| "Tipo#{n}" }
-    sequence(:description) { |n| "Descricao#{n}" }
+    sequence(:kind) { Faker::Commerce.unique.material }
+    sequence(:description) { Faker::Lorem.paragraph(1) }
   end
 end

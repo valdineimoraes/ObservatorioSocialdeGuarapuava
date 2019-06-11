@@ -1,26 +1,6 @@
 {
   "RSpec": {
     "coverage": {
-      "/home/valdinei/Área de Trabalho/Ruby and Rails/ObservatórioSocialGuarapuava/app/models/political_mandate.rb": [
-        1,
-        1,
-        null,
-        1,
-        null,
-        1,
-        null,
-        1,
-        null,
-        1,
-        0,
-        0,
-        null,
-        null,
-        1,
-        0,
-        null,
-        null
-      ],
       "/home/valdinei/Área de Trabalho/Ruby and Rails/ObservatórioSocialGuarapuava/app/helpers/councilmen_helper.rb": [
         null,
         null,
@@ -1030,6 +1010,26 @@
         0,
         0
       ],
+      "/home/valdinei/Área de Trabalho/Ruby and Rails/ObservatórioSocialGuarapuava/app/models/political_mandate.rb": [
+        0,
+        0,
+        null,
+        0,
+        null,
+        0,
+        null,
+        0,
+        null,
+        0,
+        0,
+        0,
+        0,
+        null,
+        0,
+        0,
+        0,
+        0
+      ],
       "/home/valdinei/Área de Trabalho/Ruby and Rails/ObservatórioSocialGuarapuava/app/models/session_councilman.rb": [
         0,
         0,
@@ -1508,6 +1508,6 @@
         0
       ]
     },
-    "timestamp": 1560193922
+    "timestamp": 1560273232
   }
 }
