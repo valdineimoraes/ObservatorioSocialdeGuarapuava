@@ -43,6 +43,7 @@ Clone the project repository using the command
 	`cp config/application.yml.example config/application.yml`
 
 In this file change postgres username and password and host
+
     	```
 	database: &database
   	db.username: postgres
