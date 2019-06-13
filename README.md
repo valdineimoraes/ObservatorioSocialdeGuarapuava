@@ -1,42 +1,74 @@
-# Sistema OBS-Guarapuava
+# OBS-GUARAPUAVA
 
-## O que é o Sistema OBS-Guarapuava
+System used to complete the TCC 2 of the UTFPR Guarapuava to the Social Observatory of Guarapuava
 
-Sistema utilizado para a conclusão do TCC 2 da UTFPR Guarapuava aplicado ao Observatório Social de Guarapuava
+## Run locally
 
-## Sobre
+To install OBS-Guarapuava locally follow these instructions:
 
-O Observatório Social da Cidade de Guarapuava - PR monitora de forma fiscalizadora as sessões da Câmara Municipal de vereadores. Atualmente um membro do Observatorio realiza relatorios de todas as sessões de vereadores. Estes relatorios são realizados manualmente, em folhas de papel. Após o preenchimento manual, os dados são transferidos tambem manualmente para  planilhas  do  Excel  para  que  em  seguida  sejam  gerados  relat ́orios para  publicação  em jornais, revistas e em redes sociais.
-O problema desses relat ́orios  ́e que geram muitos gastos com folhas de papéis para as marcações e correndo o risco de perder os relatórios com o tempo e também muito espaço para serem armazenados em locais adequados.
+1. **Prerequisite**
 
-Com  isso  o  sistema  OBS-Guarapuava  se  torna  muito  importante,  pois  tem  como principal objetivo a economia desses gastos, tanto como folhas de papel, tanto como espaços fisicos. O sistema salva todos os dados em um servidor em nuvem, podendo então o usuário acessar esses arquivos/relatórios de qualquer lugar com acesso a internet.
+	First you need to install the follow packages
 
-Outra parte muito importante do sistema é fornecer relatórios automatizados para diferentes  situações,  como:  participações  do  vereador  nas  sessões  (reuniões),  projetos  que o  vereador  propos,  bem  como  a  votação  desses  projetos  (se  foi  aprovado  ou  não), tipos  de projetos  propostos,  quantidade  de  projetos  que  foram  prospostos.  Esses  relatórios  gerados poderão ser publicados em jornais e postados em redes sociais para que atinja o máximo de pessoas possíveis para o conhecimento dessas informações
+ 	```
+ 	nodejs
+  libpq-dev
+  Ruby
+  Rails
+ 	postgresql
+ 	postgresql-contrib
+ 	```
 
-## Requisitos - Siga as instalações dos requisitos na ordem dos links nas Refêrencias.
-* Ruby
-* Rails 
-* PostgreSQL
+	Its necessary to install the Bundler and the Rails gems
 
-## Instalação
+ 	```
+ 	gem install bundler
+ 	gem install rails
+ 	```
 
-* Faça o Clone do projeto (https://github.com/valdineimoraes/ObservatorioSocialdeGuarapuava.git).
+2. **Clone the project**
 
-* Entre na pasta do projeto ` $ cd ObservatorioSocialdeGuarapuava `
-* No seu terminal digite o seguinte comando:
-  * `bundle install` (irá instalar todas as gem do sistema e suas dependências)
+	Clone the project repository using the command
 
-* Altere o usuário e a senha do seu Postgres BD no arquivo do projeto `config / database.yml`.
-* Após isso digite: ` rails db: create`  (criar o banco de dados no BD Postgres) 
+	`git clone https://github.com/valdineimoraes/ObservatorioSocialdeGuarapuava.git`
+	`cd tsicms`
 
-* Em seguida, execute as migrações para criar as tabelas no banco de dados, o seed para as configurações iniciais do sistema e o populate para popular as tabelas:
-  ` rails db: migrate db:seed db:populate`
+3. **Install dependencies**
 
-* Para acessar o sistema digite no seu navegador de internet o seguinte endeço: `http://localhost:3000`
-* Digite o seguinte usuário e senha: `email: teste@teste.com` e a `senha: 123456`
+	`bundle`
 
-## Referências
+4. **Set up postgres password**
+
+	`cp config/application.yml.example config/application.yml`
+
+	In this file change postgres username and password and host
+    	```
+	database: &database
+  		db.username: postgres
+  		db.password: postgres
+  		db.host: localhost
+    	```
+
+5.  **Create the database, the tables and populate tables **
+
+	```
+	$ rails db:create
+	$ rails db:migrate
+	$ rails db:seed
+ $ rails db:populate
+	```
+
+6. **Run the application**
+
+	```
+	$ rails s
+	```
+
+	Access the public namespace url [http://localhost:3000](http://localhost:3000)
+ Enter the following username and password: `email: teste@teste.com` and `password: 123456`
+
+## References
 * Ruby - https://www.ruby-lang.org/pt/documentation/installation/
 * Rails - https://onebitcode.com/rails-linux/
 * PostgreSQL - https://www.postgresql.org/download/linux/ubuntu/
-* Tutorial mais Completo de instalação - https://nandovieira.com.br/configurando-ruby-rails-mysql-postgresql-git-no-ubuntu
+* More Complete Installation Tutorial - https://nandovieira.com.br/configurando-ruby-rails-mysql-postgresql-git-no-ubuntu
