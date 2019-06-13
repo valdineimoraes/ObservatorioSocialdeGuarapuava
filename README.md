@@ -8,18 +8,18 @@ To install OBS-Guarapuava locally follow these instructions:
 
 1. **Prerequisite**
 
-	First you need to install the follow packages
+First you need to install the follow packages
 
  	```
  	nodejs
-  libpq-dev
-  Ruby
-  Rails
+  	libpq-dev
+  	Ruby
+  	Rails
  	postgresql
  	postgresql-contrib
  	```
 
-	Its necessary to install the Bundler and the Rails gems
+Its necessary to install the Bundler and the Rails gems
 
  	```
  	gem install bundler
@@ -28,9 +28,10 @@ To install OBS-Guarapuava locally follow these instructions:
 
 2. **Clone the project**
 
-	Clone the project repository using the command
+Clone the project repository using the command
 
 	`git clone https://github.com/valdineimoraes/ObservatorioSocialdeGuarapuava.git`
+	
 	`cd tsicms`
 
 3. **Install dependencies**
@@ -41,12 +42,12 @@ To install OBS-Guarapuava locally follow these instructions:
 
 	`cp config/application.yml.example config/application.yml`
 
-	In this file change postgres username and password and host
+In this file change postgres username and password and host
     	```
 	database: &database
-  		db.username: postgres
-  		db.password: postgres
-  		db.host: localhost
+  	db.username: postgres
+  	db.password: postgres
+  	db.host: localhost
     	```
 
 5.  **Create the database, the tables and populate tables **
@@ -55,7 +56,7 @@ To install OBS-Guarapuava locally follow these instructions:
 	$ rails db:create
 	$ rails db:migrate
 	$ rails db:seed
- $ rails db:populate
+ 	$ rails db:populate
 	```
 
 6. **Run the application**
@@ -64,8 +65,9 @@ To install OBS-Guarapuava locally follow these instructions:
 	$ rails s
 	```
 
-	Access the public namespace url [http://localhost:3000](http://localhost:3000)
- Enter the following username and password: `email: teste@teste.com` and `password: 123456`
+Access the public namespace url [http://localhost:3000](http://localhost:3000)
+
+Enter the following username and password: `email: teste@teste.com` and `password: 123456`
 
 ## References
 * Ruby - https://www.ruby-lang.org/pt/documentation/installation/
