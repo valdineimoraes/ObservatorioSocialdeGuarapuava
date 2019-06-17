@@ -1,6 +1,6 @@
 # Include default deployment tasks
 require 'capistrano/setup'
-require "capistrano/deploy"
+require 'capistrano/deploy'
 
 # Include capistrano-rails
 require 'capistrano/rails'
@@ -12,7 +12,7 @@ require 'capistrano/rails/assets'
 require 'capistrano/rails/db'
 require 'sshkit/sudo'
 
-require "capistrano/scm/git"
+require 'capistrano/scm/git'
 install_plugin Capistrano::SCM::Git
 install_plugin Capistrano::Puma
 

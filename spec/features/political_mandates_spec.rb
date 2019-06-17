@@ -1,9 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe 'Political_Mandates', type: :feature do
-
   describe '#create' do
-    before(:each) do
+    before do
       visit new_political_mandate_path
     end
 
@@ -50,7 +49,7 @@ RSpec.describe 'Political_Mandates', type: :feature do
   describe '#update' do
     let(:political_mandate) { create(:political_mandate) }
 
-    before(:each) do
+    before do
       visit edit_political_mandate_path(political_mandate)
     end
 
@@ -67,7 +66,7 @@ RSpec.describe 'Political_Mandates', type: :feature do
 
         submit_form
 
-        expect(page.current_path).to eq political_mandates_path
+        expect(page).to have_current_path political_mandates_path
 
         expect(page).to have_selector('div.alert.alert-success',
                                       text: 'Mandato politico atualizado com sucesso! ')
@@ -92,7 +91,6 @@ RSpec.describe 'Political_Mandates', type: :feature do
       end
     end
   end
-
 
   describe '#destroy' do
     it 'political_mandate' do

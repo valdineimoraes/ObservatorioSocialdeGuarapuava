@@ -50,7 +50,6 @@ Rails.application.configure do
     Bullet.raise = true # raise an error if n+1 query occurs
   end
 
-
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 end

@@ -1,10 +1,10 @@
 class MeetingsController < ApplicationController
-  before_action :set_meeting, :set_session_councilmen, only: %i[show edit update destroy export]
+  before_action :set_meeting, :set_session_councilmen, only: [:show, :edit, :update, :destroy, :export]
   require './lib/pdfs/meeting_pdf'
 
   add_breadcrumb I18n.t('breadcrumbs.meeting.name'), :meetings_path
   add_breadcrumb I18n.t('breadcrumbs.meeting.new'),
-                 :new_meeting_path, only: %i[new create]
+                 :new_meeting_path, only: [:new, :create]
 
   def index
     @meetings = Meeting.all.paginate(page: params[:page], per_page: 10)
@@ -53,7 +53,7 @@ class MeetingsController < ApplicationController
     MeetingPdf.meeting(@meeting.date, @meeting.start_session.to_time.strftime('%H:%M'),
                        @meeting.end_session.to_time.strftime('%H:%M'), @meeting.note,
                        @meeting.projects.size, @meeting.projects, @meeting.session_councilmen)
-    redirect_to '/meeting.pdf'
+    redirect_to '/pdfs/meeting.pdf'
   end
 
   def destroy
@@ -84,7 +84,7 @@ class MeetingsController < ApplicationController
     @meeting = Meeting.find(params[:meeting_id])
     sc_params = params.require(:meeting)
                       .permit(session_councilmen_attributes:
-                                %i[id note present arrival leaving])
+                                [:id, :note, :present, :arrival, :leaving])
 
     if @meeting.update(sc_params)
       flash[:success] = 'Dados atualizados com sucesso!'

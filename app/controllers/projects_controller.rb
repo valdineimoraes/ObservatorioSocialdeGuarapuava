@@ -1,12 +1,12 @@
 class ProjectsController < ApplicationController
   before_action :set_project, :set_meeting, :set_session_councilmen,
-                only: %i[show edit update destroy export]
+                only: [:show, :edit, :update, :destroy, :export]
   after_action :set_result, only: [:update_votes]
   require './lib/pdfs/project_pdf'
 
   add_breadcrumb I18n.t('breadcrumbs.project.name'), :projects_path
   add_breadcrumb I18n.t('breadcrumbs.project.new'),
-                 :new_project_path, only: %i[new create]
+                 :new_project_path, only: [:new, :create]
 
   def index
     if params[:search]
@@ -74,7 +74,7 @@ class ProjectsController < ApplicationController
     add_breadcrumb I18n.t('breadcrumbs.project.vote_update'),
                    :project_votes_path
     @project = Project.find(params[:project_id])
-    vote_params = params.require(:project).permit(votes_attributes: %i[id vote])
+    vote_params = params.require(:project).permit(votes_attributes: [:id, :vote])
 
     if @project.update(vote_params)
       flash[:success] = 'Votos atualizados com sucesso'
@@ -90,7 +90,7 @@ class ProjectsController < ApplicationController
                        @project.project_kind.kind, @project.councilman.name,
                        @project.meeting.date.to_time.strftime('%d/%m/%Y'),
                        @project.result, @project.votes)
-    redirect_to '/project.pdf'
+    redirect_to '/pdfs/project.pdf'
   end
 
   def destroy

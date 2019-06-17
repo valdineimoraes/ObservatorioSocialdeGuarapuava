@@ -17,8 +17,8 @@ namespace :db do
     2.times do
       PoliticalMandate.find_or_create_by!(
         description: Faker::Restaurant.unique.name,
-        first_period: Faker::Date.between(2.year.ago, 9.months.ago),
-        final_period: Faker::Date.between(0.year.ago, 2.months.ago)
+        first_period: Faker::Date.between(2.years.ago, 9.months.ago),
+        final_period: Faker::Date.between(0.years.ago, 2.months.ago)
       )
     end
 

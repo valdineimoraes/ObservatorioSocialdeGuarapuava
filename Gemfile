@@ -28,7 +28,7 @@ gem 'rails-i18n', '~> 5.1', '>= 5.1.1'
 gem 'rubocop-performance'
 gem 'sass-rails', '~> 5.0'
 gem 'simple_form'
-gem 'turbolinks', '~> 5.1.0'
+#gem 'turbolinks', '~> 5.1.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'will_paginate-bootstrap4'
 
@@ -44,7 +44,7 @@ gem 'prawn-rails'
 gem 'gretel', '~> 3.0', '>= 3.0.9'
 
 group :development, :test do
-  gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 
   gem 'factory_bot_rails'
   gem 'faker'
@@ -68,7 +68,7 @@ group :development do
   gem 'capistrano-rails',   require: false
   gem 'capistrano-bundler', require: false
   gem 'capistrano3-puma',   require: false
-  gem 'capistrano-rails-db',require: false
+  gem 'capistrano-rails-db', require: false
 
   gem 'better_errors'
   gem 'binding_of_caller'
@@ -89,8 +89,7 @@ group :test do
   gem 'simplecov', require: false
   gem 'simplecov-console', require: false
   gem 'guard-rspec', require: false
-
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

@@ -1,10 +1,10 @@
 class ProjectKindsController < ApplicationController
-  before_action :set_project_kind, only: %i[show edit update destroy export]
+  before_action :set_project_kind, only: [:show, :edit, :update, :destroy, :export]
   require './lib/pdfs/project_kind_pdf'
 
   add_breadcrumb I18n.t('breadcrumbs.project_kind.name'), :project_kinds_path
   add_breadcrumb I18n.t('breadcrumbs.project_kind.new'),
-                 :new_project_kind_path, only: %i[new create]
+                 :new_project_kind_path, only: [:new, :create]
 
   def index
     if params[:search]
@@ -55,7 +55,7 @@ class ProjectKindsController < ApplicationController
     ProjectKindPdf.project_kind(@project_kind.kind, @project_kind.description,
                                 @project_kind.projects.count,
                                 @project_kind.projects)
-    redirect_to '/project_kind.pdf'
+    redirect_to '/pdfs/project_kind.pdf'
   end
 
   def projects
