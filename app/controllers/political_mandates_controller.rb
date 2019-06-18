@@ -1,10 +1,10 @@
 class PoliticalMandatesController < ApplicationController
-  before_action :set_political_mandate, only: %i[show edit update destroy export]
+  before_action :set_political_mandate, only: [:show, :edit, :update, :destroy, :export]
   require './lib/pdfs/political_mandate_pdf'
 
   add_breadcrumb I18n.t('breadcrumbs.political_mandate.name'), :political_mandates_path
   add_breadcrumb I18n.t('breadcrumbs.political_mandate.new'),
-                 :new_political_mandate_path, only: %i[new create]
+                 :new_political_mandate_path, only: [:new, :create]
 
   def index
     if params[:search]
@@ -65,7 +65,7 @@ class PoliticalMandatesController < ApplicationController
     PoliticalMandatePdf.political_mandate(@political_mandate.description, @political_mandate.first_period,
                                           @political_mandate.final_period, @political_mandate.councilmen.size,
                                           @political_mandate.councilmen)
-    redirect_to '/political_mandate.pdf'
+    redirect_to '/pdfs/political_mandate.pdf'
   end
 
   def councilmen

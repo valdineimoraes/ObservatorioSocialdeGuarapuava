@@ -1,13 +1,13 @@
 # config valid for current version and patch releases of Capistrano
-lock "~> 3.11.0"
+lock '~> 3.11.0'
 
-set :stages, ["production"]
+set :stages, ['production']
 
-set :application,     'my_app_name'
+set :application,     'ObservatorioSocialdeGuarapuava'
 set :branch,          'production'
 
 set :user,            'deployer'
-set :repo_url,        "git@example.com:me/my_repo.git"
+set :repo_url,        'https://github.com/valdineimoraes/ObservatorioSocialdeGuarapuava'
 set :keep_releases,   3
 
 set :puma_threads,    [4, 16] # Min and Max threads per worker
@@ -16,14 +16,14 @@ set :puma_threads,    [4, 16] # Min and Max threads per worker
 
 # How many worker processes to run.
 # The default is “0”
-set :puma_workers,    1       # Change to match your CPU core count
+set :puma_workers,    1 # Change to match your CPU core count
 
 # Don't change these unless you know what you're doing
 set :pty,             true    # is a pair of pseudo-devices, one of which, the slave, emulates a real text terminal device, the other of which, the master, provides the means by which a terminal emulator process controls the slave.
 set :use_sudo,        false   # not use sudo to run the comands
 set :deploy_via,      :remote_cache # allows you to cache your deployment repo to make deployment much faster.
-set :deploy_to,       "/home/#{fetch(:user)}/apps/#{fetch(:application)}"
-set :ssh_options,     { forward_agent: true, user: fetch(:user), keys: %w(~/.ssh/id_rsa) } # Log in with ssh and private key
+set :deploy_to,       "/home/#{fetch(:user)}/#{fetch(:application)}"
+set :ssh_options,     forward_agent: true, user: fetch(:user), keys: %w[~/.ssh/id_rsa] # Log in with ssh and private key
 
 set :puma_bind,       "unix://#{shared_path}/tmp/sockets/#{fetch(:application)}-puma.sock" # Bind the server to url
 set :puma_state,      "#{shared_path}/tmp/pids/puma.state" # Use path as the file to store the server info state.
@@ -38,14 +38,14 @@ set :puma_preload_app, true
 # Setting this value will not protect against slow requests.
 # Default value is 60 seconds.
 set :puma_worker_timeout, nil
-set :puma_init_active_record, true  # Change to false when not using ActiveRecord
+set :puma_init_active_record, true # Change to false when not using ActiveRecord
 
 set :format,        :pretty
 set :log_level,     :debug
 
 ## Linked Files & Directories (Default None):
-set :linked_files, %w{config/database.yml config/secrets.yml}
-set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads}
+set :linked_files, %w[config/database.yml config/secrets.yml]
+set :linked_dirs, %w[bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads]
 
 namespace :puma do
   desc 'Create Directories for Puma Pids and Socket'
@@ -60,12 +60,12 @@ namespace :puma do
 end
 
 namespace :deploy do
-  desc "Make sure local git is in sync with remote."
+  desc 'Make sure local git is in sync with remote.'
   task :check_revision do
     on roles(:app) do
       unless `git rev-parse HEAD` == `git rev-parse origin/production`
-        puts "WARNING: HEAD is not the same as origin/production"
-        puts "Run `git push` to sync changes."
+        puts 'WARNING: HEAD is not the same as origin/production'
+        puts 'Run `git push` to sync changes.'
         exit
       end
     end
@@ -74,8 +74,8 @@ namespace :deploy do
   desc 'Create base Directories'
   task :setup do
     on roles(:app) do
-      execute :mkdir, "-p", shared_path, releases_path
-      execute :mkdir, "-p", "#{shared_path}/config"
+      execute :mkdir, '-p', shared_path, releases_path
+      execute :mkdir, '-p', "#{shared_path}/config"
 
       ask :db_pwd, 'default', echo: false
 
@@ -86,7 +86,7 @@ namespace :deploy do
         sudo :rm, '/etc/nginx/sites-enabled/default'
       end
 
-      sudo "ln -nfs /home/#{fetch(:user)}/apps/#{fetch(:application)}/current/config/nginx.conf /etc/nginx/sites-enabled/#{fetch(:application)}"
+      sudo "ln -nfs /home/#{fetch(:user)}/#{fetch(:application)}/config/nginx.conf /etc/nginx/sites-enabled/#{fetch(:application)}"
       sudo :service, :nginx, :reload
 
       execute "PGPASSWORD=#{fetch(:db_pwd)} psql --user postgres -c 'create database observatoriosocial_production;'"
@@ -109,29 +109,29 @@ end
 # Helpers methods                          #
 ############################################
 def database_contents
-  database = <<-EOF
-production:
-  adapter: postgresql
-  encoding: utf8
-  username: postgres
-  password: postgres
-  host: localhost
-  database: observatoriosocial_production
+  database = <<~EOF
+    production:
+      adapter: postgresql
+      encoding: utf8
+      username: postgres
+      password: postgres
+      host: localhost
+      database: observatoriosocial_production
   EOF
   StringIO.new(database)
 end
 
 def secrets_contents
-  secret = %x[rails secret]
-  secrets = <<-EOF
-production:
-  secret_key_base: #{secret}
+  secret = `rails secret`
+  secrets = <<~EOF
+    production:
+      secret_key_base: #{secret}
   EOF
   StringIO.new(secrets)
 end
 
 def remote_file_exists?(full_path)
-  'true' ==  capture("if [ -e #{full_path} ]; then echo 'true'; fi").strip
+  capture("if [ -e #{full_path} ]; then echo 'true'; fi").strip == 'true'
 end
 
 # ps aux | grep puma    # Get puma pid

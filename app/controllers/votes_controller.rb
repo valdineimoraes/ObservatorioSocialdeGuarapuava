@@ -1,5 +1,5 @@
 class VotesController < ApplicationController
-  before_action :set_vote, only: %i[show edit update destroy]
+  before_action :set_vote, only: [:show, :edit, :update, :destroy]
 
   def new
     @project = Project.find(params[:project_id])
@@ -16,7 +16,7 @@ class VotesController < ApplicationController
         @project.votes.create councilman_id: councilman_id,
                               vote: options[:vote]
       else
-        v.update_attributes(vote: options[:vote])
+        v.update(vote: options[:vote])
       end
     end
     redirect_back(fallback_location: root_path)

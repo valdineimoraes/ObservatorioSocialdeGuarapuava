@@ -1,7 +1,7 @@
 class Project < ApplicationRecord
   scope :search, ->(query) { where('name like ?', "%#{query}%") }
 
-  enum result: %i[approved retired postponed rejected filed]
+  enum result: [:approved, :retired, :postponed, :rejected, :filed]
 
   belongs_to :meeting
   belongs_to :project_kind

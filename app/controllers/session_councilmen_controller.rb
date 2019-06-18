@@ -1,5 +1,5 @@
 class SessionCouncilmenController < ApplicationController
-  before_action :set_session_councilman, only: %i[show edit update destroy]
+  before_action :set_session_councilman, only: [:show, :edit, :update, :destroy]
 
   def index
     @session_councilmen = SessionCouncilman.all
@@ -21,7 +21,7 @@ class SessionCouncilmenController < ApplicationController
                                            note: options[:note],
                                            being: options[:being]
       else
-        sc.update_attributes(note: options[:note], being: options[:being])
+        sc.update(note: options[:note], being: options[:being])
       end
     end
     redirect_back(fallback_location: root_path)

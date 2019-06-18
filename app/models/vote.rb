@@ -1,5 +1,5 @@
 class Vote < ApplicationRecord
-  enum vote: %i[favorable contrary abstention absent], _prefix: :vote
+  enum vote: [:favorable, :contrary, :abstention, :absent], _prefix: :vote
   belongs_to :project
   belongs_to :councilman
 

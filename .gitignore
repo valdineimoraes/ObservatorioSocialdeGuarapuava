@@ -30,3 +30,8 @@
 /config/master.key
 /config/database.yml
 /public/uploads
+
+#Ignore directory pdfs generated
+/public/pdfs
+
+

@@ -1,10 +1,10 @@
 class CouncilmenController < ApplicationController
-  before_action :set_councilman, only: %i[show edit update destroy export]
+  before_action :set_councilman, only: [:show, :edit, :update, :destroy, :export]
   require './lib/pdfs/coucilman_pdf'
 
   add_breadcrumb I18n.t('breadcrumbs.councilman.name'), :councilmen_path
   add_breadcrumb I18n.t('breadcrumbs.councilman.new'),
-                 :new_councilman_path, only: %i[new create]
+                 :new_councilman_path, only: [:new, :create]
 
   def index
     if params[:search]
@@ -44,7 +44,7 @@ class CouncilmenController < ApplicationController
     @councilman = Councilman.new(councilman_params)
     if @councilman.save
       flash[:success] = 'Novo vereador adicionado!'
-      redirect_to @councilman
+      redirect_to councilmen_path
     else
       flash[:error] = 'Houve algum problema, reveja os dados inseridos!'
       render :new
@@ -67,7 +67,7 @@ class CouncilmenController < ApplicationController
   def export
     CouncilmanPdf.councilman(@councilman.name, @councilman.nickname, @councilman.office,
                              @councilman.political_party, @councilman.projects)
-    redirect_to '/councilman.pdf'
+    redirect_to '/pdfs/councilman.pdf'
   end
 
   def destroy

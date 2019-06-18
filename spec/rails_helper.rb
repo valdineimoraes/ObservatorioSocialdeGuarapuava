@@ -1,20 +1,26 @@
-# This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
+
 ENV['RAILS_ENV'] ||= 'test'
-require File.expand_path('../config/environment', __dir__)
-# Prevent database truncation if the environment is production
+
+<<<<<<< HEAD
+require File.expand_path('../../config/environment', __FILE__)
+
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 
+=======
+>>>>>>> edba02ce57ff23f59a93524bc26458e75fc16747
 require 'rspec/rails'
-# Add additional requires below this line. Rails is not loaded until this point!
+
+require 'support/bullet'
 require 'support/shoulda'
-require 'support/factory_bot'
 require 'support/database_cleaner'
+<<<<<<< HEAD
+=======
 require 'support/simplecov'
 require 'support/helpers/form'
-
+require 'support/bullet'
+>>>>>>> edba02ce57ff23f59a93524bc26458e75fc16747
 require 'support/file_spec_helper'
-require 'support/carrier_wave'
 
 begin
   ActiveRecord::Migration.maintain_test_schema!
@@ -24,15 +30,9 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 
 RSpec.configure do |config|
+  config.include FactoryBot::Syntax::Methods
   config.include Warden::Test::Helpers
-  config.include Helpers::Form, type: :feature
 
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
-
-  config.filter_run focus: true
-  config.run_all_when_everything_filtered = true
-
-  config.include ApplicationHelper
-  config.include ActionView::Helpers::TranslationHelper
 end
