@@ -48,12 +48,9 @@ module MeetingPdf
       pdf.text 'Vereador           -         Presença', style: :bold
 
       session_councilmen.each do |present|
-        pdf.text present.councilman.name.to_s
-        pdf.text (if present.present?
-                    pdf.text 'Presente'
-                  else
-                    pdf.text 'Ausente'
-                    end).to_s
+        line = present.councilman.name.to_s + ' - '
+        line += present.present? ? 'Presente' : 'Ausente'
+        pdf.text line
       end
       pdf.text '_______________________________________________________________'
 
