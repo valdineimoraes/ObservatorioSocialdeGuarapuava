@@ -32,7 +32,7 @@ Clone the project repository using the command
 
 	`git clone https://github.com/valdineimoraes/ObservatorioSocialdeGuarapuava.git`
 	
-	`cd tsicms`
+	`cd ObservatorioSocialdeGuarapuava`
 
 3. **Install dependencies**
 
