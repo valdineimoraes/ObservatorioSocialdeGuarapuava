@@ -8,7 +8,7 @@ gem 'active_link_to'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap', '>= 4.3.1'
 gem 'breadcrumbs_on_rails'
-gem 'carrierwave', '~> 1.0'
+gem 'carrierwave', '~> 1.3'
 gem 'carrierwave-i18n'
 gem 'coffee-rails', '~> 4.2'
 gem 'devise', '>= 4.6.0'
